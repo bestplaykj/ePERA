@@ -7,13 +7,14 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>title</title>
 </head>
 
 <body>
 
-	<h1>aaa</h1>
+	<c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application"/>
+	<jsp:forward page="WEB-INF/views/main/main.jsp" />
 	
 </body>
 
