@@ -10,8 +10,8 @@
 	<bean destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
 		<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName"/>
 		<property value="jdbc:oracle:thin:@localhost:1521:xe" name="url"/>
-		<property value="spring" name="username"/>
-		<property value="spring" name="password"/>
+		<property value="epera" name="username"/>
+		<property value="epera" name="password"/>
 		<property value="false" name="defaultAutoCommit"/>
 	</bean>
 	
@@ -19,8 +19,8 @@
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-		dataSource.setUserName("spring");
-		dataSource.setPassword("spring");
+		dataSource.setUserName("epera");
+		dataSource.setPassword("epera");
 		dataSource.setDefaultAutoCommit(false);
 		* bean 등록 시 property 엘리멘트를 통해 작성 = setter DI(Dependency Injection)
 		  constructor-arg 엘리멘트를 통해 작성 = constructor DI
@@ -39,7 +39,7 @@
 	<!-- dataSource -> sqlSession -> sqlSessionTemplate 궁극적으로 sqlSessionTemplate을 이용하기 위한 연결 설정의 과정 -->
 
 	<!-- Multipart bean 등록 파일 업로드 시 이용 -->
-		<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
 		<property value="100000000" name="maxUploadSize"/>
 		<property value="100000000" name="maxInMemorySize"/>
 	</bean>

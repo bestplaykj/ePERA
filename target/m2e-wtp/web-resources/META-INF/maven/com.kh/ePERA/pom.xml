@@ -170,7 +170,8 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<!-- 6. 암호화를 위한 라이브러리 bcrypt -->
+		<!-- 
+			6. 암호화를 위한 라이브러리 bcrypt
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -186,7 +187,8 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>5.1.2.RELEASE</version>
 		</dependency>
-		
+		-->
+		 
 		<!-- 7. 파일 업로드 관련 라이브러리 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>

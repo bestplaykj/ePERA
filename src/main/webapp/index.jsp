@@ -8,13 +8,13 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>title</title>
+	<title>ePERA</title>
 </head>
 
 <body>
 
 	<c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application"/>
-	<jsp:forward page="WEB-INF/views/main/main.jsp" />
+	<jsp:forward page="WEB-INF/views/main/signin.jsp" />
 	
 </body>
 

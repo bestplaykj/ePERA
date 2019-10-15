@@ -7,11 +7,11 @@
 	</settings>
 
 	<typeAliases>
-		
+		<typeAlias alias="Employee" type="com.kh.ePERA.employment.employee.vo.Employee"/>
 	</typeAliases>
 
 	<mappers>
-		
+		<mapper resource="mappers/Employee-mapper.xml"/>
 	</mappers>
 
 </configuration>
