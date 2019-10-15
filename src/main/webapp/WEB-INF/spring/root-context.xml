@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 서버 구동 시 로딩 순서 web.xml -> root-context.xml 따라서 서버 구동과 동시에 셋팅되어야 할 내용들은 root-context.xml에 작성해 두어야 한다. : DB연결 설정, 트랜잭션 처리, AOP관련, 모듈 연동 처리 -->
+	<!-- 1. DB연결 설정 -->
+	<bean destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
+		<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName"/>
+		<property value="jdbc:oracle:thin:@localhost:1521:xe" name="url"/>
+		<property value="spring" name="username"/>
+		<property value="spring" name="password"/>
+		<property value="false" name="defaultAutoCommit"/>
+	</bean>
+	
+	<!--
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		dataSource.setUserName("spring");
+		dataSource.setPassword("spring");
+		dataSource.setDefaultAutoCommit(false);
+		* bean 등록 시 property 엘리멘트를 통해 작성 = setter DI(Dependency Injection)
+		  constructor-arg 엘리멘트를 통해 작성 = constructor DI
+	-->
+	
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSession">
+	<!-- mybatis-config.xml에 있는 DTD, mapping 설정 불러오기 -->
+		<property value="classpath:mybatis-config.xml" name="configLocation"/>
+		<!-- 어떤 DB 설정을 참조할 것인가 -->
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	<!-- dataSource -> sqlSession -> sqlSessionTemplate 궁극적으로 sqlSessionTemplate을 이용하기 위한 연결 설정의 과정 -->
+
+	<!-- Multipart bean 등록 파일 업로드 시 이용 -->
+		<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+		<property value="100000000" name="maxUploadSize"/>
+		<property value="100000000" name="maxInMemorySize"/>
+	</bean>
+		
+</beans>
