@@ -11,10 +11,9 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i> <!-- 나중에 없애버려 -->
+        <div class="sidebar-brand-icon">
+          <img src="${contextPath}/resources/images/logo.png" width="50" height="20">
         </div>
-        <div class="sidebar-brand-text mx-3">ePera</div>
       </a>
 
       <!-- Divider -->
