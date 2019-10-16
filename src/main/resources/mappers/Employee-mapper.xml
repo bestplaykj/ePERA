@@ -3,15 +3,15 @@
 <mapper namespace="employeeMapper">
 	
 	<resultMap type="Employee" id="ResultEmp">
-		<id column="id" property="ID"/>
-		<result column="account" property="ACCOUNT"/>
-		<result column="password" property="PASSWORD"/>
-		<result column="name" property="NAME"/>
-		<result column="authority" property="AUTHORITY"/>
-		<result column="contact" property="CONTACT"/>
-		<result column="enrollDate" property="ENROLLDATE"/>
-		<result column="resignDate" property="RESIGNDATE"/>
-		<result column="status" property="STATUS"/>
+		<id column="ID" property="id"/>
+		<result column="ACCOUNT" property="account"/>
+		<result column="PASSWORD" property="password"/>
+		<result column="NAME" property="name"/>
+		<result column="AUTHORITY" property="authority"/>
+		<result column="CONTACT" property="contact"/>
+		<result column="ENROLLDATE" property="enrollDate"/>
+		<result column="RESIGNDATE" property="resignDate"/>
+		<result column="STATUS" property="status"/>
 	</resultMap>	
 	
 	<select id="signInEmp" parameterType="Employee" resultMap="ResultEmp">

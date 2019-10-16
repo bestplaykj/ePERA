@@ -33,15 +33,10 @@ public class EmploymentController {
 	@RequestMapping("signInEmp.do")
 	public String signInEmp(Employee e, Model model) {
 		
-		System.out.println("start");
-		
-		System.out.println(e.getAccount());
-		System.out.println(e.getPassword());
-		
 		Employee user = es.signInEmp(e);
 		if(user != null) {
 			model.addAttribute("emp", user);
-			return "main/main.jsp";
+			return "main/main";
 		}else {
 			model.addAttribute("emp", user);
 			return "redirect:home.do";
