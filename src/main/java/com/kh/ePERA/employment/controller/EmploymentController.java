@@ -37,6 +37,7 @@ public class EmploymentController {
 		Employee user = emps.signInEmp(e);
 		if(user != null) {
 			model.addAttribute("emp", user);
+			
 			return "main/main";
 		}else {
 			return "redirect:home.do";

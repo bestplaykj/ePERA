@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="inhouserequestMapper">
+
+	<resultMap type="IHR" id="IHRResult">
+		<id column="NO" property="no"/>
+		<result column="PASSCODE" property="passCode"/>
+		<result column="ROOMNO" property="roomNo"/>
+		<result column="REQUEST" property="request"/>
+		<result column="RTIME" property="rTime"/>
+		<result column="RESPOSNSE" property="response"/>
+		<result column="ATIME" property="aTime"/>
+		<result column="STATUS" property="status"/>
+	</resultMap>
+
+
+	<select id="getAllIHR" resultMap="IHRResult">
+		select * from inhouserequest where status='Y'
+	</select>
+
+</mapper>
