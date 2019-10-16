@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import com.kh.ePERA.employment.shift.dao.ShiftDAO;
 import com.kh.ePERA.employment.shift.vo.Shift;
 
-@Service("ss")
+@Service("shifts")
 public class ShiftServiceImp implements ShiftService{
 
 	@Autowired
-	private ShiftDAO sd;
+	private ShiftDAO shiftd;
 	
 	
 	@Override

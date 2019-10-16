@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import com.kh.ePERA.reservation.model.dao.ReservationDAO;
 import com.kh.ePERA.reservation.model.vo.Reservation;
 
-@Service("rs")
+@Service("rsvs")
 public class ReservationServiceImp implements ReservationService{
 	
 	@Autowired
-	private ReservationDAO rd;
+	private ReservationDAO rsvd;
 
 	
 	@Override

@@ -4,7 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("rd")
+@Repository("rsvd")
 public class ReservationDAO {
 	
 	@Autowired

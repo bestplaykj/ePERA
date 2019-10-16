@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import com.kh.ePERA.employment.wage.dao.WageDAO;
 import com.kh.ePERA.employment.wage.vo.Wage;
 
-@Service("ws")
+@Service("wages")
 public class WageServiceImp implements WageService{
 
 	@Autowired
-	private WageDAO wd;
+	private WageDAO waged;
 	
 	
 	@Override

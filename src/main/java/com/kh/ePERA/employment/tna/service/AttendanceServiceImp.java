@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import com.kh.ePERA.employment.tna.dao.AttendanceDAO;
 import com.kh.ePERA.employment.tna.vo.Attendance;
 
-@Service("as")
+@Service("atts")
 public class AttendanceServiceImp implements AttendanceService{
 
 	@Autowired
-	private AttendanceDAO ad;
+	private AttendanceDAO attd;
 	
 	
 	@Override

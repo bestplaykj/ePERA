@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import com.kh.ePERA.employment.employee.dao.EmployeeDAO;
 import com.kh.ePERA.employment.employee.vo.Employee;
 
-@Service("es")
+@Service("emps")
 public class EmployeeServiceImp implements EmployeeService{
 
 	@Autowired
-	private EmployeeDAO ed;
+	private EmployeeDAO empd;
 		
 	
 	@Override
@@ -39,7 +39,7 @@ public class EmployeeServiceImp implements EmployeeService{
 	@Override
 	public Employee signInEmp(Employee emp) {
 		
-		return ed.signInEmp(emp);
+		return empd.signInEmp(emp);
 		
 	}//signInEmp
 

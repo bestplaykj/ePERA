@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import com.kh.ePERA.room.model.dao.RoomDAO;
 import com.kh.ePERA.room.model.vo.Room;
 
-@Service("rs")
+@Service("rooms")
 public class RoomServiceImp implements RoomService{
 
 	@Autowired
-	private RoomDAO rd;
+	private RoomDAO roomd;
 	
 	@Override
 	public int createRoom(Room r) {

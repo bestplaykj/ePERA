@@ -9,7 +9,7 @@ import com.kh.ePERA.room.model.service.RoomService;
 public class RoomController {
 	
 	@Autowired
-	private RoomService rs;
+	private RoomService rooms;
 	
 		
 

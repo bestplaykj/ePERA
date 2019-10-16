@@ -18,23 +18,23 @@ import com.kh.ePERA.employment.wage.service.WageService;
 public class EmploymentController {
 		
 	@Autowired
-	private EmployeeService es;
+	private EmployeeService emps;
 	
 	@Autowired
-	private ShiftService ss;
+	private ShiftService shifts;
 	
 	@Autowired
-	private AttendanceService as;
+	private AttendanceService atts;
 	
 	@Autowired
-	private WageService ws;
+	private WageService wages;
 	
 	//--------------------------------------------
 	
 	@RequestMapping("signInEmp.do")
 	public String signInEmp(Employee e, Model model) {
 		
-		Employee user = es.signInEmp(e);
+		Employee user = emps.signInEmp(e);
 		if(user != null) {
 			model.addAttribute("emp", user);
 			return "main/main";

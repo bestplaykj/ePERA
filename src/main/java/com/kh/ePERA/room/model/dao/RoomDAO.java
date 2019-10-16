@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
-@Repository("rd")
+@Repository("roomd")
 public class RoomDAO {
 	
 	@Autowired

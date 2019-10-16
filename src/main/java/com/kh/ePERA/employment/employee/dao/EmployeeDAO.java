@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.ePERA.employment.employee.vo.Employee;
 
-@Repository("ed")
+@Repository("empd")
 public class EmployeeDAO {
 	
 	@Autowired

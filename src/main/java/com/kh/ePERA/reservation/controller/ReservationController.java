@@ -9,7 +9,7 @@ import com.kh.ePERA.reservation.model.service.ReservationService;
 public class ReservationController {
 	
 	@Autowired
-	private ReservationService rs;
+	private ReservationService rsvs;
 	
 	
 	
