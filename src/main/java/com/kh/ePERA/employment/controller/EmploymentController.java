@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.kh.ePERA.employment.employee.service.EmployeeService;
 import com.kh.ePERA.employment.employee.vo.Employee;
@@ -38,11 +39,19 @@ public class EmploymentController {
 			model.addAttribute("emp", user);
 			return "main/main";
 		}else {
-			model.addAttribute("emp", user);
 			return "redirect:home.do";
 		}
 				
 	}//signInEmp
+	
+	
+	@RequestMapping("signOutEmp.do")
+	public String signOutEmp(SessionStatus status) {
+		
+		status.setComplete();
+		return "redirect:home.do";
+		
+	}//signOutEmp
 	
 
 }//class

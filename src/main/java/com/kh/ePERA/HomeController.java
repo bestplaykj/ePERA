@@ -21,8 +21,6 @@ public class HomeController {
 	@RequestMapping(value = "home.do", method = RequestMethod.GET)
 	public String home(Model model) {
 		
-		model.addAttribute("msg", "응 아니야");
-		
 		return "main/signin";
 		
 	}//home
