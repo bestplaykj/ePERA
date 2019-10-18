@@ -83,7 +83,7 @@
 
       <!-- Nav Item - Hotel Management -->
       <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="managerRoomMain.do">
           <i class="fas fa-fw fa-hotel"></i>
           <span>Hotel Management</span></a>
       </li>

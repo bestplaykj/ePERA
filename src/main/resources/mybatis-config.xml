@@ -9,11 +9,13 @@
 	<typeAliases>
 		<typeAlias alias="Employee" type="com.kh.ePERA.employment.employee.vo.Employee"/>
 		<typeAlias alias="IHR" type="com.kh.ePERA.guest.inHouseRequest.vo.InHouseRequest"/>
+		<typeAlias type="com.kh.ePERA.room.model.vo.Room"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mappers/Employee-mapper.xml"/>
 		<mapper resource="mappers/InHouseRequest-mapper.xml"/>
+		<mapper resource="mappers/Room-mapper.xml"/>
 	</mappers>
 
 </configuration>

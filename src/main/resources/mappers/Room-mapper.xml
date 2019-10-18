@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="roomMapper">
+
+	<resultMap type="Room" id="RoomResult">
+		<id column="NO" property="no"/>
+		<result column="FLOOR" property="floor"/>
+		<result column="TYPE" property="type"/>
+		<result column="KING" property="king"/>
+		<result column="KBED" property="kBed"/>
+		<result column="QUEEN" property="queen"/>
+		<result column="QBED" property="qBed"/>
+		<result column="CAPACITY" property="capacity"/>
+		<result column="PRICE" property="price"/>
+		<result column="SMOKING" property="smoking"/>
+		<result column="STATUS" property="status"/>
+	</resultMap>
+
+	
+	<select id="getAllRooms" resultMap="RoomResult">
+		select * from room where status='Y' order by floor asc, no asc
+	</select>
+	
+	<select id="getAllRoomsByFloor" parameterType="_int" resultMap="RoomResult">
+		select * from room where floor=#{floor} and status='Y' order by no asc
+	</select>
+	
+	<select id="getLowestFloorLevel" resultType="_int">
+		select min(floor) from room
+	</select>
+	
+	<select id="getHighestFloorLevel" resultType="_int">
+		select max(floor) from room
+	</select>
+	
+	<select id="getRoom" parameterType="_int" resultMap="RoomResult">
+		select * from room where no=#{roomNo} and status='Y'
+	</select>
+	
+	
+	
+</mapper>

@@ -14,6 +14,7 @@ public class RoomServiceImp implements RoomService{
 	@Autowired
 	private RoomDAO roomd;
 	
+	
 	@Override
 	public int createRoom(Room r) {
 		// TODO Auto-generated method stub
@@ -37,16 +38,49 @@ public class RoomServiceImp implements RoomService{
 	
 	@Override
 	public ArrayList<Room> getAllRooms() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		return roomd.getAllRooms();
+		
+	}//getAllRooms
 	
 
 	@Override
+	public ArrayList<Room> getAllRoomsByFloor(int floor) {
+		
+		return roomd.getAllRoomsByFloor(floor);
+	
+	}//getAllRoomsByFloor
+
+
+	@Override
 	public ArrayList<Room> getRoomsByFloor(int floor) {
-		// TODO Auto-generated method stub
+		
 		return null;
+		
 	}
+
+
+	@Override
+	public int getLowestFloorLevel() {
+		
+		return roomd.getLowestFloorLevel();
+		
+	}//getLowestFloorLevel
+
+
+	@Override
+	public int getHighestFloorLevel() {
+		
+		return roomd.getHighestFloorLevel();
+		
+	}//getHighestFloorLevel
+	
+	
+	public Room getRoom(int roomNo) {
+		
+		return roomd.getRoom(roomNo);
+		
+	}//getRoom
 	
 	
 }//class

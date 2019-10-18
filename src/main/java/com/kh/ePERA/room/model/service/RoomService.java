@@ -14,6 +14,14 @@ public interface RoomService {
 	
 	ArrayList<Room> getAllRooms();
 	
+	ArrayList<Room> getAllRoomsByFloor(int floor);
+	
 	ArrayList<Room> getRoomsByFloor(int floor);
+	
+	int getLowestFloorLevel();
+	
+	int getHighestFloorLevel();
+	
+	Room getRoom(int roomNo);
 
 }//interface

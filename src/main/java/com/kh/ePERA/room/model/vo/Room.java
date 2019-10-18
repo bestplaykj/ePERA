@@ -98,6 +98,10 @@ public class Room {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "Room [floor=" + floor + ", type=" + type + ", king=" + king + ", kBed=" + kBed + ", queen=" + queen
+				+ ", qBed=" + qBed + ", capacity=" + capacity + ", price=" + price + ", smoking=" + smoking + "]";
+	}
 	
-
 }//class
