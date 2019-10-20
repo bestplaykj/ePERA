@@ -50,5 +50,12 @@ public class RoomDAO {
 		
 	}//getRoom
 	
+	
+	public int createRoom(Room r) {
+		
+		return sqlSession.insert("roomMapper.createRoom", r);
+		
+	}//createRoom
+	
 
 }//class

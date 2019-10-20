@@ -17,7 +17,6 @@ public class Room {
 	
 	public Room() {}
 	public Room(int no, int floor, String type, String king, int kBed, String queen, int qBed, int capacity, int price, String smoking, String status) {
-		super();
 		this.no = no;
 		this.floor = floor;
 		this.type = type;
@@ -98,10 +97,13 @@ public class Room {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 	@Override
 	public String toString() {
-		return "Room [floor=" + floor + ", type=" + type + ", king=" + king + ", kBed=" + kBed + ", queen=" + queen
-				+ ", qBed=" + qBed + ", capacity=" + capacity + ", price=" + price + ", smoking=" + smoking + "]";
+		return "Room [no=" + no + ", floor=" + floor + ", type=" + type + ", king=" + king + ", kBed=" + kBed
+				+ ", queen=" + queen + ", qBed=" + qBed + ", capacity=" + capacity + ", price=" + price + ", smoking="
+				+ smoking + "]";
 	}
+	
 	
 }//class

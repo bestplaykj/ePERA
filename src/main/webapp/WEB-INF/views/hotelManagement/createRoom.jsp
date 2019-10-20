@@ -78,6 +78,19 @@
 										
 										<div class="row">
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">room #</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<input type="number" class="form-control form-control-user" name="no" required="required">
+											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">room-type</span>
 											</div>
 										</div>
@@ -86,7 +99,7 @@
 												<select class="custom-select custom-select-sm" name="type">
 													<option value="DELUXE-DOUBLE">DELUXE-DOUBLE</option>
 													<option value="DELUXE-TWIN">DELUXE-TWIN</option>
-													<option value="DELUX-SUITE">DELUX-SUITE</option>
+													<option value="DELUXE-SUITE">DELUXE-SUITE</option>
 													<option value="FAMILY-SUITE">FAMILY-SUITE</option>
 												</select>
 											</div>

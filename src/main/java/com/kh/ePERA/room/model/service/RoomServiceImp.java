@@ -17,9 +17,10 @@ public class RoomServiceImp implements RoomService{
 	
 	@Override
 	public int createRoom(Room r) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return roomd.createRoom(r);
+		
+	}//createRoom
 
 	
 	@Override

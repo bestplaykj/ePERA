@@ -156,7 +156,7 @@
 										<br>
 										
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<button class="btn btn-warning btn-user">UPDATE</button>&nbsp;&nbsp;
 												<button class="btn btn-danger btn-user">DELETE</button>
 											</div>

@@ -67,8 +67,13 @@ public class RoomController {
 	@RequestMapping("createRoom.do")
 	public String createRoom(Room r) {
 		
-		
-		return "redirect:managerRoomMain.do";
+		System.out.println(r);
+		int result = rooms.createRoom(r);
+		if(result > 0) {
+			return "redirect:managerRoomMain.do";			
+		}else {
+			return "view/common/404";
+		}
 		
 	}//createRoom
 	

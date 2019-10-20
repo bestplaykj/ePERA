@@ -37,6 +37,9 @@
 		select * from room where no=#{roomNo} and status='Y'
 	</select>
 	
+	<insert id="createRoom" parameterType="Room">
+		insert into room values(#{no}, #{floor}, #{type}, #{king}, #{kBed}, #{queen}, #{qBed}, #{capacity}, #{price}, #{smoking}, default);
+	</insert>
 	
 	
 </mapper>
