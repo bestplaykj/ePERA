@@ -83,7 +83,7 @@ public class EmploymentController {
 		if(result > 0) {
 			return "redirect:getAllEmp.do";			
 		}else {
-			return "common/404";
+			return "common/error";
 		}
 		
 	}//createEmp
@@ -97,8 +97,74 @@ public class EmploymentController {
 		
 		return mv;
 		
-	}//getEmpDetail.do
+	}//getEmpDetail
 	
+	
+	@RequestMapping("resignEmp.do")
+	public String resignEmp(int id) {
+		
+		int result = emps.deleteEmp(id);
+		if(result > 0) {
+			return "redirect:getAllEmp.do";			
+		}else {
+			return "common/error";
+		}
+		
+	}//resignEmp
+	
+	
+	@RequestMapping("updateEmpJSP.do")
+	public ModelAndView updateEmpJSP(int id, ModelAndView mv) {
+		
+		Employee emp = emps.getEmp(id);
+		mv.addObject("employee", emp).setViewName("humanResource/employee/updateEmp");
+		
+		return mv;
+		
+	}//updateEmpJSP
+	
+	
+	@RequestMapping("updateEmp.do")
+	public ModelAndView updateEmp(Employee emp, ModelAndView mv) {
+		
+		int result = emps.updateEmp(emp);
+		if(result > 0) {
+			Employee empUp = emps.getEmp(emp.getId());
+			mv.addObject("employee", empUp).setViewName("humanResource/employee/empDetail");
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//updateEmp
+	
+	
+	@RequestMapping("getAllEmpIncR.do")
+	public ModelAndView getAllEmpIncR(ModelAndView mv) {
+		
+		ArrayList<Employee> ar = emps.getAllEmpIncR();
+		mv.addObject("list", ar).setViewName("humanResource/employee/main");
+		
+		return mv;
+		
+	}//getAllEmpIncR
+	
+	
+	@RequestMapping("activateEmp.do")
+	public ModelAndView activateEmp(int id, ModelAndView mv) {
+		
+		int result = emps.activateEmp(id);
+		if(result > 0) {
+			Employee emp = emps.getEmp(id);
+			mv.addObject("employee", emp).setViewName("humanResource/employee/empDetail");
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//activateEmp
 	
 
 }//class

@@ -12,11 +12,10 @@ public class Room {
 	private int capacity;
 	private int price;
 	private String smoking;
-	private String status;
 	
 	
 	public Room() {}
-	public Room(int no, int floor, String type, String king, int kBed, String queen, int qBed, int capacity, int price, String smoking, String status) {
+	public Room(int no, int floor, String type, String king, int kBed, String queen, int qBed, int capacity, int price, String smoking) {
 		this.no = no;
 		this.floor = floor;
 		this.type = type;
@@ -27,7 +26,6 @@ public class Room {
 		this.capacity = capacity;
 		this.price = price;
 		this.smoking = smoking;
-		this.status = status;
 	}
 	
 	
@@ -90,19 +88,6 @@ public class Room {
 	}
 	public void setSmoking(String smoking) {
 		this.smoking = smoking;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	@Override
-	public String toString() {
-		return "Room [no=" + no + ", floor=" + floor + ", type=" + type + ", king=" + king + ", kBed=" + kBed
-				+ ", queen=" + queen + ", qBed=" + qBed + ", capacity=" + capacity + ", price=" + price + ", smoking="
-				+ smoking + "]";
 	}
 	
 	

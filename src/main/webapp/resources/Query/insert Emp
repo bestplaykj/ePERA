@@ -1,0 +1,28 @@
+INSERT INTO EMPLOYEE
+(ID, ACCOUNT, PASSWORD, NAME, AUTHORITY, CONTACT, ENROLLDATE, STATUS)
+VALUES(20190001, 'manager', 'lkj', 'LEE, Kyungjoon', '1', '16702879977', '2016-04-01', DEFAULT);
+
+
+insert into EMPLOYEE
+(id, account, password, name, authority, contact, enrolldate, status)
+values (EMPLOYEE_SEQ.NEXTVAL, 'aguida', 'agi', 'TEREGEYO, Aguida', 4, '16702852770', '2016-07-01', default);
+
+insert into EMPLOYEE
+(id, account, password, name, authority, contact, enrolldate, status)
+values (EMPLOYEE_SEQ.NEXTVAL, 'maria', 'maria', 'NGOTEL, Maria', 4, '16707852994', '2016-07-15', default);
+
+insert into EMPLOYEE
+(id, account, password, name, authority, contact, enrolldate, status)
+values (EMPLOYEE_SEQ.NEXTVAL, 'emily', 'emem', 'JAVIER, Emily', 4, '16707893265', '2016-08-01', default);
+
+insert into EMPLOYEE
+(id, account, password, name, authority, contact, enrolldate, status)
+values (EMPLOYEE_SEQ.NEXTVAL, 'beatrice', 'bee', 'WEILBACHER, Beatrice', 4, '16707857321', '2016-11-15', default);
+
+insert into EMPLOYEE
+(id, account, password, name, authority, contact, enrolldate, status)
+values (EMPLOYEE_SEQ.NEXTVAL, 'sharon', 'sha', 'BORJA, Sharon', 4, '16707853447', '2017-03-04', default);
+
+insert into EMPLOYEE
+(id, account, password, name, authority, contact, enrolldate, status)
+values (EMPLOYEE_SEQ.NEXTVAL, 'warren', 'warren', 'CLAVE, Warren', 4, '16707891524', '2017-03-04', default);

@@ -25,16 +25,18 @@ public class EmployeeServiceImp implements EmployeeService{
 	
 	@Override
 	public int updateEmp(Employee emp) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return empd.updateEmp(emp);
+		
+	}//updateEmp
 
 	
 	@Override
 	public int deleteEmp(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return empd.deleteEmp(id);
+		
+	}//deleteEmp
 
 	
 	@Override
@@ -55,9 +57,10 @@ public class EmployeeServiceImp implements EmployeeService{
 	
 	@Override
 	public ArrayList<Employee> getAllEmpIncR() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		return empd.getAllEmpIncR();
+		
+	}//getAllEmpIncR
 
 	
 	@Override
@@ -67,12 +70,14 @@ public class EmployeeServiceImp implements EmployeeService{
 		
 	}//getEmp
 
-	
+
 	@Override
-	public int grantAuthority(int id, int auth) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int activateEmp(int id) {
+		
+		return empd.activateEmp(id);
+		
+	}//activateEmp
+
 	
 	
 }//class

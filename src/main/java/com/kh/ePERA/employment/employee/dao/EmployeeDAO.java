@@ -42,5 +42,33 @@ public class EmployeeDAO {
 		
 	}//getEmp
 	
+	
+	public int deleteEmp(int id) {
+		
+		return sqlSession.update("employeeMapper.deleteEmp", id);
+		
+	}//deleteEmp
+	
+	
+	public int updateEmp(Employee emp) {
+		
+		return sqlSession.update("employeeMapper.updateEmp", emp);
+		
+	}//updateEmp
+	
+	
+	public ArrayList<Employee> getAllEmpIncR() {
+		
+		return (ArrayList)sqlSession.selectList("employeeMapper.getAllEmpIncR");
+		
+	}//getAllEmpIncR
+	
+	
+	public int activateEmp(int id) {
+		
+		return sqlSession.update("employeeMapper.activateEmp", id);
+		
+	}//activateEmp
+	
 
 }//class

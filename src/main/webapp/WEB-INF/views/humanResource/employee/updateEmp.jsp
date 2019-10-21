@@ -23,7 +23,7 @@
 	<!-- Custom styles for this template-->
 	<link href="${contextPath}/resources/template/css/sb-admin-2.min.css" rel="stylesheet">
 	
-	<link href="${contextPath}/resources/css/hotelManagement/createRoom.css" rel="stylesheet">
+	<link href="${contextPath}/resources/css/hotelManagement/updateEmp.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -33,7 +33,7 @@
 	<div id="wrapper">
 	
 		<!-- sidebar -->
-		<jsp:include page="../../include/sidebar.jsp" />
+		<jsp:include page="../../../include/sidebar.jsp" />
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -42,14 +42,14 @@
 			<div id="content">
      
      				<!-- topbar -->
-				<jsp:include page="../../include/topbar.jsp" />
+				<jsp:include page="../../../include/topbar.jsp" />
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 				
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Hotel Management</h1>
+						<h1 class="h3 mb-0 text-gray-800">Employee Management</h1>
 					</div>
 
 					<!-- Content Row -->
@@ -59,49 +59,103 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-12">
 								<div class="card-header py-12">
-									<span class="text-danger font-weight-bold text-center">Register new Room</span>
+									<span class="text-danger font-weight-bold text-center">Update</span>
+									<span class="text-success font-weight-bold text-center">${employee.name}</span>
+									<span class="text-danger font-weight-bold text-center">'s Detail</span>
 								</div>
 								<div class="row">
 									<div class="card-body">
-							<form action="createRoom.do" method="post">
+							<form action="updateEmp.do" method="post">
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">floor</span>
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">name</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<input type="number" class="form-control form-control-user" name="floor" required="required" min="1" max="20">
-											</div>
-										</div>
-										
-										<br>
-										
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">room #</span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<input type="number" class="form-control form-control-user" name="no" required="required">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<input type="text" class="form-control form-control-user" name="name" required="required" value="${employee.name}">
 											</div>
 										</div>
 										
 										<br>
 										
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">room-type</span>
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">account</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<select class="custom-select custom-select-sm" name="type">
-													<option value="DELUXE-DOUBLE">DELUXE-DOUBLE</option>
-													<option value="DELUXE-TWIN">DELUXE-TWIN</option>
-													<option value="DELUXE-SUITE">DELUXE-SUITE</option>
-													<option value="FAMILY-SUITE">FAMILY-SUITE</option>
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<input type="text" class="form-control form-control-user" name="account" required="required" value="${employee.account}">
+											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">password</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<input type="text" class="form-control form-control-user" name="password" required="required" value="${employee.password}">
+											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">postion</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-3 text-s font-weight-bold text-uppercase mb-1">
+								<c:choose>
+								<c:when test="${employee.authority eq 1}"><span class="text-secondary text-center">GENERAL MANAGER</span></c:when>
+								<c:when test="${employee.authority eq 2}"><span class="text-secondary text-center">OPERATION MANAGER</span></c:when>
+								<c:when test="${employee.authority eq 3}"><span class="text-secondary text-center">FRONTDESK MANAGER</span></c:when>
+								<c:when test="${employee.authority eq 4}"><span class="text-secondary text-center">FRONTDESK EMPLOYEE</span></c:when>
+								</c:choose>
+											</div>
+											<div class="col-md-1 text-s font-weight-bold text-uppercase mb-1">
+												<button type="button" class="btn btn-secondary" id="promoBtn">PROMO</button>
+											</div>
+											<div class="col-md-1 text-s font-weight-bold text-uppercase mb-1" id="cancelDiv">
+												<button type="button" class="btn btn-secondary" id="cancelBtn">CANCEL</button>
+											</div>
+										</div>
+										
+										<div class="row" id="promotionEmp">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<select class="custom-select custom-select-sm" name="authority">
+								<c:choose>
+								<c:when test="${employee.authority eq 1}">
+													<option value="4">FRONTDESK EMPLOYEE</option>
+													<option value="3">FRONTDESK MANAGER</option>
+													<option value="2">OPERATION MANAGER</option>
+													<option value="1" selected="selected">GENERAL MANAGER</option>
+								</c:when>
+								<c:when test="${employee.authority eq 2}">
+													<option value="4">FRONTDESK EMPLOYEE</option>
+													<option value="3">FRONTDESK MANAGER</option>
+													<option value="2" selected="selected">OPERATION MANAGER</option>
+													<option value="1">GENERAL MANAGER</option>
+								</c:when>
+								<c:when test="${employee.authority eq 3}">
+													<option value="4">FRONTDESK EMPLOYEE</option>
+													<option value="3" selected="selected">FRONTDESK MANAGER</option>
+													<option value="2">OPERATION MANAGER</option>
+													<option value="1">GENERAL MANAGER</option>
+								</c:when>
+								<c:when test="${employee.authority eq 4}">
+													<option value="4" selected="selected">FRONTDESK EMPLOYEE</option>
+													<option value="3">FRONTDESK MANAGER</option>
+													<option value="2">OPERATION MANAGER</option>
+													<option value="1">GENERAL MANAGER</option>
+								</c:when>
+								</c:choose>
 												</select>
 											</div>
 										</div>
@@ -109,88 +163,23 @@
 										<br>
 										
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">king-bed</span>
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">contact</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<select class="custom-select custom-select-sm" name="king" id="king">
-													<option value="N">N</option>
-													<option value="Y">Y</option>
-												</select>
-											</div>
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1" id="kBed">
-												<input type="number" class="form-control form-control-user" required="required" name="kBed" min="0" max="10" value="0">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<input type="text" class="form-control form-control-user" name="contact" required="required" value="${employee.contact}">
 											</div>
 										</div>
 										
 										<br>
 										
+										<input type="hidden" name="id" value="${employee.id}">
+																				
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">queen-bed</span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<select class="custom-select custom-select-sm" name="queen" id="queen">
-													<option value="N">N</option>
-													<option value="Y">Y</option>
-												</select>
-											</div>
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1" id="qBed">
-												<input type="number" class="form-control form-control-user" required="required" name="qBed" min="0" max="10" value="0">
-											</div>
-										</div>
-										
-										<br>
-										
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">capacity</span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<input type="number" class="form-control form-control-user" name="capacity" required="required" min="1" max="10">
-											</div>
-										</div>
-										
-										<br>
-										
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">price</span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<input type="number" class="form-control form-control-user" name="price" required="required" min="10000" step="1000">
-											</div>
-										</div>
-										
-										<br>
-										
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">smoking</span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<select class="custom-select custom-select-sm" name="smoking">
-													<option value="N">N</option>
-													<option value="Y">Y</option>
-												</select>
-											</div>
-										</div>
-										
-										<br>
-										
-										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1 text-center">
-												<button type="submit" class="btn btn-success">REGISTER</button>
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1 text-center">
+												<button type="submit" class="btn btn-warning">UPDATE</button>
 											</div>
 										</div>
 							</form>										
@@ -247,7 +236,7 @@
 
 
 <%-- /////////////////////////////////////////////// Script /////////////////////////////////////////////// --%>
-	<script src="${contextPath}/resources/js/hotelManagement/createRoom.js"></script>
+	<script src="${contextPath}/resources/js/hotelManagement/updateEmp.js"></script>
 <%-- /////////////////////////////////////////////// /Script /////////////////////////////////////////////// --%>
 
 </body>

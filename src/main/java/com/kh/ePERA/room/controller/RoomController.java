@@ -67,12 +67,11 @@ public class RoomController {
 	@RequestMapping("createRoom.do")
 	public String createRoom(Room r) {
 		
-		System.out.println(r);
 		int result = rooms.createRoom(r);
 		if(result > 0) {
 			return "redirect:managerRoomMain.do";			
 		}else {
-			return "common/404";
+			return "common/error";
 		}
 		
 	}//createRoom
@@ -96,7 +95,7 @@ public class RoomController {
 		if(result > 0) {
 			return "redirect:getRoomDetail.do?roomNo="+r.getNo();			
 		}else {
-			return "common/404";
+			return "common/error";
 		}
 		
 	}//updateRoom
@@ -109,7 +108,7 @@ public class RoomController {
 		if(result > 0) {
 			return "redirect:managerRoomMain.do";			
 		}else {
-			return "common/404";
+			return "common/error";
 		}
 		
 	}//deleteRoom

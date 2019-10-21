@@ -58,35 +58,35 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-12">
 								<div class="card-header py-12">
-									<span class="text-danger font-weight-bold text-center">${employee.name}</span>
+									<span class="text-success font-weight-bold text-center">${employee.name}</span>
 								</div>
 								<div class="row">
 									<div class="card-body">
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-3 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">account</span>
 											</div>
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">position</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">${employee.account}</span>
+											<div class="col-md-3 text-s font-weight-bold text-info text-uppercase mb-1">
+												<span class="text-secondary text-center">${employee.account}</span>
 											</div>
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-info text-uppercase mb-1">
 										<c:choose>
 										<c:when test="${employee.authority eq 1}">
-												<span class="text-info text-center">GENERAL MANAGER</span>
+												<span class="text-secondary text-center">GENERAL MANAGER</span>
 										</c:when>
 										<c:when test="${employee.authority eq 2}">
-												<span class="text-info text-center">OPERATION MANAGER</span>
+												<span class="text-secondary text-center">OPERATION MANAGER</span>
 										</c:when>
 										<c:when test="${employee.authority eq 3}">
-												<span class="text-info text-center">FRONTDESK MANAGER</span>
+												<span class="text-secondary text-center">FRONTDESK MANAGER</span>
 										</c:when>
 										<c:when test="${employee.authority eq 4}">
-												<span class="text-info text-center">FRONTDESK EMPLOYEE</span>
+												<span class="text-secondary text-center">FRONTDESK EMPLOYEE</span>
 										</c:when>
 										</c:choose>
 											</div>
@@ -95,22 +95,34 @@
 										<br>
 										
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-3 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">contact</span>
 											</div>
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">enrolldate</span>
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">Enroll-Date</span>
 											</div>
+										<c:if test="${employee.status eq 'N'}">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">Resign-Date</span>
+											</div>
+										</c:if>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">${employee.contact}</span>
+											<div class="col-md-3 text-s font-weight-bold text-info text-uppercase mb-1">
+												<span class="text-secondary text-center">${employee.contact}</span>
 											</div>
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">
+											<div class="col-md-4 text-s font-weight-bold text-info text-uppercase mb-1">
+												<span class="text-secondary text-center">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${employee.enrollDate}"/>
 												</span>
 											</div>
+										<c:if test="${employee.status eq 'N'}">
+											<div class="col-md-4 text-s font-weight-bold text-info text-uppercase mb-1">
+												<span class="text-secondary text-center">
+												<fmt:formatDate pattern="yyyy-MM-dd" value="${employee.resignDate}"/>
+												</span>
+											</div>
+										</c:if>
 										</div>
 										
 										<br>
@@ -121,13 +133,23 @@
 										<c:url value="resignEmp.do" var="resEmp">
 											<c:param name="id" value="${employee.id}" />
 										</c:url>
+										<c:url value="activateEmp.do" var="actEmp">
+											<c:param name="id" value="${employee.id}" />
+										</c:url>
 										
+										<c:if test="${employee.status eq 'Y'}">
 										<div class="row">
 											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<button class="btn btn-warning btn-user" onclick="location.href='${upEmp}'">UPDATE</button>&nbsp;&nbsp;
 												<button class="btn btn-danger btn-user" data-toggle="modal" data-target="#resignModal">RESIGN</button>
 											</div>
 										</div>										
+										</c:if>
+										<c:if test="${employee.status eq 'N'}">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<button class="btn btn-danger btn-user" data-toggle="modal" data-target="#activateModal">ACTIVATE</button>
+											</div>
+										</c:if>
 										
 									</div><!-- card-body -->
 								</div><!-- row -->
@@ -168,7 +190,7 @@
 <%-- /////////////////////////////////////////////// /Top Button /////////////////////////////////////////////// --%>
 
 
-<%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
+<%-- /////////////////////////////////////////////// Resign Modal /////////////////////////////////////////////// --%>
 	<!-- Signout Modal-->
 	<div class="modal fade" id="resignModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -187,7 +209,29 @@
 			</div>
 		</div>
 	</div>
-<%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
+<%-- /////////////////////////////////////////////// Resign Modal /////////////////////////////////////////////// --%>
+
+
+<%-- /////////////////////////////////////////////// Activate Modal /////////////////////////////////////////////// --%>
+	<!-- Signout Modal-->
+	<div class="modal fade" id="activateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">ACTIVATE '${employee.name}'</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "ACTIVATE" below if you are ready to proceed to activate '${employee.name}'</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="${actEmp}">ACTIVATE</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<%-- /////////////////////////////////////////////// Activate Modal /////////////////////////////////////////////// --%>
 
 
 <%-- /////////////////////////////////////////////// commonScript /////////////////////////////////////////////// --%>

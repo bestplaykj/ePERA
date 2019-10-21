@@ -20,6 +20,6 @@ public interface EmployeeService {
 	
 	Employee getEmp(int id);
 	
-	int grantAuthority(int id, int auth);
+	int activateEmp(int id); 
 
 }//interface

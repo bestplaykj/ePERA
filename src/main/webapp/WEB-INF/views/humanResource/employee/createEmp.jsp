@@ -63,12 +63,12 @@
 									<div class="card-body">
 							<form action="createEmp.do" method="post">
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">name</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<input type="text" class="form-control form-control-user" name="name" required="required" placeholder="SURNAME, GivenName">
 											</div>
 										</div>
@@ -76,12 +76,12 @@
 										<br>
 										
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">account</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<input type="text" class="form-control form-control-user" name="account" required="required">
 											</div>
 										</div>
@@ -89,12 +89,12 @@
 										<br>
 										
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">password</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<input type="text" class="form-control form-control-user" name="password" required="required">
 											</div>
 										</div>
@@ -102,12 +102,12 @@
 										<br>
 										
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">authority</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<select class="custom-select custom-select-sm" name="authority">
 													<option value="4">FRONTDESK EMPLOYEE</option>
 													<option value="3">FRONTDESK MANAGER</option>
@@ -119,12 +119,12 @@
 										<br>
 										
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">contact</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<input type="text" class="form-control form-control-user" name="contact" required="required" placeholder="16701234567">
 											</div>
 										</div>
@@ -132,7 +132,7 @@
 										<br>
 																				
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1 text-center">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1 text-center">
 												<button type="submit" class="btn btn-success">REGISTER</button>
 											</div>
 										</div>

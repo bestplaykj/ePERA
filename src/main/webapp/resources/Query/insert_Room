@@ -1,0 +1,15 @@
+insert into room values (201, 2, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (202, 2, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (203, 2, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (204, 2, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (205, 2, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (301, 3, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (302, 3, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (303, 3, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (304, 3, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (305, 3, 'DELUXE-DOUBLE', 'Y', 1, 'N', 0, 2, 135000, 'N');
+insert into room values (306, 3, 'DELUXE-DOUBLE', 'Y', 1, 'N', 0, 2, 135000, 'N');
+insert into room values (401, 4, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (402, 4, 'DELUXE-TWIN', 'N', 0, 'Y', 2, 4, 150000, 'N');
+insert into room values (403, 4, 'DELUXE-DOUBLE', 'Y', 1, 'N', 0, 2, 135000, 'N');
+insert into room values (404, 4, 'DELUXE-DOUBLE', 'Y', 1, 'N', 0, 2, 135000, 'N');

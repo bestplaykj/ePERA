@@ -28,9 +28,25 @@
 	</insert>
 	
 	<select id="getEmp" parameterType="_int" resultMap="EMPResult">
-		select * from employee where id=#{id} and status='Y'
+		select * from employee where id=#{id}
 	</select>
 	
+	<update id="deleteEmp" parameterType="_int">
+		update employee set status='N', resigndate=sysdate where id=#{id}
+	</update>
+	
+	<update id="updateEmp" parameterType="Employee">
+		update employee set account=#{account}, password=#{password}, name=#{name}, authority=#{authority}, contact=#{contact}
+		where id=#{id} and status='Y' 
+	</update>
+	
+	<select id="getAllEmpIncR" resultMap="EMPResult">
+		select * from employee order by authority asc, id asc
+	</select>
+	
+	<update id="activateEmp" parameterType="_int">
+		update employee set status='Y' where id=#{id}
+	</update>
 	
 	
 </mapper>

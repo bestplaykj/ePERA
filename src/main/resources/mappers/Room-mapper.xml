@@ -13,16 +13,15 @@
 		<result column="CAPACITY" property="capacity"/>
 		<result column="PRICE" property="price"/>
 		<result column="SMOKING" property="smoking"/>
-		<result column="STATUS" property="status"/>
 	</resultMap>
 
 	
 	<select id="getAllRooms" resultMap="RoomResult">
-		select * from room where status='Y' order by floor asc, no asc
+		select * from room where order by floor asc, no asc
 	</select>
 	
 	<select id="getAllRoomsByFloor" parameterType="_int" resultMap="RoomResult">
-		select * from room where floor=#{floor} and status='Y' order by no asc
+		select * from room where floor=#{floor} order by no asc
 	</select>
 	
 	<select id="getLowestFloorLevel" resultType="_int">
@@ -34,20 +33,20 @@
 	</select>
 	
 	<select id="getRoom" parameterType="_int" resultMap="RoomResult">
-		select * from room where no=#{roomNo} and status='Y'
+		select * from room where no=#{roomNo}
 	</select>
 	
 	<insert id="createRoom" parameterType="Room">
-		insert into room values(#{no}, #{floor}, #{type}, #{king}, #{kBed}, #{queen}, #{qBed}, #{capacity}, #{price}, #{smoking}, default);
+		insert into room values(#{no}, #{floor}, #{type}, #{king}, #{kBed}, #{queen}, #{qBed}, #{capacity}, #{price}, #{smoking})
 	</insert>
 	
 	<update id="updateRoom" parameterType="Room">
 		update room set no=#{no}, floor=#{floor}, type=#{type}, king=#{king}, kbed=#{kBed}, queen=#{queen}, qbed=#{qBed}, capacity=#{capacity}, price=#{price}, smoking=#{smoking}
-		where no=#{no} and status='Y'
+		where no=#{no}
 	</update>
 	
 	<delete id="deleteRoom" parameterType="_int">
-		delete from room where no=#{roomNo} and status='Y'
+		delete from room where no=#{roomNo}
 	</delete>
 	
 	

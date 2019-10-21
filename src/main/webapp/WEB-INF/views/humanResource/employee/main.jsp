@@ -66,14 +66,14 @@
 									<div class="card-body">
 										<div class="table-responsive">
 											<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-												<thead>
+												<thead class="text-success">
 													<tr>
 														<th>ID</th>
 														<th>NAME</th>
 														<th>POSITION</th>
 														<th>CONTACT</th>
 														<th>ENROLLDATE</th>
-														<th>etc</th>
+														<th>RESIGNDATE</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -86,13 +86,14 @@
 												<c:param name="id" value="${list[i].id}" />
 											</c:url>
 														<td><a href="${detail}">${list[i].name}</a></td>
-					<c:if test="${list[i].authority eq 1}"><td>GENERAL MANAGER</td></c:if>
-					<c:if test="${list[i].authority eq 2}"><td>OPERATION MANAGER</td></c:if>
-					<c:if test="${list[i].authority eq 3}"><td>FRONTDESK MANAGER</td></c:if>
-					<c:if test="${list[i].authority eq 4}"><td>FRONTDESK EMPLOYEE</td></c:if>
+				 <c:if test="${list[i].authority eq 1}"><td>GENERAL MANAGER</td></c:if>
+				 <c:if test="${list[i].authority eq 2}"><td>OPERATION MANAGER</td></c:if>
+				 <c:if test="${list[i].authority eq 3}"><td>FRONTDESK MANAGER</td></c:if>
+				 <c:if test="${list[i].authority eq 4}"><td>FRONTDESK EMPLOYEE</td></c:if>
 														<td>${list[i].contact}</td>
 														<td>${list[i].enrollDate}</td>
-														<td></td>
+			 <c:if test="${list[i].resignDate eq null}"><td>-</td></c:if>
+			 <c:if test="${list[i].resignDate ne null}"><td>${list[i].resignDate}</td></c:if>
 													</tr>
 								</c:forEach>
 							</c:when>
@@ -104,7 +105,18 @@
 											</table>
 										</div>
 									</div><!-- card-body -->
+									
 								</div><!-- row -->
+								<div class="row">
+									<div class="col-sm-5"></div>
+									<div class="col-sm-2">
+										<button class="btn btn-success btn-user" onclick="location.href='getAllEmpIncR.do'">Show-All</button>
+									</div>
+									<div class="col-sm-5"></div>
+								</div>
+								
+								<br>
+								
 							</div>
 
 						</div><!-- </div class="col-lg-12"> -->
