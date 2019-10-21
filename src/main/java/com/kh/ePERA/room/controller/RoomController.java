@@ -72,11 +72,47 @@ public class RoomController {
 		if(result > 0) {
 			return "redirect:managerRoomMain.do";			
 		}else {
-			return "view/common/404";
+			return "common/404";
 		}
 		
 	}//createRoom
 	
+	
+	@RequestMapping("updateRoomJSP")
+	public ModelAndView updateRoomJSP(int roomNo, ModelAndView mv) {
+		
+		Room r = rooms.getRoom(roomNo);
+		mv.addObject("room", r).setViewName("hotelManagement/updateRoom");
+		
+		return mv;
+		
+	}//updateRoomJSP
+	
+	
+	@RequestMapping("updateRoom.do")
+	public String updateRoom(Room r) {
+		
+		int result = rooms.updateRoom(r);
+		if(result > 0) {
+			return "redirect:getRoomDetail.do?roomNo="+r.getNo();			
+		}else {
+			return "common/404";
+		}
+		
+	}//updateRoom
+	
+	
+	@RequestMapping("deleteRoom.do")
+	public String deleteRoom(int roomNo) {
+		
+		int result = rooms.deleteRoom(roomNo);
+		if(result > 0) {
+			return "redirect:managerRoomMain.do";			
+		}else {
+			return "common/404";
+		}
+		
+	}//deleteRoom
 	
 	
 	

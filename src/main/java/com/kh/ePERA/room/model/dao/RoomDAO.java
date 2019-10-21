@@ -57,5 +57,19 @@ public class RoomDAO {
 		
 	}//createRoom
 	
+	
+	public int updateRoom(Room r) {
+		
+		return sqlSession.update("roomMapper.updateRoom", r);
+		
+	}//updateRoom
+	
+	
+	public int deleteRoom(int roomNo) {
+		
+		return sqlSession.delete("roomMapper.deleteRoom", roomNo);
+		
+	}//deleteRoom
+	
 
 }//class

@@ -41,5 +41,14 @@
 		insert into room values(#{no}, #{floor}, #{type}, #{king}, #{kBed}, #{queen}, #{qBed}, #{capacity}, #{price}, #{smoking}, default);
 	</insert>
 	
+	<update id="updateRoom" parameterType="Room">
+		update room set no=#{no}, floor=#{floor}, type=#{type}, king=#{king}, kbed=#{kBed}, queen=#{queen}, qbed=#{qBed}, capacity=#{capacity}, price=#{price}, smoking=#{smoking}
+		where no=#{no} and status='Y'
+	</update>
+	
+	<delete id="deleteRoom" parameterType="_int">
+		delete from room where no=#{roomNo} and status='Y'
+	</delete>
+	
 	
 </mapper>

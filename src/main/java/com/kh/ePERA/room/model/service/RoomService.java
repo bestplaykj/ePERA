@@ -10,7 +10,7 @@ public interface RoomService {
 	
 	int updateRoom(Room r);
 	
-	int deleteRoom(Room r);
+	int deleteRoom(int roomNo);
 	
 	ArrayList<Room> getAllRooms();
 	

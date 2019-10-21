@@ -25,16 +25,18 @@ public class RoomServiceImp implements RoomService{
 	
 	@Override
 	public int updateRoom(Room r) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+		
+		return roomd.updateRoom(r);
+	
+	}//updateRoom
+	
 	
 	@Override
-	public int deleteRoom(Room r) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int deleteRoom(int roomNo) {
+		
+		return roomd.deleteRoom(roomNo);
+		
+	}//deleteRoom
 
 	
 	@Override

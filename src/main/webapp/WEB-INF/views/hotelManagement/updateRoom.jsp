@@ -22,7 +22,6 @@
 	
 	<!-- Custom styles for this template-->
 	<link href="${contextPath}/resources/template/css/sb-admin-2.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -58,32 +57,72 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-12">
 								<div class="card-header py-12">
-									<span class="text-danger font-weight-bold text-center">#${room.no}</span>
+									<span class="text-danger font-weight-bold text-center">Update Room Details</span>
 								</div>
 								<div class="row">
 									<div class="card-body">
+							<form action="updateRoom.do" method="post">
 										<div class="row">
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">floor</span>
 											</div>
+										</div>
+										<div class="row">
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">room-type</span>
+												<input type="number" class="form-control form-control-user" name="floor" required="required" min="1" max="20" value="${room.floor}">
 											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">price</span>
+												<span class="text-primary text-center">room #</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">${room.floor}F</span>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<input type="number" class="form-control form-control-user" name="no" required="required" value="${room.no}">
 											</div>
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">${room.type}</span>
+										</div>
+										
+										<br>
+										
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">room-type</span>
 											</div>
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">
-													<fmt:formatNumber value="${room.price}" pattern="#,###" />
-												</span>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<select class="custom-select custom-select-sm" name="type">
+											<c:choose>
+											<c:when test="${room.type eq 'DELUXE-DOUBLE'}">
+													<option value="DELUXE-DOUBLE" selected="selected">DELUXE-DOUBLE</option>
+													<option value="DELUXE-TWIN">DELUXE-TWIN</option>
+													<option value="DELUXE-SUITE">DELUXE-SUITE</option>
+													<option value="FAMILY-SUITE">FAMILY-SUITE</option>
+											</c:when>
+											<c:when test="${room.type eq 'DELUXE-TWIN'}">
+													<option value="DELUXE-DOUBLE">DELUXE-DOUBLE</option>
+													<option value="DELUXE-TWIN" selected="selected">DELUXE-TWIN</option>
+													<option value="DELUXE-SUITE">DELUXE-SUITE</option>
+													<option value="FAMILY-SUITE">FAMILY-SUITE</option>
+											</c:when>
+											<c:when test="${room.type eq 'DELUXE-SUITE'}">
+													<option value="DELUXE-DOUBLE">DELUXE-DOUBLE</option>
+													<option value="DELUXE-TWIN">DELUXE-TWIN</option>
+													<option value="DELUXE-SUITE" selected="selected">DELUXE-SUITE</option>
+													<option value="FAMILY-SUITE">FAMILY-SUITE</option>
+											</c:when>
+											<c:when test="${room.type eq 'FAMILY-SUITE'}">
+													<option value="DELUXE-DOUBLE">DELUXE-DOUBLE</option>
+													<option value="DELUXE-TWIN">DELUXE-TWIN</option>
+													<option value="DELUXE-SUITE">DELUXE-SUITE</option>
+													<option value="FAMILY-SUITE" selected="selected">FAMILY-SUITE</option>
+											</c:when>
+											</c:choose>
+												</select>
 											</div>
 										</div>
 										
@@ -93,36 +132,64 @@
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">king-bed</span>
 											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<select class="custom-select custom-select-sm" name="king" id="king">
+											<c:choose>
+											<c:when test="${room.king eq 'N'}">
+													<option value="N" selected="selected">N</option>
+													<option value="Y">Y</option>
+											</c:when>
+											<c:when test="${room.king eq 'Y'}">
+													<option value="N">N</option>
+													<option value="Y" selected="selected">Y</option>
+											</c:when>
+											</c:choose>
+												</select>
+											</div>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1" id="kBed">
+												<input type="number" class="form-control form-control-user" required="required" name="kBed" min="0" max="10" value="${room.kBed}">
+											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">queen-bed</span>
 											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<select class="custom-select custom-select-sm" name="queen" id="queen">
+											<c:choose>
+											<c:when test="${room.queen eq 'N'}">
+													<option value="N" selected="selected">N</option>
+													<option value="Y">Y</option>
+											</c:when>
+											<c:when test="${room.queen eq 'Y'}">
+													<option value="N">N</option>
+													<option value="Y" selected="selected">Y</option>
+											</c:when>
+											</c:choose>
+												</select>
+											</div>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1" id="qBed">
+												<input type="number" class="form-control form-control-user" required="required" name="qBed" min="0" max="10" value="${room.qBed}">
+											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">capacity</span>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-											<c:choose>
-											<c:when test="${room.king eq 'Y'}">
-												<span class="text-info text-center">${room.kBed} EA</span>
-											</c:when>
-											<c:otherwise>
-												<span class="text-info text-center">0</span>
-											</c:otherwise>
-											</c:choose>
-											</div>
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-											<c:choose>
-											<c:when test="${room.queen eq 'Y'}">
-												<span class="text-info text-center">${room.qBed} EA</span>
-											</c:when>
-											<c:otherwise>
-												<span class="text-info text-center">0</span>
-											</c:otherwise>
-											</c:choose>
-											</div>
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">${room.capacity} person</span>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<input type="number" class="form-control form-control-user" name="capacity" required="required" min="1" max="10" value="${room.capacity}">
 											</div>
 										</div>
 										
@@ -130,45 +197,47 @@
 										
 										<div class="row">
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center">etc</span>
+												<span class="text-primary text-center">price</span>
 											</div>
+										</div>
+										<div class="row">
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center"></span>
-											</div>
-											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
-												<span class="text-primary text-center"></span>
+												<input type="number" class="form-control form-control-user" name="price" required="required" min="10000" step="1000" value="${room.price}">
 											</div>
 										</div>
 										
+										<br>
+										
 										<div class="row">
-											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">smoking</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<select class="custom-select custom-select-sm" name="smoking">
 											<c:choose>
+											<c:when test="${room.smoking eq 'N'}">
+													<option value="N" selected="selected">N</option>
+													<option value="Y">Y</option>
+											</c:when>
 											<c:when test="${room.smoking eq 'Y'}">
-												<span class="text-info text-center">흡연실</span>
+													<option value="N">N</option>
+													<option value="Y" selected="selected">Y</option>
 											</c:when>
-											<c:otherwise>
-												<span class="text-info text-center">금연실</span>
-											</c:otherwise>
 											</c:choose>
+												</select>
 											</div>
 										</div>
 										
 										<br>
 										
-										<c:url value="updateRoomJSP.do" var="upRoom">
-											<c:param name="roomNo" value="${room.no}" />
-										</c:url>
-										<c:url value="deleteRoom.do" var="delRoom">
-											<c:param name="roomNo" value="${room.no}" />
-										</c:url>
-										
 										<div class="row">
-											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
-												<button class="btn btn-warning btn-user" onclick="location.href='${upRoom}'">UPDATE</button>&nbsp;&nbsp;
-												<button class="btn btn-danger btn-user" data-toggle="modal" data-target="#deleteModal">DELETE</button>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1 text-center">
+												<button type="submit" class="btn btn-success">update</button>
 											</div>
-										</div>										
-										
+										</div>
+							</form>										
 									</div><!-- card-body -->
 								</div><!-- row -->
 							</div>
@@ -208,28 +277,6 @@
 <%-- /////////////////////////////////////////////// /Top Button /////////////////////////////////////////////// --%>
 
 
-<%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
-	<!-- Signout Modal-->
-	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">DELETE #${room.no}</h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Select "DELETE" below if you are ready to delete Room #${room.no}</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="${delRoom}">DELETE</a>
-				</div>
-			</div>
-		</div>
-	</div>
-<%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
-
-
 <%-- /////////////////////////////////////////////// commonScript /////////////////////////////////////////////// --%>
 	<!-- Bootstrap core JavaScript-->
 	<script src="${contextPath}/resources/template/vendor/jquery/jquery.min.js"></script>
@@ -240,14 +287,8 @@
 	
 	<!-- Custom scripts for all pages-->
 	<script src="${contextPath}/resources/template/js/sb-admin-2.min.js"></script>
-	
-	<!-- Page level plugins -->
-	<script src="${contextPath}/resources/template/vendor/chart.js/Chart.min.js"></script>
-	
-	<!-- Page level custom scripts -->
-	<script src="${contextPath}/resources/template/js/demo/chart-area-demo.js"></script>
-	<script src="${contextPath}/resources/template/js/demo/chart-pie-demo.js"></script>
 <%-- /////////////////////////////////////////////// /commonScript /////////////////////////////////////////////// --%>
+
 
 </body>
 
