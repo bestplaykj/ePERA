@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="employeeMapper">
 	
-	<resultMap type="Employee" id="ResultEmp">
+	<resultMap type="Employee" id="EMPResult">
 		<id column="ID" property="id"/>
 		<result column="ACCOUNT" property="account"/>
 		<result column="PASSWORD" property="password"/>
@@ -14,8 +14,21 @@
 		<result column="STATUS" property="status"/>
 	</resultMap>	
 	
-	<select id="signInEmp" parameterType="Employee" resultMap="ResultEmp">
+	<select id="signInEmp" parameterType="Employee" resultMap="EMPResult">
 		select * from employee where account=#{account} and password=#{password} and status='Y'
+	</select>
+	
+	<select id="getAllEmp" resultMap="EMPResult">
+		select * from employee where status='Y' order by authority asc, id asc
+	</select>
+	
+	<insert id="createEmp" parameterType="Employee">
+		insert into employee (id, account, password, name, authority, contact, enrolldate, status)
+		values(employee_seq.nextval, #{account}, #{password}, #{name}, #{authority}, #{contact}, sysdate, default)
+	</insert>
+	
+	<select id="getEmp" parameterType="_int" resultMap="EMPResult">
+		select * from employee where id=#{id} and status='Y'
 	</select>
 	
 	

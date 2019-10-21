@@ -17,9 +17,10 @@ public class EmployeeServiceImp implements EmployeeService{
 	
 	@Override
 	public int createEmp(Employee emp) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return empd.createEmp(emp);
+		
+	}//createEmp
 
 	
 	@Override
@@ -46,9 +47,10 @@ public class EmployeeServiceImp implements EmployeeService{
 	
 	@Override
 	public ArrayList<Employee> getAllEmp() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		return empd.getAllEmp();
+		
+	}//getAllEmp
 
 	
 	@Override
@@ -60,9 +62,10 @@ public class EmployeeServiceImp implements EmployeeService{
 	
 	@Override
 	public Employee getEmp(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		return empd.getEmp(id);
+		
+	}//getEmp
 
 	
 	@Override

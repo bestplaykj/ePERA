@@ -1,5 +1,7 @@
 package com.kh.ePERA.employment.employee.dao;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,6 +21,26 @@ public class EmployeeDAO {
 		
 	}//signInEmp
 	
+	
+	public ArrayList<Employee> getAllEmp() {
+		
+		return (ArrayList)sqlSession.selectList("employeeMapper.getAllEmp");
+		
+	}//getAllEmp
+	
+	
+	public int createEmp(Employee emp) {
+		
+		return sqlSession.insert("employeeMapper.createEmp", emp);
+		
+	}//createEmp
+	
+	
+	public Employee getEmp(int id) {
+		
+		return sqlSession.selectOne("employeeMapper.getEmp", id);
+		
+	}//getEmp
 	
 
 }//class

@@ -77,9 +77,9 @@
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                 	${sessionScope.emp.name} (
                 <c:if test="${sessionScope.emp.authority eq 1}">General Manager</c:if>
-                <c:if test="${sessionScope.emp.authority eq 2}">Frontdesk Manager</c:if>
-                <c:if test="${sessionScope.emp.authority eq 3}">Operation Manager</c:if>
-                <c:if test="${sessionScope.emp.authority eq 0}">Employee</c:if>
+                <c:if test="${sessionScope.emp.authority eq 2}">Operation Manager</c:if>
+                <c:if test="${sessionScope.emp.authority eq 3}">Frontdesk Manager</c:if>
+                <c:if test="${sessionScope.emp.authority eq 4}">Employee</c:if>
                 	)
                 </span>
               </a>

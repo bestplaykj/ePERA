@@ -31,7 +31,7 @@
 	<div id="wrapper">
 	
 		<!-- sidebar -->
-		<jsp:include page="../../include/sidebar.jsp" />
+		<jsp:include page="../../../include/sidebar.jsp" />
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -40,14 +40,14 @@
 			<div id="content">
      
      				<!-- topbar -->
-				<jsp:include page="../../include/topbar.jsp" />
+				<jsp:include page="../../../include/topbar.jsp" />
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 				
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Hotel Management</h1>
+						<h1 class="h3 mb-0 text-gray-800">Employee Management</h1>
 					</div>
 
 					<!-- Content Row -->
@@ -57,42 +57,86 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-12">
 								<div class="card-header py-12">
-									<a href="createRoomJSP.do">+ New Room</a>
+									<span class="text-danger font-weight-bold text-center">Register new Employee</span>
 								</div>
 								<div class="row">
 									<div class="card-body">
-							<c:choose>
-								<c:when test="${fn:length(floor) ne 0}">
-									<c:forEach var="i" begin="0" end="${floor[2]-1}" step="1">
-										<hr>
+							<form action="createEmp.do" method="post">
 										<div class="row">
-											<div class="col-md-12"><span>${floor[0]+i}F</span></div>
-										</div>
-										<div class="row">
-										<c:if test="${fn:length(list[i]) ne 0}">
-										<c:forEach var="j" begin="0" end="${fn:length(list[i])-1}" step="1">
-											<div class="col-xl-3 col-md-6 mb-4 border-left-primary shadow h-100 py-2 text-center">
-												<div class="text-s font-weight-bold text-info text-uppercase mb-1">
-											<c:url value="getRoomDetail.do" var="detail">
-												<c:param name="roomNo" value="${(list[i])[j].no}" />
-											</c:url>
-												<a href="${detail}">
-												<span class="text-warning">${(list[i])[j].no}</span>
-												</a><br>
-												${(list[i])[j].type}&nbsp;(${(list[i])[j].kBed}/${(list[i])[j].qBed})&nbsp;
-												<fmt:formatNumber value="${(list[i])[j].price}" pattern="#,###" />
-												</div>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">name</span>
 											</div>
-										</c:forEach>
-										</c:if>
 										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<input type="text" class="form-control form-control-user" name="name" required="required" placeholder="SURNAME, GivenName">
+											</div>
+										</div>
+										
 										<br>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-										<div class="col-md-3 text-center">현재 등록된 객실이 없음</div>
-								</c:otherwise>
-							</c:choose>
+										
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">account</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<input type="text" class="form-control form-control-user" name="account" required="required">
+											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">password</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<input type="text" class="form-control form-control-user" name="password" required="required">
+											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">authority</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<select class="custom-select custom-select-sm" name="authority">
+													<option value="4">FRONTDESK EMPLOYEE</option>
+													<option value="3">FRONTDESK MANAGER</option>
+													<option value="2">OPERATION MANAGER</option>
+												</select>
+											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">contact</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<input type="text" class="form-control form-control-user" name="contact" required="required" placeholder="16701234567">
+											</div>
+										</div>
+										
+										<br>
+																				
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1 text-center">
+												<button type="submit" class="btn btn-success">REGISTER</button>
+											</div>
+										</div>
+							</form>										
 									</div><!-- card-body -->
 								</div><!-- row -->
 							</div>
@@ -142,14 +186,8 @@
 	
 	<!-- Custom scripts for all pages-->
 	<script src="${contextPath}/resources/template/js/sb-admin-2.min.js"></script>
-	
-	<!-- Page level plugins -->
-	<script src="${contextPath}/resources/template/vendor/chart.js/Chart.min.js"></script>
-	
-	<!-- Page level custom scripts -->
-	<script src="${contextPath}/resources/template/js/demo/chart-area-demo.js"></script>
-	<script src="${contextPath}/resources/template/js/demo/chart-pie-demo.js"></script>
 <%-- /////////////////////////////////////////////// /commonScript /////////////////////////////////////////////// --%>
+
 
 </body>
 

@@ -22,6 +22,7 @@
 	
 	<!-- Custom styles for this template-->
 	<link href="${contextPath}/resources/template/css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -31,7 +32,7 @@
 	<div id="wrapper">
 	
 		<!-- sidebar -->
-		<jsp:include page="../../include/sidebar.jsp" />
+		<jsp:include page="../../../include/sidebar.jsp" />
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -40,14 +41,14 @@
 			<div id="content">
      
      				<!-- topbar -->
-				<jsp:include page="../../include/topbar.jsp" />
+				<jsp:include page="../../../include/topbar.jsp" />
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 				
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Hotel Management</h1>
+						<h1 class="h3 mb-0 text-gray-800">Employee Management</h1>
 					</div>
 
 					<!-- Content Row -->
@@ -57,42 +58,77 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-12">
 								<div class="card-header py-12">
-									<a href="createRoomJSP.do">+ New Room</a>
+									<span class="text-danger font-weight-bold text-center">${employee.name}</span>
 								</div>
 								<div class="row">
 									<div class="card-body">
-							<c:choose>
-								<c:when test="${fn:length(floor) ne 0}">
-									<c:forEach var="i" begin="0" end="${floor[2]-1}" step="1">
-										<hr>
 										<div class="row">
-											<div class="col-md-12"><span>${floor[0]+i}F</span></div>
-										</div>
-										<div class="row">
-										<c:if test="${fn:length(list[i]) ne 0}">
-										<c:forEach var="j" begin="0" end="${fn:length(list[i])-1}" step="1">
-											<div class="col-xl-3 col-md-6 mb-4 border-left-primary shadow h-100 py-2 text-center">
-												<div class="text-s font-weight-bold text-info text-uppercase mb-1">
-											<c:url value="getRoomDetail.do" var="detail">
-												<c:param name="roomNo" value="${(list[i])[j].no}" />
-											</c:url>
-												<a href="${detail}">
-												<span class="text-warning">${(list[i])[j].no}</span>
-												</a><br>
-												${(list[i])[j].type}&nbsp;(${(list[i])[j].kBed}/${(list[i])[j].qBed})&nbsp;
-												<fmt:formatNumber value="${(list[i])[j].price}" pattern="#,###" />
-												</div>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">account</span>
 											</div>
-										</c:forEach>
-										</c:if>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">position</span>
+											</div>
 										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
+												<span class="text-info text-center">${employee.account}</span>
+											</div>
+											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
+										<c:choose>
+										<c:when test="${employee.authority eq 1}">
+												<span class="text-info text-center">GENERAL MANAGER</span>
+										</c:when>
+										<c:when test="${employee.authority eq 2}">
+												<span class="text-info text-center">OPERATION MANAGER</span>
+										</c:when>
+										<c:when test="${employee.authority eq 3}">
+												<span class="text-info text-center">FRONTDESK MANAGER</span>
+										</c:when>
+										<c:when test="${employee.authority eq 4}">
+												<span class="text-info text-center">FRONTDESK EMPLOYEE</span>
+										</c:when>
+										</c:choose>
+											</div>
+										</div>
+										
 										<br>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-										<div class="col-md-3 text-center">현재 등록된 객실이 없음</div>
-								</c:otherwise>
-							</c:choose>
+										
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">contact</span>
+											</div>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">enrolldate</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
+												<span class="text-info text-center">${employee.contact}</span>
+											</div>
+											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
+												<span class="text-info text-center">
+												<fmt:formatDate pattern="yyyy-MM-dd" value="${employee.enrollDate}"/>
+												</span>
+											</div>
+										</div>
+										
+										<br>
+										
+										<c:url value="updateEmpJSP.do" var="upEmp">
+											<c:param name="id" value="${employee.id}" />
+										</c:url>
+										<c:url value="resignEmp.do" var="resEmp">
+											<c:param name="id" value="${employee.id}" />
+										</c:url>
+										
+										<div class="row">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<button class="btn btn-warning btn-user" onclick="location.href='${upEmp}'">UPDATE</button>&nbsp;&nbsp;
+												<button class="btn btn-danger btn-user" data-toggle="modal" data-target="#resignModal">RESIGN</button>
+											</div>
+										</div>										
+										
 									</div><!-- card-body -->
 								</div><!-- row -->
 							</div>
@@ -130,6 +166,28 @@
 		<i class="fas fa-angle-up"></i>
 	</a>
 <%-- /////////////////////////////////////////////// /Top Button /////////////////////////////////////////////// --%>
+
+
+<%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
+	<!-- Signout Modal-->
+	<div class="modal fade" id="resignModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">RESIGN '${employee.name}'</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "RESIGN" below if you are ready to proceed resigning of '${employee.name}'</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="${resEmp}">RESIGN</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
 
 
 <%-- /////////////////////////////////////////////// commonScript /////////////////////////////////////////////// --%>

@@ -22,6 +22,9 @@
 	
 	<!-- Custom styles for this template-->
 	<link href="${contextPath}/resources/template/css/sb-admin-2.min.css" rel="stylesheet">
+	
+	<!-- Custom styles for this page -->
+	<link href="${contextPath}/resources/template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -31,7 +34,7 @@
 	<div id="wrapper">
 	
 		<!-- sidebar -->
-		<jsp:include page="../../include/sidebar.jsp" />
+		<jsp:include page="../../../include/sidebar.jsp" />
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -40,14 +43,14 @@
 			<div id="content">
      
      				<!-- topbar -->
-				<jsp:include page="../../include/topbar.jsp" />
+				<jsp:include page="../../../include/topbar.jsp" />
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 				
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Hotel Management</h1>
+						<h1 class="h3 mb-0 text-gray-800">Employee Management</h1>
 					</div>
 
 					<!-- Content Row -->
@@ -57,42 +60,49 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-12">
 								<div class="card-header py-12">
-									<a href="createRoomJSP.do">+ New Room</a>
+									<a href="createEmpJSP.do">+ New Employee</a>
 								</div>
 								<div class="row">
 									<div class="card-body">
+										<div class="table-responsive">
+											<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+												<thead>
+													<tr>
+														<th>ID</th>
+														<th>NAME</th>
+														<th>POSITION</th>
+														<th>CONTACT</th>
+														<th>ENROLLDATE</th>
+														<th>etc</th>
+													</tr>
+												</thead>
+												<tbody>
 							<c:choose>
-								<c:when test="${fn:length(floor) ne 0}">
-									<c:forEach var="i" begin="0" end="${floor[2]-1}" step="1">
-										<hr>
-										<div class="row">
-											<div class="col-md-12"><span>${floor[0]+i}F</span></div>
-										</div>
-										<div class="row">
-										<c:if test="${fn:length(list[i]) ne 0}">
-										<c:forEach var="j" begin="0" end="${fn:length(list[i])-1}" step="1">
-											<div class="col-xl-3 col-md-6 mb-4 border-left-primary shadow h-100 py-2 text-center">
-												<div class="text-s font-weight-bold text-info text-uppercase mb-1">
-											<c:url value="getRoomDetail.do" var="detail">
-												<c:param name="roomNo" value="${(list[i])[j].no}" />
+							<c:when test="${fn:length(list) ne 0}">
+								<c:forEach var="i" begin="0" end="${fn:length(list)-1}" step="1">
+													<tr>
+														<td>${list[i].id}</td>
+											<c:url value="getEmpDetail.do" var="detail">
+												<c:param name="id" value="${list[i].id}" />
 											</c:url>
-												<a href="${detail}">
-												<span class="text-warning">${(list[i])[j].no}</span>
-												</a><br>
-												${(list[i])[j].type}&nbsp;(${(list[i])[j].kBed}/${(list[i])[j].qBed})&nbsp;
-												<fmt:formatNumber value="${(list[i])[j].price}" pattern="#,###" />
-												</div>
-											</div>
-										</c:forEach>
-										</c:if>
-										</div>
-										<br>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-										<div class="col-md-3 text-center">현재 등록된 객실이 없음</div>
-								</c:otherwise>
+														<td><a href="${detail}">${list[i].name}</a></td>
+					<c:if test="${list[i].authority eq 1}"><td>GENERAL MANAGER</td></c:if>
+					<c:if test="${list[i].authority eq 2}"><td>OPERATION MANAGER</td></c:if>
+					<c:if test="${list[i].authority eq 3}"><td>FRONTDESK MANAGER</td></c:if>
+					<c:if test="${list[i].authority eq 4}"><td>FRONTDESK EMPLOYEE</td></c:if>
+														<td>${list[i].contact}</td>
+														<td>${list[i].enrollDate}</td>
+														<td></td>
+													</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+										<div class="col-md-3 text-center">고용된 직원 없음</div>
+							</c:otherwise>
 							</c:choose>
+												</tbody>
+											</table>
+										</div>
 									</div><!-- card-body -->
 								</div><!-- row -->
 							</div>
@@ -149,6 +159,9 @@
 	<!-- Page level custom scripts -->
 	<script src="${contextPath}/resources/template/js/demo/chart-area-demo.js"></script>
 	<script src="${contextPath}/resources/template/js/demo/chart-pie-demo.js"></script>
+	
+	<!-- Page level custom scripts -->
+	<script src="${contextPath}/resources/template/js/demo/datatables-demo.js"></script>
 <%-- /////////////////////////////////////////////// /commonScript /////////////////////////////////////////////// --%>
 
 </body>

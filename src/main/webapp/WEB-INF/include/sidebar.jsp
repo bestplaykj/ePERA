@@ -58,11 +58,35 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+<c:choose>
+<c:when test="${sessionScope.emp.authority eq 1}">
+
       <!-- Heading -->
       <div class="sidebar-heading">
         MANAGER
       </div>
-
+      
+      <!-- Nav Item - Hotel Management -->
+      <li class="nav-item active">
+        <a class="nav-link" href="managerRoomMain.do">
+          <i class="fas fa-fw fa-hotel"></i>
+          <span>Hotel Management</span></a>
+      </li>
+      
+      <!-- Nav Item - Human Resources -->
+      <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHR" aria-expanded="true" aria-controls="collapseHR">
+          <i class="fas fa-fw fa-user-edit"></i>
+          <span>Human Resources</span></a>
+          <div id="collapseHR" class="collapse" aria-labelledby="headingHR" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="getAllEmp.do">employee</a>
+            <a class="collapse-item" href="#">T&A</a>
+            <a class="collapse-item" href="#">schedule</a>
+          </div>
+        </div>
+      </li>
+      
       <!-- Nav Item - Finacial Statement -->
       <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -81,29 +105,12 @@
         </div>
       </li>
 
-      <!-- Nav Item - Hotel Management -->
-      <li class="nav-item active">
-        <a class="nav-link" href="managerRoomMain.do">
-          <i class="fas fa-fw fa-hotel"></i>
-          <span>Hotel Management</span></a>
-      </li>
-
-      <!-- Nav Item - Human Resources -->
-      <li class="nav-item active">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHR" aria-expanded="true" aria-controls="collapseHR">
-          <i class="fas fa-fw fa-user-edit"></i>
-          <span>Human Resources</span></a>
-          <div id="collapseHR" class="collapse" aria-labelledby="headingHR" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">employee</a>
-            <a class="collapse-item" href="#">T&A</a>
-            <a class="collapse-item" href="#">schedule</a>
-          </div>
-        </div>
-      </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
+</c:when>
+<c:otherwise>
+</c:otherwise>
+</c:choose>
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
