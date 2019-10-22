@@ -112,6 +112,18 @@ public class GuestController {
 	}//checkInGuest
 	
 	
+	@RequestMapping("getInHouseDetail.do")
+	public ModelAndView getInHouseDetail(String passcode, ModelAndView mv) {
+		
+		InHouse ih = ihs.getInHouseDetail(passcode);
+		
+		mv.addObject("inhouse", ih).setViewName("guest/inhouse/ihDetail");
+		
+		return mv;
+		
+	}//getInHouseDetail
+	
+	
 	
 	
 	

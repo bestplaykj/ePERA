@@ -63,12 +63,20 @@ public class InHouseServiceImp implements InHouseService{
 
 	@Override
 	public int checkPassCode(String passcode) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return ihd.checkPassCode(passcode);
+		
+	}//checkPassCode
 
 
-	
+	@Override
+	public InHouse getInHouseDetail(String passcode) {
+		
+		return ihd.getInHouseDetail(passcode);
+		
+	}//getInHouseDetail
+
+
 	
 	
 	

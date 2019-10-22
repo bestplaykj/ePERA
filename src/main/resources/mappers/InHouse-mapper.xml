@@ -26,4 +26,12 @@
 		insert into inhouse values(#{passcode}, #{floor}, #{roomNo}, #{guest}, #{ppl}, #{contractor}, #{iDate}, #{oDate}, default)
 	</insert>
 	
+	<select id="checkPassCode" parameterType="string" resultType="_int">
+		select count(*) from inhouse where passcode=#{passcode}
+	</select>
+	
+	<select id="getInHouseDetail" parameterType="string" resultMap="IHResult">
+		select * from inhouse where passcode=#{passcode}
+	</select>
+	
 </mapper>

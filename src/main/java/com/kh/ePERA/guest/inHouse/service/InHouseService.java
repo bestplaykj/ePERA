@@ -21,5 +21,7 @@ public interface InHouseService {
 	
 	int checkPassCode(String passcode);
 	
+	InHouse getInHouseDetail(String passcode);
+	
 	
 }//interface

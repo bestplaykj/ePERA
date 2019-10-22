@@ -36,6 +36,20 @@ public class InHouseDAO {
 	}//checkIn
 	
 	
+	public int checkPassCode(String passcode) {
+		
+		return sqlSession.selectOne("inhouseMapper.checkPassCode", passcode);
+		
+	}//checkPassCode
+	
+	
+	public InHouse getInHouseDetail(String passcode) {
+		
+		return sqlSession.selectOne("inhouseMapper.getInHouseDetail", passcode);
+		
+	}//getInHouseDetail
+	
+	
 	
 	
 }//class
