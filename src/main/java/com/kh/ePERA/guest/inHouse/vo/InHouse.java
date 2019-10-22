@@ -5,8 +5,10 @@ import java.sql.Date;
 public class InHouse {
 	
 	private String passcode;
+	private int floor;
 	private int roomNo;
 	private String guest;
+	private int ppl;
 	private String contractor;
 	private Date iDate;
 	private Date oDate;
@@ -14,10 +16,12 @@ public class InHouse {
 	
 	
 	public InHouse() {}
-	public InHouse(String passcode, int roomNo, String guest, String contractor, Date iDate, Date oDate, String status) {
+	public InHouse(String passcode, int floor, int roomNo, String guest, int ppl, String contractor, Date iDate, Date oDate, String status) {
 		this.passcode = passcode;
+		this.floor = floor;
 		this.roomNo = roomNo;
 		this.guest = guest;
+		this.ppl = ppl;
 		this.contractor = contractor;
 		this.iDate = iDate;
 		this.oDate = oDate;
@@ -31,6 +35,12 @@ public class InHouse {
 	public void setPasscode(String passcode) {
 		this.passcode = passcode;
 	}
+	public int getFloor() {
+		return floor;
+	}
+	public void setFloor(int floor) {
+		this.floor = floor;
+	}
 	public int getRoomNo() {
 		return roomNo;
 	}
@@ -42,6 +52,12 @@ public class InHouse {
 	}
 	public void setGuest(String guest) {
 		this.guest = guest;
+	}
+	public int getPpl() {
+		return ppl;
+	}
+	public void setPpl(int ppl) {
+		this.ppl = ppl;
 	}
 	public String getContractor() {
 		return contractor;
@@ -67,6 +83,13 @@ public class InHouse {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "InHouse [passcode=" + passcode + ", floor=" + floor + ", roomNo=" + roomNo + ", guest=" + guest
+				+ ", contractor=" + contractor + ", iDate=" + iDate + ", oDate=" + oDate + ", status=" + status + "]";
+	}
+	
+	
 	
 
 }//class

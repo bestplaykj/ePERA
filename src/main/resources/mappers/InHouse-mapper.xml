@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="inhouseMapper">
+
+	<resultMap type="IH" id="IHResult">
+		<id column="PASSCODE" property="passcode" />
+		<result column="FLOOR" property="floor" />
+		<result column="ROOMNO" property="roomNo" />
+		<result column="GUEST" property="guest" />
+		<result column="PPL" property="ppl" />
+		<result column="CONTRACTOR" property="contractor" />
+		<result column="IDATE" property="iDate" />
+		<result column="ODATE" property="oDate" />
+		<result column="STATUS" property="status" />
+	</resultMap>
+
+	<select id="getAllInHouses" resultMap="IHResult">
+		<![CDATA[select * from inhouse where status='I' order by roomno asc]]>
+	</select>
+	
+	<select id="getAllInHousesByFloor" resultMap="IHResult">
+		select * from inhouse where status='I' and floor=#{floor} order by roomno asc
+	</select>
+	
+	<insert id="checkIn" parameterType="IH">
+		insert into inhouse values(#{passcode}, #{floor}, #{roomNo}, #{guest}, #{ppl}, #{contractor}, #{iDate}, #{oDate}, default)
+	</insert>
+	
+</mapper>

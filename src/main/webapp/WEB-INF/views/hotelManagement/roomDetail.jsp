@@ -58,7 +58,7 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-12">
 								<div class="card-header py-12">
-									<span class="text-danger font-weight-bold text-center">#${room.no}</span>
+									<span class="text-success font-weight-bold text-center">#${room.no}</span>
 								</div>
 								<div class="row">
 									<div class="card-body">
@@ -75,13 +75,13 @@
 										</div>
 										<div class="row">
 											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">${room.floor}F</span>
+												<span class="text-secondary text-center">${room.floor}F</span>
 											</div>
 											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">${room.type}</span>
+												<span class="text-secondary text-center">${room.type}</span>
 											</div>
 											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">
+												<span class="text-secondary text-center">
 													<fmt:formatNumber value="${room.price}" pattern="#,###" />
 												</span>
 											</div>
@@ -104,25 +104,25 @@
 											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
 											<c:choose>
 											<c:when test="${room.king eq 'Y'}">
-												<span class="text-info text-center">${room.kBed} EA</span>
+												<span class="text-secondary text-center">${room.kBed} EA</span>
 											</c:when>
 											<c:otherwise>
-												<span class="text-info text-center">0</span>
+												<span class="text-secondary text-center">0</span>
 											</c:otherwise>
 											</c:choose>
 											</div>
 											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
 											<c:choose>
 											<c:when test="${room.queen eq 'Y'}">
-												<span class="text-info text-center">${room.qBed} EA</span>
+												<span class="text-secondary text-center">${room.qBed} EA</span>
 											</c:when>
 											<c:otherwise>
-												<span class="text-info text-center">0</span>
+												<span class="text-secondary text-center">0</span>
 											</c:otherwise>
 											</c:choose>
 											</div>
 											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
-												<span class="text-info text-center">${room.capacity} person</span>
+												<span class="text-secondary text-center">${room.capacity} person</span>
 											</div>
 										</div>
 										
@@ -144,10 +144,10 @@
 											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
 											<c:choose>
 											<c:when test="${room.smoking eq 'Y'}">
-												<span class="text-info text-center">흡연실</span>
+												<span class="text-secondary text-center">흡연실</span>
 											</c:when>
 											<c:otherwise>
-												<span class="text-info text-center">금연실</span>
+												<span class="text-secondary text-center">금연실</span>
 											</c:otherwise>
 											</c:choose>
 											</div>

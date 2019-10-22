@@ -17,17 +17,11 @@ public class InHouseServiceImp implements InHouseService{
 	
 	
 	@Override
-	public String createPassCode() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	@Override
 	public int checkIn(InHouse ih) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return ihd.checkIn(ih);
+		
+	}//checkIn
 
 	
 	@Override
@@ -46,16 +40,36 @@ public class InHouseServiceImp implements InHouseService{
 	
 	@Override
 	public ArrayList<InHouse> getAllInHouses() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+		
+		return ihd.getAllInHouses();
+		
+	}//getAllInHouses
 	
+	
+	@Override
+	public ArrayList<InHouse> getAllInHousesByFloor(int floor) {
+		
+		return ihd.getAllInHousesByFloor(floor);
+		
+	}//getAllInHousesByFloor
+
+
 	@Override
 	public ArrayList<InHouse> getAllInHousesIncOut(Date date, int duration) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	public int checkPassCode(String passcode) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	
+	
 	
 	
 }//class

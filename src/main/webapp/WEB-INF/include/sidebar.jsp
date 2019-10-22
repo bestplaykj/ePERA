@@ -34,7 +34,7 @@
 
       <!-- Nav Item - Room Status -->
       <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="getRoomStatus.do">
           <i class="fas fa-fw fa-bed"></i>
           <span>Room Status</span>
         </a>

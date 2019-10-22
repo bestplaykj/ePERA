@@ -7,8 +7,6 @@ import com.kh.ePERA.guest.inHouse.vo.InHouse;
 
 public interface InHouseService {
 	
-	String createPassCode();
-	
 	int checkIn(InHouse ih);
 	
 	int updateInHouse(InHouse ih);
@@ -17,6 +15,11 @@ public interface InHouseService {
 	
 	ArrayList<InHouse> getAllInHouses();
 	
+	ArrayList<InHouse> getAllInHousesByFloor(int floor);
+	
 	ArrayList<InHouse> getAllInHousesIncOut(Date date, int duration);
+	
+	int checkPassCode(String passcode);
+	
 	
 }//interface
