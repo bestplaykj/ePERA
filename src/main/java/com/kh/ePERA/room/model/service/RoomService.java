@@ -23,5 +23,7 @@ public interface RoomService {
 	int getHighestFloorLevel();
 	
 	Room getRoom(int roomNo);
+	
+	public ArrayList<String> getRoomType();
 
 }//interface

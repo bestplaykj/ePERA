@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reservationMapper">
+
+	<resultMap type="RSV" id="RSVResult">
+		<id column="NO" property="no" />
+		<result column="GUEST" property="guest" />
+		<result column="IDATE" property="iDate" />
+		<result column="ODATE" property="oDate" />
+		<result column="NIGHT" property="night" />
+		<result column="PPL" property="ppl" />
+		<result column="ROOMTYPE" property="roomType" />
+		<result column="PRICE" property="price" />
+		<result column="SALES" property="sales" />
+		<result column="CONTRACTOR" property="contractor" />
+		<result column="NOTE" property="note" />
+		<result column="STATUS" property="status" />
+	</resultMap>
+
+
+	<select id="getAllReservations" resultMap="RSVResult">
+		select * from reservation where status='Y' order by idate asc
+	</select>
+	
+</mapper>

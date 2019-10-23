@@ -21,6 +21,6 @@ public interface AttendanceService {
 
 	ArrayList<Attendance> getAllAttByDate(int id, Date date, int duration);
 	
-	Attendance getAtt(int no);	
+	Attendance getAtt(int no);
 	
 }//interface

@@ -60,7 +60,13 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-12">
 								<div class="card-header py-12">
-									<a href="createEmpJSP.do">+ New Employee</a>
+									<div class="row">
+										<div class="col-md-2">
+											<a href="createEmpJSP.do">+ New Employee</a>
+										</div>
+										<div class="col-md-9"></div>
+										<div class="col-md-1"><a href="getAllEmpIncR.do"><span class="text-danger">* SHOW ALL</span></a></div>
+									</div>
 								</div>
 								<div class="row">
 									<div class="card-body">
@@ -106,17 +112,7 @@
 										</div>
 									</div><!-- card-body -->
 									
-								</div><!-- row -->
-								<div class="row">
-									<div class="col-sm-5"></div>
-									<div class="col-sm-2">
-										<button class="btn btn-success btn-user" onclick="location.href='getAllEmpIncR.do'">Show-All</button>
-									</div>
-									<div class="col-sm-5"></div>
-								</div>
-								
-								<br>
-								
+								</div><!-- row -->								
 							</div>
 
 						</div><!-- </div class="col-lg-12"> -->

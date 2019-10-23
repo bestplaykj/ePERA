@@ -86,4 +86,11 @@ public class RoomServiceImp implements RoomService{
 	}//getRoom
 	
 	
+	public ArrayList<String> getRoomType() {
+		
+		return roomd.getRoomType();
+		
+	}//getRoomType
+	
+	
 }//class

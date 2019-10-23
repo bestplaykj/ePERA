@@ -71,5 +71,12 @@ public class RoomDAO {
 		
 	}//deleteRoom
 	
+	
+	public ArrayList<String> getRoomType() {
+		
+		return (ArrayList)sqlSession.selectList("roomMapper.getRoomType");
+		
+	}//getRoomType
+	
 
 }//class

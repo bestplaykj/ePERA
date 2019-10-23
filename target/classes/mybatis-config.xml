@@ -9,6 +9,7 @@
 	<typeAliases>
 		<typeAlias alias="Employee" type="com.kh.ePERA.employment.employee.vo.Employee"/>
 		<typeAlias alias="Room" type="com.kh.ePERA.room.model.vo.Room"/>
+		<typeAlias alias="RSV" type="com.kh.ePERA.reservation.model.vo.Reservation"/>
 		<typeAlias alias="IH" type="com.kh.ePERA.guest.inHouse.vo.InHouse"/>
 		<typeAlias alias="IHR" type="com.kh.ePERA.guest.inHouseRequest.vo.InHouseRequest"/>
 	</typeAliases>
@@ -16,6 +17,7 @@
 	<mappers>
 		<mapper resource="mappers/Employee-mapper.xml"/>
 		<mapper resource="mappers/Room-mapper.xml"/>
+		<mapper resource="mappers/Reservation-mapper.xml"/>
 		<mapper resource="mappers/InHouse-mapper.xml"/>
 		<mapper resource="mappers/InHouseRequest-mapper.xml"/>
 	</mappers>

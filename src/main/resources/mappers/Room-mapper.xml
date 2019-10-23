@@ -14,8 +14,8 @@
 		<result column="PRICE" property="price"/>
 		<result column="SMOKING" property="smoking"/>
 	</resultMap>
-
 	
+		
 	<select id="getAllRooms" resultMap="RoomResult">
 		select * from room where order by floor asc, no asc
 	</select>
@@ -48,6 +48,10 @@
 	<delete id="deleteRoom" parameterType="_int">
 		delete from room where no=#{roomNo}
 	</delete>
+	
+	<select id="getRoomType" resultType="string">
+		select distinct(type) from room
+	</select>
 	
 	
 </mapper>

@@ -21,7 +21,7 @@
 
       <!-- Nav Item - Reservation -->
       <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="getAllReservation.do">
           <i class="fas fa-fw fa-calendar-check"></i>
           <span>Reservation</span></a>
       </li>

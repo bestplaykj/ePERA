@@ -46,9 +46,10 @@ public class ReservationServiceImp implements ReservationService{
 	
 	@Override
 	public ArrayList<Reservation> getAllReservations() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		return rsvd.getAllReservations();
+		
+	}//ArrayList<Reservation>
 
 	
 	@Override
