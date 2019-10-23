@@ -124,7 +124,53 @@ public class GuestController {
 	}//getInHouseDetail
 	
 	
+	@RequestMapping("updateIHDetail.do")
+	public ModelAndView updateIHDetail(InHouse ih, ModelAndView mv) {
+		
+		int result = ihs.updateInHouse(ih);
+		if(result > 0) {
+			InHouse update = ihs.getInHouseDetail(ih.getPasscode());
+			mv.addObject("inhouse", update).setViewName("redirect:getRoomStatus.do");
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//updateIHDetail
 	
+	
+	@RequestMapping("checkOutIH.do")
+	public String checkOutIH(String passcode) {
+		
+		int result = ihs.checkOut(passcode);
+		if(result > 0) {
+			return "redirect:getRoomStatus.do";
+		}else {
+			return "common/error";
+		}
+		
+	}//checkOutIH
+	
+	
+	@RequestMapping("showAllIH.do")
+	public ModelAndView showAllIH(ModelAndView mv) {
+		
+		int min = rooms.getLowestFloorLevel();
+		int max = rooms.getHighestFloorLevel();
+		int floorNo = (max-min)+1;
+		int[] floor = new int[3];
+		floor[0] = min;
+		floor[1] = max;
+		floor[2] = floorNo;
+				
+		ArrayList<InHouse> iar = ihs.getAllInHousesIncOut();
+		
+		mv.addObject("floor", floor).addObject("inhouse", iar).setViewName("guest/inhouse/showAll");
+		
+		return mv;
+		
+	}//showAllIH
 	
 	
 	

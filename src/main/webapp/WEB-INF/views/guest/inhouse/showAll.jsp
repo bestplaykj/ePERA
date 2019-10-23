@@ -56,13 +56,7 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-12">
 								<div class="card-header py-12">
-									<div class="row">
-										<div class="col-md-2">
-											<a href="#checkinModal" data-toggle="modal" data-target="#checkinModal">+ New Guest</a>
-										</div>
-										<div class="col-md-9"></div>
-										<div class="col-md-1"><a href="showAllIH.do"><span class="text-danger">* SHOW ALL</span></a></div>
-									</div>
+									<a href="getRoomStatus.do">&lt;- Room Status</a>
 								</div>
 								<div class="row">
 									<div class="card-body">
@@ -76,35 +70,41 @@
 										<div class="row">
 											<div class="col-md-1"></div>
 											<div class="col-md-10">
-										<c:if test="${fn:length(list[i]) ne 0}">
+										<c:if test="${fn:length(inhouse) ne 0}">
 												<div class="row">
-										<c:forEach var="j" begin="0" end="${fn:length(list[i])-1}" step="1">
-													<div class="col-xl-3 col-md-3 mb-3 border-left-primary shadow h-100 py-2 text-center">
-														<div class="text-s font-weight-bold text-info text-uppercase mb-1">
-															<span class="text-success">${(list[i])[j].no}</span>&nbsp;&nbsp;
-															<span class="text-warning">(${(list[i])[j].type})(${(list[i])[j].capacity})</span><br>
-												<c:if test="${fn:length(inhouse) ne 0}">
-													<c:forEach var="k" begin="0" end="${fn:length(inhouse)-1}" step="1">
-													<c:if test="${(list[i])[j].no eq inhouse[k].roomNo}">
-												<c:url value="getInHouseDetail.do" var="detail">
-													<c:param name="passcode" value="${inhouse[k].passcode}" />
-												</c:url>
-															<a href="${detail}">
-															<span class="text-secondary">${inhouse[k].guest}(${inhouse[k].ppl})</span>
-															</a><br>
-															<span class="text-danger">
-																<fmt:formatDate value="${inhouse[k].iDate}" pattern="yyyy-MM-dd" />
-															</span>
-															<span class="text-secondary">&nbsp;~&nbsp;</span>
-															<span class="text-danger">
-																<fmt:formatDate value="${inhouse[k].oDate}" pattern="yyyy-MM-dd" />
-															</span>
-													</c:if>
-													</c:forEach>
-												</c:if>
-														</div>
-													</div>
+													<div class="table-responsive">
+														<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+															<thead class="text-success">
+																<tr>
+																	<th>ROOM</th>
+																	<th>GUEST</th>
+																	<th>CHECK-IN</th>
+																	<th>CHECK-OUT</th>
+																	<th>PPL</th>
+																	<th>CONTRACTOR</th>
+																</tr>
+															</thead>
+															<tbody>
+										<c:forEach var="j" begin="0" end="${fn:length(inhouse)-1}" step="1">
+											<c:if test="${inhouse[j].floor eq (floor[0]+i)}">
+																<tr>
+																	<td>${inhouse[j].roomNo}</td>
+													<c:url var="getIHD" value="getInHouseDetail.do">
+														<c:param name="passcode" value="${inhouse[j].passcode}" />
+													</c:url>
+																	<td>
+																		<a href="${getIHD}">${inhouse[j].guest}</a>
+																	</td>
+																	<td><fmt:formatDate value="${inhouse[j].iDate}" pattern="yyyy-MM-dd"/></td>
+																	<td><fmt:formatDate value="${inhouse[j].oDate}" pattern="yyyy-MM-dd"/></td>
+																	<td>${inhouse[j].ppl}</td>
+																	<td>${inhouse[j].contractor}</td>
+																</tr>
+											</c:if>
 										</c:forEach>
+															</tbody>
+														</table>
+													</div>
 												</div>
 										</c:if>
 											</div>
@@ -114,15 +114,11 @@
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-										<div class="col-md-3 text-center">현재 등록된 객실이 없음</div>
+										<div class="col-md-3 text-center">내역이 없습니다.</div>
 								</c:otherwise>
 							</c:choose>
 									</div><!-- card-body -->
 								</div><!-- row -->
-								
-							<c:if test="${sessionScope.passcode ne null}">
-								<input type="hidden" value="${sessionScope.passcode}" id="Hpasscode">
-							</c:if>
 							
 							</div>
 
@@ -161,56 +157,6 @@
 <%-- /////////////////////////////////////////////// /Top Button /////////////////////////////////////////////// --%>
 
 
-<%-- /////////////////////////////////////////////// CheckIn Modal /////////////////////////////////////////////// --%>
-	<!-- Signout Modal-->
-	<div class="modal fade" id="checkinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">CHECK IN</h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">
-				<form action="checkInGuest.do" method="post" role="form">
-					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-8">
-							<input type="number" class="form-control form-control-user" name="floor" min="1" required="required" placeholder="floor"><br>
-							<input type="number" class="form-control form-control-user" name="roomNo" min="1" required="required" placeholder="room#"><br>
-							<input type="text" class="form-control form-control-user" name="guest" required="required" placeholder="SURNAME, GivenName"><br>
-							<input type="number" class="form-control form-control-user" name="ppl" min="1" required="required" placeholder="party"><br>
-							<select name="contractor" required="required" class="custom-select custom-select-sm">
-								<option value="Booking.com">Booking.com</option>
-								<option value="Agoda">Agoda</option>
-								<option value="Expedia">Expedia</option>
-								<option value="Hotels.com">Hotels.com</option>
-								<option value="FIT">FIT</option>
-							</select><br><br>
-							<input type="date" name="iDate" class="form-control form-control-user" required="required"><br>
-							<input type="date" name="oDate" class="form-control form-control-user" required="required">
-						</div>
-						<div class="col-md-2"></div>
-					</div>
-					<br><br>
-					<div class="row">
-						<div class="col-md-6 text-center"></div>
-						<div class="col-md-6 text-center">
-							<button class="btn btn-primary" type="submit">CHECK-IN</button>
-							<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-						</div>
-					</div>
-				</form>
-				</div>
-				<div class="modal-footer">
-				</div>
-			</div>
-		</div>
-	</div>
-<%-- /////////////////////////////////////////////// CheckIn Modal /////////////////////////////////////////////// --%>
-
-
 <%-- /////////////////////////////////////////////// commonScript /////////////////////////////////////////////// --%>
 	<!-- Bootstrap core JavaScript-->
 	<script src="${contextPath}/resources/template/vendor/jquery/jquery.min.js"></script>
@@ -232,10 +178,9 @@
 
 
 <%-- /////////////////////////////////////////////// Script /////////////////////////////////////////////// --%>
-	<script src="${contextPath}/resources/js/guest/main.js"></script>
+	
 <%-- /////////////////////////////////////////////// /Script /////////////////////////////////////////////// --%>
 
-<% session.removeAttribute("passcode"); %>
 
 </body>
 

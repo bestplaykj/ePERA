@@ -34,4 +34,17 @@
 		select * from inhouse where passcode=#{passcode}
 	</select>
 	
+	<update id="updateInHouse" parameterType="IH">
+		update inhouse set floor=#{floor}, roomNo=#{roomNo}, guest=#{guest}, ppl=#{ppl}, contractor=#{contractor} where passcode=#{passcode}
+	</update>
+	
+	<update id="checkOut" parameterType="string">
+		update inhouse set status='O', odate=sysdate where passcode=#{passcode}
+	</update>
+	
+	<select id="getAllInHousesIncOut" resultMap="IHResult">
+		select * from inhouse order by status asc, roomno asc, odate desc
+	</select>
+	
+	
 </mapper>

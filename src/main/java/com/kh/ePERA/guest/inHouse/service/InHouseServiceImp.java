@@ -26,16 +26,18 @@ public class InHouseServiceImp implements InHouseService{
 	
 	@Override
 	public int updateInHouse(InHouse ih) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return ihd.updateInHouse(ih);
+		
+	}//updateInHouse
 
 	
 	@Override
-	public int checkOut(InHouse ih) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int checkOut(String passcode) {
+		
+		return ihd.checkOut(passcode);
+		
+	}//checkOut
 
 	
 	@Override
@@ -52,6 +54,15 @@ public class InHouseServiceImp implements InHouseService{
 		return ihd.getAllInHousesByFloor(floor);
 		
 	}//getAllInHousesByFloor
+
+		
+
+	@Override
+	public ArrayList<InHouse> getAllInHousesIncOut() {
+		
+		return ihd.getAllInHousesIncOut();
+		
+	}//getAllInHousesIncOut
 
 
 	@Override

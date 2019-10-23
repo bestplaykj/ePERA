@@ -11,11 +11,13 @@ public interface InHouseService {
 	
 	int updateInHouse(InHouse ih);
 	
-	int checkOut(InHouse ih);
+	int checkOut(String passcode);
 	
 	ArrayList<InHouse> getAllInHouses();
 	
 	ArrayList<InHouse> getAllInHousesByFloor(int floor);
+	
+	ArrayList<InHouse> getAllInHousesIncOut();
 	
 	ArrayList<InHouse> getAllInHousesIncOut(Date date, int duration);
 	

@@ -127,14 +127,18 @@
 										
 										<br>
 										
-										
-																				
+										<c:url var="checkout" value="checkOutIH.do">
+											<c:param name="passcode" value="${inhouse.passcode}" />
+										</c:url>
+								
+								<c:if test="${inhouse.status eq 'I'}">
 										<div class="row">
 											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
-												<button class="btn btn-warning btn-user" onclick="location.href='${upRoom}'">UPDATE</button>&nbsp;&nbsp;
-												<button class="btn btn-danger btn-user" data-toggle="modal" data-target="#deleteModal">DELETE</button>
+												<button class="btn btn-warning btn-user" data-toggle="modal" data-target="#updateModal">UPDATE</button>&nbsp;&nbsp;
+												<button class="btn btn-danger btn-user" data-toggle="modal" data-target="#checkOutModal">CHECK-OUT</button>
 											</div>
-										</div>										
+										</div>
+								</c:if>
 										
 									</div><!-- card-body -->
 								</div><!-- row -->
@@ -175,26 +179,106 @@
 <%-- /////////////////////////////////////////////// /Top Button /////////////////////////////////////////////// --%>
 
 
-<%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
+<%-- /////////////////////////////////////////////// Update Modal /////////////////////////////////////////////// --%>
 	<!-- Signout Modal-->
-	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+					<h5 class="modal-title" id="exampleModalLabel">UPDATE</h5>
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Select "DELETE" below if you are ready to delete Room </div>
+				<div class="modal-body">
+				<form action="updateIHDetail.do" method="post" role="form">
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<input type="hidden" name="passcode" value="${inhouse.passcode}">
+							<input type="number" class="form-control form-control-user" name="floor" min="1" required="required" value="${inhouse.floor}"><br>
+							<input type="number" class="form-control form-control-user" name="roomNo" min="1" required="required" value="${inhouse.roomNo}"><br>
+							<input type="text" class="form-control form-control-user" name="guest" required="required" value="${inhouse.guest}"><br>
+							<input type="number" class="form-control form-control-user" name="ppl" min="1" required="required" value="${inhouse.ppl}"><br>
+							<select name="contractor" required="required" class="custom-select custom-select-sm">
+						<c:choose>
+						<c:when test="${inhouse.contractor eq 'Booking.com'}">
+								<option value="Booking.com" selected="selected">Booking.com</option>
+								<option value="Agoda">Agoda</option>
+								<option value="Expedia">Expedia</option>
+								<option value="Hotels.com">Hotels.com</option>
+								<option value="FIT">FIT</option>
+						</c:when>
+						<c:when test="${inhouse.contractor eq 'Agoda'}">
+								<option value="Booking.com">Booking.com</option>
+								<option value="Agoda" selected="selected">Agoda</option>
+								<option value="Expedia">Expedia</option>
+								<option value="Hotels.com">Hotels.com</option>
+								<option value="FIT">FIT</option>
+						</c:when>
+						<c:when test="${inhouse.contractor eq 'Expedia'}">
+								<option value="Booking.com">Booking.com</option>
+								<option value="Agoda">Agoda</option>
+								<option value="Expedia" selected="selected">Expedia</option>
+								<option value="Hotels.com">Hotels.com</option>
+								<option value="FIT">FIT</option>
+						</c:when>
+						<c:when test="${inhouse.contractor eq 'Hotels.com'}">
+								<option value="Booking.com">Booking.com</option>
+								<option value="Agoda">Agoda</option>
+								<option value="Expedia">Expedia</option>
+								<option value="Hotels.com" selected="selected">Hotels.com</option>
+								<option value="FIT">FIT</option>
+						</c:when>
+						<c:otherwise>
+								<option value="Booking.com">Booking.com</option>
+								<option value="Agoda">Agoda</option>
+								<option value="Expedia">Expedia</option>
+								<option value="Hotels.com">Hotels.com</option>
+								<option value="FIT" selected="selected">FIT</option>
+						</c:otherwise>
+						</c:choose>
+							</select><br><br>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					<br><br>
+					<div class="row">
+						<div class="col-md-6 text-center"></div>
+						<div class="col-md-6 text-center">
+							<button class="btn btn-primary" type="submit">UPDATE</button>
+							<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+				</form>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+<%-- /////////////////////////////////////////////// /Update Modal /////////////////////////////////////////////// --%>
+
+
+<%-- /////////////////////////////////////////////// CheckOut Modal /////////////////////////////////////////////// --%>
+	<!-- Signout Modal-->
+	<div class="modal fade" id="checkOutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">CHECK-OUT</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "CHECK-OUT" below if you are ready to proceed to Check-Out</div>
 				<div class="modal-footer">
+					<a class="btn btn-primary" href="${checkout}">CHECK-OUT</a>
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="${delRoom}">DELETE</a>
 				</div>
 			</div>
 		</div>
 	</div>
-<%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
+<%-- /////////////////////////////////////////////// /CheckOut Modal /////////////////////////////////////////////// --%>
 
 
 <%-- /////////////////////////////////////////////// commonScript /////////////////////////////////////////////// --%>

@@ -50,6 +50,26 @@ public class InHouseDAO {
 	}//getInHouseDetail
 	
 	
+	public int updateInHouse(InHouse ih) {
+		
+		return sqlSession.update("inhouseMapper.updateInHouse", ih);
+		
+	}//updateInHouse
+	
+	
+	public int checkOut(String passcode) {
+		
+		return sqlSession.update("inhouseMapper.checkOut", passcode);
+		
+	}//checkOut
+	
+	
+	public ArrayList<InHouse> getAllInHousesIncOut() {
+		
+		return (ArrayList)sqlSession.selectList("inhouseMapper.getAllInHousesIncOut");
+		
+	}//getAllInHousesIncOut
+	
 	
 	
 }//class
