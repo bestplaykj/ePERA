@@ -25,5 +25,7 @@ public interface RoomService {
 	Room getRoom(int roomNo);
 	
 	public ArrayList<String> getRoomType();
+	
+	public int getRoomPrice(String type);
 
 }//interface

@@ -80,6 +80,7 @@
 														<th>PPL</th>
 														<th>CHECK IN</th>
 														<th>CHECK OUT</th>
+														<th>STATUS</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -89,13 +90,29 @@
 													<tr>
 														<td>${list[i].no}</td>
 											<c:url value="getRSVDetail.do" var="detail">
-												<c:param name="id" value="${list[i].no}" />
+												<c:param name="no" value="${list[i].no}" />
 											</c:url>
 														<td><a href="${detail}">${list[i].guest}</a></td>
 														<td>${list[i].roomType}</td>
 														<td>${list[i].ppl}</td>
 														<td>${list[i].iDate}</td>
 														<td>${list[i].oDate}</td>
+														<td>
+													<c:choose>
+														<c:when test="${list[i].status eq 'Y'}">
+															confirmed
+														</c:when>
+														<c:when test="${list[i].status eq 'I'}">
+															check in
+														</c:when>
+														<c:when test="${list[i].status eq 'O'}">
+															check out
+														</c:when>
+														<c:when test="${list[i].status eq 'N'}">
+															canceled
+														</c:when>
+													</c:choose>
+														</td>
 													</tr>
 								</c:forEach>
 							</c:when>
@@ -166,19 +183,19 @@
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
 							<input type="text" class="form-control form-control-user" name="guest" required="required" placeholder="SURNAME, GivenName"><br>
-							<input type="date" name="iDate" class="form-control form-control-user" required="required"><br>
-							<input type="date" name="oDate" class="form-control form-control-user" required="required"><br>
-							<input type="number" class="form-control form-control-user" name="night" required="required" placeholder="night" min="1"><br>
+							<input type="date" name="iDate" class="form-control form-control-user" required="required" id="RSViDate"><br>
+							<input type="date" name="oDate" class="form-control form-control-user" required="required" id="RSVoDate"><br>
+							<input type="number" class="form-control form-control-user" name="night" required="required" placeholder="night" min="1" id="RSVnight" readonly="readonly"><br>
 							<input type="number" class="form-control form-control-user" name="ppl" min="1" required="required" placeholder="party"><br>
-							<select name="roomType" required="required" class="custom-select custom-select-sm">
+							<select name="roomType" required="required" class="custom-select custom-select-sm" id="roomSel">
 					<c:if test="${fn:length(types) ne 0}">
 						<c:forEach var="i" begin="0" end="${fn:length(types)-1}" step="1">
 								<option value="${types[i]}">${types[i]}</option>
 						</c:forEach>
 					</c:if>
 							</select><br><br>
-							<input type="number" class="form-control form-control-user" name="price" required="required" placeholder="price" min="100000" step="1000"><br>
-							<input type="number" class="form-control form-control-user" name="sales" required="required" placeholder="sales" min="100000" step="1000"><br>
+							<input type="number" class="form-control form-control-user" name="price" required="required" placeholder="price" min="100000" step="1000" id="RSVprice" readonly="readonly"><br>
+							<input type="number" class="form-control form-control-user" name="sales" required="required" placeholder="sales" min="100000" step="1000" id="RSVsales" readonly="readonly"><br>
 							<select name="contractor" required="required" class="custom-select custom-select-sm">
 								<option value="Booking.com">Booking.com</option>
 								<option value="Agoda">Agoda</option>
@@ -228,6 +245,11 @@
 	<!-- Page level custom scripts -->
 	<script src="${contextPath}/resources/template/js/demo/datatables-demo.js"></script>
 <%-- /////////////////////////////////////////////// /commonScript /////////////////////////////////////////////// --%>
+
+
+<%-- /////////////////////////////////////////////// Script /////////////////////////////////////////////// --%>
+	<script src="${contextPath}/resources/js/reservation/main.js"></script>
+<%-- /////////////////////////////////////////////// /Script /////////////////////////////////////////////// --%>
 
 </body>
 

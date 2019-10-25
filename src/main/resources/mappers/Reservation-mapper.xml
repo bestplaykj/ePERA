@@ -22,4 +22,19 @@
 		select * from reservation where status='Y' order by idate asc
 	</select>
 	
+	<insert id="createReservation" parameterType="RSV">
+		insert into reservation (no, guest, idate, odate, night, ppl, roomtype, price, sales, contractor, status) 
+		values (reservation_seq.nextval, #{guest}, #{iDate}, #{oDate}, #{night}, #{ppl}, #{roomType}, #{price}, #{sales}, #{contractor}, default)
+	</insert>
+	
+	<select id="getReservation" parameterType="_int" resultMap="RSVResult">
+		select * from reservation where no=#{no}
+	</select>
+	
+	<select id="getAllReservationsIncAll" resultMap="RSVResult">
+		select * from reservation order by idate asc
+	</select>
+	
+	
+	
 </mapper>

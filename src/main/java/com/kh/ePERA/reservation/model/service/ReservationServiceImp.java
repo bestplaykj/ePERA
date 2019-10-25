@@ -18,9 +18,10 @@ public class ReservationServiceImp implements ReservationService{
 	
 	@Override
 	public int createReservation(Reservation r) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return rsvd.createReservation(r);
+		
+	}//createReservation
 
 	
 	@Override
@@ -42,16 +43,32 @@ public class ReservationServiceImp implements ReservationService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	
+		
+	@Override
+	public Reservation getReservation(int no) {
+		
+		return rsvd.getReservation(no);
+		
+	}//getReservation
+
+
 	@Override
 	public ArrayList<Reservation> getAllReservations() {
 		
 		return rsvd.getAllReservations();
 		
 	}//ArrayList<Reservation>
-
 	
+	
+	@Override
+	public ArrayList<Reservation> getAllReservationsIncAll() {
+		
+		return rsvd.getAllReservationsIncAll();
+		
+	}//getAllReservationsIncAll
+
+
 	@Override
 	public ArrayList<Reservation> getReservationsByRoom(int roomNo, Date date, int duration) {
 		// TODO Auto-generated method stub

@@ -22,6 +22,28 @@ public class ReservationDAO {
 	}//getAllReservations
 	
 	
+	public int createReservation(Reservation r) {
+		
+		return sqlSession.insert("reservationMapper.createReservation", r);
+		
+	}//createReservation
+	
+	
+	public Reservation getReservation(int no) {
+		
+		return sqlSession.selectOne("reservationMapper.getReservation", no);
+		
+	}//getReservation
+	
+	
+	public ArrayList<Reservation> getAllReservationsIncAll() {
+		
+		return (ArrayList)sqlSession.selectList("reservationMapper.getAllReservationsIncAll");
+		
+	}//getAllReservationsIncAll
+	
+	
+	
 	
 
 }//class

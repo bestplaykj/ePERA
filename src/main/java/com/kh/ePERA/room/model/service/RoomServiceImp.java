@@ -91,6 +91,16 @@ public class RoomServiceImp implements RoomService{
 		return roomd.getRoomType();
 		
 	}//getRoomType
+
+
+	@Override
+	public int getRoomPrice(String type) {
+		
+		return roomd.getRoomPrice(type);
+		
+	}//getRoomPrice
+	
+	
 	
 	
 }//class

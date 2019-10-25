@@ -15,7 +15,11 @@ public interface ReservationService {
 	
 	int deleteReservation(int no);
 	
+	Reservation getReservation(int no);
+	
 	ArrayList<Reservation> getAllReservations();
+	
+	ArrayList<Reservation> getAllReservationsIncAll();
 	
 	ArrayList<Reservation> getReservationsByRoom(int roomNo, Date date, int duration);
 	

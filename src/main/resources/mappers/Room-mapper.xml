@@ -15,6 +15,7 @@
 		<result column="SMOKING" property="smoking"/>
 	</resultMap>
 	
+	
 		
 	<select id="getAllRooms" resultMap="RoomResult">
 		select * from room where order by floor asc, no asc
@@ -51,6 +52,10 @@
 	
 	<select id="getRoomType" resultType="string">
 		select distinct(type) from room
+	</select>
+	
+	<select id="getRoomPrice" parameterType="string" resultType="_int">
+		select distinct(price) from room where type=#{type}
 	</select>
 	
 	
