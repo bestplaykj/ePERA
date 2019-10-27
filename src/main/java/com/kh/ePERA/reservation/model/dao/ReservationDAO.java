@@ -43,6 +43,39 @@ public class ReservationDAO {
 	}//getAllReservationsIncAll
 	
 	
+	public int updateReservation(Reservation r) {
+		
+		return sqlSession.update("reservationMapper.updateReservation", r);
+		
+	}//updateReservation
+	
+	
+	public int checkIn(int no) {
+		
+		return sqlSession.update("reservationMapper.checkIn", no);
+		
+	}//checkIn
+	
+	
+	public int checkOut(int no) {
+		
+		return sqlSession.update("reservationMapper.checkOut", no);
+		
+	}//checkOut
+	
+	
+	public int cancelReservation(int no) {
+		
+		return sqlSession.update("reservationMapper.cancelReservation", no);
+		
+	}//cancelReservation
+	
+	
+	public int deleteReservation(int no) {
+		
+		return sqlSession.delete("reservationMapper.deleteReservation", no);
+		
+	}//deleteReservation
 	
 	
 

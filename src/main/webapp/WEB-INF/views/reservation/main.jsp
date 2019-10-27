@@ -64,8 +64,8 @@
 										<div class="col-md-2">
 											<a href="#createRSVModal" data-toggle="modal" data-target="#createRSVModal">+ New Reservation</a>
 										</div>
-										<div class="col-md-9"></div>
-										<div class="col-md-1"><a href="getAllRSV.do"><span class="text-danger">* SHOW ALL</span></a></div>
+										<div class="col-md-8"></div>
+										<div class="col-md-2 text-right"><a href="getAllRSV.do"><span class="text-danger">* SHOW ALL</span></a></div>
 									</div>
 								</div>
 								<div class="row">
@@ -97,28 +97,14 @@
 														<td>${list[i].ppl}</td>
 														<td>${list[i].iDate}</td>
 														<td>${list[i].oDate}</td>
-														<td>
-													<c:choose>
-														<c:when test="${list[i].status eq 'Y'}">
-															confirmed
-														</c:when>
-														<c:when test="${list[i].status eq 'I'}">
-															check in
-														</c:when>
-														<c:when test="${list[i].status eq 'O'}">
-															check out
-														</c:when>
-														<c:when test="${list[i].status eq 'N'}">
-															canceled
-														</c:when>
-													</c:choose>
+														<td><c:if test="${list[i].status eq 'Y'}">confirmed</c:if>
 														</td>
 													</tr>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
 													<tr>
-														<td colspan="6" class="text-center">예약이 없습니다</td>
+														<td colspan="7" class="text-center">예약이 없습니다</td>
 													</tr>
 							</c:otherwise>
 							</c:choose>
@@ -167,7 +153,6 @@
 
 
 <%-- /////////////////////////////////////////////// CreateRSV Modal /////////////////////////////////////////////// --%>
-	<!-- Signout Modal-->
 	<div class="modal fade" id="createRSVModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -186,7 +171,7 @@
 							<input type="date" name="iDate" class="form-control form-control-user" required="required" id="RSViDate"><br>
 							<input type="date" name="oDate" class="form-control form-control-user" required="required" id="RSVoDate"><br>
 							<input type="number" class="form-control form-control-user" name="night" required="required" placeholder="night" min="1" id="RSVnight" readonly="readonly"><br>
-							<input type="number" class="form-control form-control-user" name="ppl" min="1" required="required" placeholder="party"><br>
+							<input type="number" class="form-control form-control-user" name="ppl" min="1" required="required" placeholder="ppl"><br>
 							<select name="roomType" required="required" class="custom-select custom-select-sm" id="roomSel">
 					<c:if test="${fn:length(types) ne 0}">
 						<c:forEach var="i" begin="0" end="${fn:length(types)-1}" step="1">

@@ -99,6 +99,14 @@ public class RoomServiceImp implements RoomService{
 		return roomd.getRoomPrice(type);
 		
 	}//getRoomPrice
+
+
+	@Override
+	public ArrayList<Room> getEmptyRooms() {
+		
+		return roomd.getEmptyRooms();
+	
+	}//getEmptyRooms
 	
 	
 	

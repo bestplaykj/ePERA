@@ -11,6 +11,12 @@ public interface ReservationService {
 	
 	int updateReservation(Reservation r);
 	
+	int checkIn(int no);
+	
+	int checkOut(int no);
+	
+	int cancelReservation(int no);
+	
 	int handlingReservation(Reservation r, String note);
 	
 	int deleteReservation(int no);

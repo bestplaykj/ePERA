@@ -15,6 +15,7 @@ import com.google.gson.JsonIOException;
 import com.kh.ePERA.reservation.model.service.ReservationService;
 import com.kh.ePERA.reservation.model.vo.Reservation;
 import com.kh.ePERA.room.model.service.RoomService;
+import com.kh.ePERA.room.model.vo.Room;
 
 @Controller
 public class ReservationController {
@@ -70,8 +71,9 @@ public class ReservationController {
 	public ModelAndView getRSVDetail(int no, ModelAndView mv) {
 		
 		Reservation r = rsvs.getReservation(no);
+		ArrayList<String> types = rooms.getRoomType();
 		
-		mv.addObject("rsv", r).setViewName("reservation/rsvDetail");
+		mv.addObject("rsv", r).addObject("types", types).setViewName("reservation/rsvDetail");
 		
 		return mv;
 		
@@ -84,12 +86,107 @@ public class ReservationController {
 		ArrayList<Reservation> ar = rsvs.getAllReservationsIncAll();
 		ArrayList<String> types = rooms.getRoomType();
 		
-		mv.addObject("list", ar).addObject("types", types).setViewName("reservation/main");
+		mv.addObject("list", ar).addObject("types", types).setViewName("reservation/showAll");
 		
 		return mv;
 		
-	}//getAllRSV.do
+	}//getAllRSV
 	
+	
+	@RequestMapping("updateRSV.do")
+	public ModelAndView updateRSV(Reservation r, ModelAndView mv) {
+		
+		int result = rsvs.updateReservation(r);
+		if(result > 0) {
+			Reservation rsv = rsvs.getReservation(r.getNo());
+			ArrayList<String> types = rooms.getRoomType();
+			mv.addObject("rsv", rsv).addObject("types", types).setViewName("reservation/rsvDetail");
+		}else {
+			mv.setViewName("common/error");
+		}
+				
+		return mv;
+		
+	}//updateRSV
+	
+	
+	@RequestMapping("ciRSV.do")
+	public ModelAndView checkIn(int no, ModelAndView mv) {
+		
+		int result = rsvs.checkIn(no);
+		if(result > 0) {
+			Reservation rsv = rsvs.getReservation(no);
+			ArrayList<String> types = rooms.getRoomType();
+			mv.addObject("rsv", rsv).addObject("types", types).setViewName("reservation/rsvDetail");
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//checkIn
+	
+	
+	@RequestMapping("coRSV.do")
+	public ModelAndView checkOut(int no, ModelAndView mv) {
+		
+		int result = rsvs.checkOut(no);
+		if(result > 0) {
+			Reservation rsv = rsvs.getReservation(no);
+			ArrayList<String> types = rooms.getRoomType();
+			mv.addObject("rsv", rsv).addObject("types", types).setViewName("reservation/rsvDetail");
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//checkOut
+	
+	
+	@RequestMapping("cancelRSV.do")
+	public ModelAndView cancelRSV(int no, ModelAndView mv) {
+		
+		int result = rsvs.cancelReservation(no);
+		if(result > 0) {
+			Reservation rsv = rsvs.getReservation(no);
+			ArrayList<String> types = rooms.getRoomType();
+			mv.addObject("rsv", rsv).addObject("types", types).setViewName("reservation/rsvDetail");
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//cancelRSV
+	
+	
+	@RequestMapping("deleteRSV.do")
+	public ModelAndView deleteRSV(int no, ModelAndView mv) {
+		
+		int result = rsvs.deleteReservation(no);
+		if(result > 0) {
+			mv.setViewName("redirect:getAllReservation.do");
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//deleteRSV
+	
+	
+	@RequestMapping("getEmptyRooms.do")
+	public void getEmptyRooms(HttpServletResponse response) throws JsonIOException, IOException {
+		
+		ArrayList<Room> ar = rooms.getEmptyRooms();
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		Gson gs = new Gson();
+		gs.toJson(ar, response.getWriter());
+		
+	}//getEmptyRooms
 	
 	
 	

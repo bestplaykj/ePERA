@@ -85,5 +85,12 @@ public class RoomDAO {
 		
 	}//getRoomPrice
 	
+	
+	public ArrayList<Room> getEmptyRooms() {
+		
+		return (ArrayList)sqlSession.selectList("roomMapper.getEmptyRooms");
+		
+	}//getEmptyRooms
+	
 
 }//class

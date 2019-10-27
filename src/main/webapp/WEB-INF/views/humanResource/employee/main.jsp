@@ -64,8 +64,8 @@
 										<div class="col-md-2">
 											<a href="createEmpJSP.do">+ New Employee</a>
 										</div>
-										<div class="col-md-9"></div>
-										<div class="col-md-1"><a href="getAllEmpIncR.do"><span class="text-danger">* SHOW ALL</span></a></div>
+										<div class="col-md-8"></div>
+										<div class="col-md-2 text-right"><a href="getAllEmpIncR.do"><span class="text-danger">* SHOW ALL</span></a></div>
 									</div>
 								</div>
 								<div class="row">

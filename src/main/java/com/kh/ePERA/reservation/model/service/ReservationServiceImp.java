@@ -26,11 +26,36 @@ public class ReservationServiceImp implements ReservationService{
 	
 	@Override
 	public int updateReservation(Reservation r) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+		
+		return rsvd.updateReservation(r);
+		
+	}//updateReservation
 	
+	
+	@Override
+	public int checkIn(int no) {
+		
+		return rsvd.checkIn(no);
+		
+	}//checkIn
+
+
+	@Override
+	public int checkOut(int no) {
+		
+		return rsvd.checkOut(no);
+		
+	}//checkOut
+	
+	
+	@Override
+	public int cancelReservation(int no) {
+		
+		return rsvd.cancelReservation(no);
+		
+	}//cancelReservation
+
+
 	@Override
 	public int handlingReservation(Reservation r, String note) {
 		// TODO Auto-generated method stub
@@ -40,9 +65,10 @@ public class ReservationServiceImp implements ReservationService{
 	
 	@Override
 	public int deleteReservation(int no) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return rsvd.deleteReservation(no);
+		
+	}//deleteReservation
 	
 		
 	@Override

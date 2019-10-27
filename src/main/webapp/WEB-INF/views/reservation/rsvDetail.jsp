@@ -176,25 +176,12 @@
 										
 										<br>
 										
-										<c:url value="updateRSV.do" var="upRSV">
-											<c:param name="no" value="${rsv.no}" />
-										</c:url>
-										<c:url value="ciRSV.do" var="inRSV">
-											<c:param name="no" value="${rsv.no}" />
-										</c:url>
-										<c:url value="coRSV.do" var="outRSV">
-											<c:param name="no" value="${rsv.no}" />
-										</c:url>
-										<c:url value="cancelRSV.do" var="canRSV">
-											<c:param name="no" value="${rsv.no}" />
-										</c:url>
-										
 										<div class="row">
 									<c:choose>
 										<c:when test="${rsv.status eq 'Y'}">
 											<div class="col-md-6 text-s font-weight-bold text-uppercase mb-1">
 												<button class="btn btn-warning btn-user" data-toggle="modal" data-target="#updateModal">UPDATE</button>&nbsp;&nbsp;
-												<button class="btn btn-primary btn-user" data-toggle="modal" data-target="#inModal">CHECK IN</button>&nbsp;&nbsp;
+												<button class="btn btn-primary btn-user" data-toggle="modal" data-target="#inModal" id="ciBtn">CHECK IN</button>&nbsp;&nbsp;
 												<button class="btn btn-success btn-user" data-toggle="modal" data-target="#outModal">CHECK OUT</button>&nbsp;&nbsp;
 												<button class="btn btn-danger btn-user" data-toggle="modal" data-target="#cancelModal">CANCEL RSV</button>
 											</div>
@@ -212,7 +199,7 @@
 										</c:when>
 										<c:when test="${rsv.status eq 'N'}">
 											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
-												<button class="btn btn-danger btn-user" data-toggle="modal" data-target="#updateModal">UPDATE</button>
+												<button class="btn btn-secondary btn-user" data-toggle="modal" data-target="#deleteModal">DELETE</button>
 											</div>
 										</c:when>
 									</c:choose>
@@ -257,27 +244,194 @@
 	</a>
 <%-- /////////////////////////////////////////////// /Top Button /////////////////////////////////////////////// --%>
 
+	
+	<c:url value="ciRSV.do" var="inRSV">
+		<c:param name="no" value="${rsv.no}" />
+	</c:url>
+	<c:url value="coRSV.do" var="outRSV">
+		<c:param name="no" value="${rsv.no}" />
+	</c:url>
+	<c:url value="cancelRSV.do" var="canRSV">
+		<c:param name="no" value="${rsv.no}" />
+	</c:url>
+	<c:url value="deleteRSV.do" var="delRSV">
+		<c:param name="no" value="${rsv.no}" />
+	</c:url>
 
-<%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
-	<!-- Signout Modal-->
-	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<%-- /////////////////////////////////////////////// Update Modal /////////////////////////////////////////////// --%>
+	<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">DELETE #${rsv.no}</h5>
+					<h5 class="modal-title" id="exampleModalLabel">UPDATE #${rsv.no}</h5>
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Select "DELETE" below if you are ready to delete Room #${rsv.no}</div>
+			<form action="updateRSV.do" method="post" role="form">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<input type="hidden" name="no" value="${rsv.no}">
+							<input type="text" class="form-control form-control-user" name="guest" required="required" value="${rsv.guest}"><br>
+							<input type="date" name="iDate" class="form-control form-control-user" required="required" id="RSViDate" value="${rsv.iDate}"><br>
+							<input type="date" name="oDate" class="form-control form-control-user" required="required" id="RSVoDate" value="${rsv.oDate}"><br>
+							<input type="number" class="form-control form-control-user" name="night" required="required" min="1" id="RSVnight" readonly="readonly" value="${rsv.night}"><br>
+							<input type="number" class="form-control form-control-user" name="ppl" min="1" required="required" value="${rsv.ppl}"><br>
+							<select name="roomType" required="required" class="custom-select custom-select-sm" id="roomSel">
+					<c:if test="${fn:length(types) ne 0}">
+						<c:forEach var="i" begin="0" end="${fn:length(types)-1}" step="1">
+						<c:choose>
+							<c:when test="${types[i] eq rsv.roomType}">
+								<option value="${types[i]}" selected="selected">${types[i]}</option>							
+							</c:when>
+							<c:otherwise>
+								<option value="${types[i]}">${types[i]}</option>
+							</c:otherwise>
+						</c:choose>
+						</c:forEach>
+					</c:if>
+							</select><br><br>
+							<input type="number" class="form-control form-control-user" name="price" required="required" value="${rsv.price}" min="100000" step="1000" id="RSVprice" readonly="readonly"><br>
+							<input type="number" class="form-control form-control-user" name="sales" required="required" value="${rsv.sales}" min="100000" step="1000" id="RSVsales" readonly="readonly"><br>
+							<select name="contractor" required="required" class="custom-select custom-select-sm">
+						<c:choose>
+							<c:when test="${rsv.contractor eq 'Booking.com'}">
+								<option value="Booking.com" selected="selected">Booking.com</option>
+								<option value="Agoda">Agoda</option>
+								<option value="Expedia">Expedia</option>
+								<option value="Hotels.com">Hotels.com</option>
+								<option value="FIT">FIT</option>
+							</c:when>
+							<c:when test="${rsv.contractor eq 'Agoda'}">
+								<option value="Booking.com">Booking.com</option>
+								<option value="Agoda" selected="selected">Agoda</option>
+								<option value="Expedia">Expedia</option>
+								<option value="Hotels.com">Hotels.com</option>
+								<option value="FIT">FIT</option>
+							</c:when>
+							<c:when test="${rsv.contractor eq 'Expedia'}">
+								<option value="Booking.com">Booking.com</option>
+								<option value="Agoda">Agoda</option>
+								<option value="Expedia" selected="selected">Expedia</option>
+								<option value="Hotels.com">Hotels.com</option>
+								<option value="FIT">FIT</option>
+							</c:when>
+							<c:when test="${rsv.contractor eq 'Hotels.com'}">
+								<option value="Booking.com">Booking.com</option>
+								<option value="Agoda">Agoda</option>
+								<option value="Expedia">Expedia</option>
+								<option value="Hotels.com" selected="selected">Hotels.com</option>
+								<option value="FIT">FIT</option>
+							</c:when>
+							<c:when test="${rsv.contractor eq 'FIT'}">
+								<option value="Booking.com">Booking.com</option>
+								<option value="Agoda">Agoda</option>
+								<option value="Expedia">Expedia</option>
+								<option value="Hotels.com">Hotels.com</option>
+								<option value="FIT" selected="selected">FIT</option>
+							</c:when>
+						</c:choose>
+							</select><br><br>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					<br>
+				</div>
 				<div class="modal-footer">
+					<button class="btn btn-primary" type="submit">UPDATE</button>
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="${canRSV}">DELETE</a>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+<%-- /////////////////////////////////////////////// /Update Modal /////////////////////////////////////////////// --%>
+
+
+<%-- /////////////////////////////////////////////// Check-In Modal /////////////////////////////////////////////// --%>
+	<div class="modal fade" id="inModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Check In #'${rsv.no}'</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "CHECK IN" below if you are ready to proceed to check-in '${rsv.guest}'</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" href="${inRSV}">CHECK IN</a>
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>
 		</div>
 	</div>
+<%-- /////////////////////////////////////////////// /Check-In Modal /////////////////////////////////////////////// --%>
+
+
+<%-- /////////////////////////////////////////////// Check-Out Modal /////////////////////////////////////////////// --%>
+	<div class="modal fade" id="outModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Check Out #'${rsv.no}'</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "CHECK OUT" below if you are ready to proceed to check-out '${rsv.guest}'</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" href="${outRSV}">CHECK OUT</a>
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<%-- /////////////////////////////////////////////// /Check-Out Modal /////////////////////////////////////////////// --%>
+
+
+<%-- /////////////////////////////////////////////// Cancel Modal /////////////////////////////////////////////// --%>
+	<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Cancel #'${rsv.no}'</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "CANCEL" below if you are ready to proceed to cancel '${rsv.guest}'</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" href="${canRSV}">CANCEL</a>
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<%-- /////////////////////////////////////////////// /Cancel Modal /////////////////////////////////////////////// --%>
+
+
 <%-- /////////////////////////////////////////////// Delete Modal /////////////////////////////////////////////// --%>
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Delete #'${rsv.no}'</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "DELETE" below if you are ready to proceed to delete '${rsv.guest}'</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" href="${delRSV}">DELETE</a>
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<%-- /////////////////////////////////////////////// /Delete Modal /////////////////////////////////////////////// --%>
 
 
 <%-- /////////////////////////////////////////////// commonScript /////////////////////////////////////////////// --%>
@@ -298,6 +452,12 @@
 	<script src="${contextPath}/resources/template/js/demo/chart-area-demo.js"></script>
 	<script src="${contextPath}/resources/template/js/demo/chart-pie-demo.js"></script>
 <%-- /////////////////////////////////////////////// /commonScript /////////////////////////////////////////////// --%>
+
+
+<%-- /////////////////////////////////////////////// Script /////////////////////////////////////////////// --%>
+	<script src="${contextPath}/resources/js/reservation/rsvDetail.js"></script>
+	<script src="${contextPath}/resources/js/reservation/rsvDetailAjax.js"></script>
+<%-- /////////////////////////////////////////////// /Script /////////////////////////////////////////////// --%>
 
 </body>
 

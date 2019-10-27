@@ -35,6 +35,27 @@
 		select * from reservation order by idate asc
 	</select>
 	
+	<update id="updateReservation" parameterType="RSV">
+		update reservation set guest=#{guest}, idate=#{iDate}, odate=#{oDate}, night=#{night}, ppl=#{ppl}, 
+		roomtype=#{roomType}, price=#{price}, sales=#{sales}, contractor=#{contractor}
+		where no=#{no}
+	</update>
+	
+	<update id="checkIn" parameterType="_int">
+		update reservation set status='I' where no=#{no}
+	</update>
+	
+	<update id="checkOut" parameterType="_int">
+		update reservation set status='O' where no=#{no}
+	</update>
+	
+	<update id="cancelReservation" parameterType="_int">
+		update reservation set status='N' where no=#{no}
+	</update>
+	
+	<delete id="deleteReservation" parameterType="_int">
+		delete from reservation where no=#{no}
+	</delete>
 	
 	
 </mapper>

@@ -58,5 +58,9 @@
 		select distinct(price) from room where type=#{type}
 	</select>
 	
+	<select id="getEmptyRooms" resultMap="RoomResult">
+		select * from room where no not in (select roomno from inhouse where status='I') order by floor asc, no asc
+	</select>
+	
 	
 </mapper>
