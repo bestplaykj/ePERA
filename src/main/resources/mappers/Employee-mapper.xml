@@ -47,5 +47,9 @@
 		update employee set status='Y', resigndate=default where id=#{id}
 	</update>
 	
+	<select id="getEmpId" parameterType="string" resultType="_int">
+		select id from employee where name=#{name}
+	</select>
+	
 	
 </mapper>

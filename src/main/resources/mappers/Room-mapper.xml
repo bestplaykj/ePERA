@@ -62,5 +62,9 @@
 		select * from room where no not in (select roomno from inhouse where status='I') order by floor asc, no asc
 	</select>
 	
+	<select id="getFloor" parameterType="_int" resultType="_int">
+		select floor from room where no=#{roomNo}
+	</select>
+	
 	
 </mapper>

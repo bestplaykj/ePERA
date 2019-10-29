@@ -29,5 +29,7 @@ public interface RoomService {
 	int getRoomPrice(String type);
 	
 	ArrayList<Room> getEmptyRooms();
+	
+	int getFloor(int roomNo);
 
 }//interface

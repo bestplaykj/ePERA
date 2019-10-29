@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.ePERA.guest.inHouse.vo.InHouse;
 import com.kh.ePERA.reservation.model.dao.ReservationDAO;
 import com.kh.ePERA.reservation.model.vo.Reservation;
 
@@ -33,11 +34,19 @@ public class ReservationServiceImp implements ReservationService{
 	
 	
 	@Override
-	public int checkIn(int no) {
+	public int checkIn(InHouse ih) {
 		
-		return rsvd.checkIn(no);
+		return rsvd.checkIn(ih);
 		
 	}//checkIn
+	
+	
+	@Override
+	public int checkInStatus(int no) {
+		
+		return rsvd.checkInStatus(no);
+		
+	}//checkInStatus
 
 
 	@Override
@@ -57,7 +66,7 @@ public class ReservationServiceImp implements ReservationService{
 
 
 	@Override
-	public int handlingReservation(Reservation r, String note) {
+	public int handlingReservation(int no, String note) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

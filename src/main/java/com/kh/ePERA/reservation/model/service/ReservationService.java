@@ -3,6 +3,7 @@ package com.kh.ePERA.reservation.model.service;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import com.kh.ePERA.guest.inHouse.vo.InHouse;
 import com.kh.ePERA.reservation.model.vo.Reservation;
 
 public interface ReservationService {
@@ -11,13 +12,15 @@ public interface ReservationService {
 	
 	int updateReservation(Reservation r);
 	
-	int checkIn(int no);
+	int checkIn(InHouse ih);
+	
+	int checkInStatus(int no);
 	
 	int checkOut(int no);
 	
 	int cancelReservation(int no);
 	
-	int handlingReservation(Reservation r, String note);
+	int handlingReservation(int no, String note);
 	
 	int deleteReservation(int no);
 	

@@ -78,6 +78,15 @@ public class EmployeeServiceImp implements EmployeeService{
 		
 	}//activateEmp
 
+
+	@Override
+	public int getEmpId(String name) {
+		
+		return empd.getEmpId(name);
+		
+	}//getEmpId
+	
+
 	
 	
 }//class

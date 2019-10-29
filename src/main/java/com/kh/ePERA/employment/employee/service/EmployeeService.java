@@ -21,5 +21,7 @@ public interface EmployeeService {
 	Employee getEmp(int id);
 	
 	int activateEmp(int id); 
+	
+	int getEmpId(String name);
 
 }//interface

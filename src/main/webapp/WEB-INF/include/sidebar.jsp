@@ -82,7 +82,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="getAllEmp.do">employee</a>
             <a class="collapse-item" href="#">T&A</a>
-            <a class="collapse-item" href="#">schedule</a>
+            <a class="collapse-item" href="getAllSchedules.do">schedule</a>
           </div>
         </div>
       </li>

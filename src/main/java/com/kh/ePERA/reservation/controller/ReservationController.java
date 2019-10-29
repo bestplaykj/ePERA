@@ -8,10 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
+import com.kh.ePERA.guest.controller.GuestController;
+import com.kh.ePERA.guest.inHouse.service.InHouseService;
+import com.kh.ePERA.guest.inHouse.vo.InHouse;
 import com.kh.ePERA.reservation.model.service.ReservationService;
 import com.kh.ePERA.reservation.model.vo.Reservation;
 import com.kh.ePERA.room.model.service.RoomService;
@@ -25,6 +29,9 @@ public class ReservationController {
 	
 	@Autowired
 	private RoomService rooms;
+	
+	@Autowired
+	private InHouseService ihs;
 	
 	
 	@RequestMapping("getAllReservation.do")
@@ -40,6 +47,7 @@ public class ReservationController {
 	}//getAllReservation
 	
 	
+	@ResponseBody
 	@RequestMapping("getRSVpirce.do")
 	public void getRSVpirce(HttpServletResponse response, String type) throws JsonIOException, IOException {
 		
@@ -111,17 +119,44 @@ public class ReservationController {
 	
 	
 	@RequestMapping("ciRSV.do")
-	public ModelAndView checkIn(int no, ModelAndView mv) {
+	public ModelAndView checkIn(int no, int floor, int roomNo, ModelAndView mv) {
 		
-		int result = rsvs.checkIn(no);
+		Reservation r = rsvs.getReservation(no);
+
+		InHouse ih = new InHouse();
+		
+		GuestController gc = new GuestController();
+		String passcode = gc.createPassCode();
+		
+		while(true) {	
+			int result = ihs.checkPassCode(passcode);
+			if(result > 0) {
+				passcode = gc.createPassCode();
+			}else {
+				ih.setPasscode(passcode);
+				break;
+			}
+		}
+		
+		ih.setFloor(floor);
+		ih.setRoomNo(roomNo);
+		ih.setGuest(r.getGuest());
+		ih.setPpl(r.getPpl());
+		ih.setContractor(r.getContractor());
+		ih.setiDate(r.getiDate());
+		ih.setoDate(r.getoDate());
+		
+		int result = rsvs.checkIn(ih);
 		if(result > 0) {
-			Reservation rsv = rsvs.getReservation(no);
-			ArrayList<String> types = rooms.getRoomType();
-			mv.addObject("rsv", rsv).addObject("types", types).setViewName("reservation/rsvDetail");
+			int result2 = rsvs.checkInStatus(no);
+			if(result2 > 0) {
+				ArrayList<String> types = rooms.getRoomType();
+				mv.addObject("rsv", r).addObject("types", types).setViewName("reservation/rsvDetail");
+			}
 		}else {
 			mv.setViewName("common/error");
 		}
-		
+				
 		return mv;
 		
 	}//checkIn
@@ -176,6 +211,7 @@ public class ReservationController {
 	}//deleteRSV
 	
 	
+	@ResponseBody
 	@RequestMapping("getEmptyRooms.do")
 	public void getEmptyRooms(HttpServletResponse response) throws JsonIOException, IOException {
 		
@@ -187,6 +223,20 @@ public class ReservationController {
 		gs.toJson(ar, response.getWriter());
 		
 	}//getEmptyRooms
+	
+	
+	@ResponseBody
+	@RequestMapping("getFloor.do")
+	public void getFloor(HttpServletResponse response, int roomNo) throws JsonIOException, IOException {
+		
+		int floor = rooms.getFloor(roomNo);
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		Gson gs = new Gson();
+		gs.toJson(floor, response.getWriter());
+		
+	}//getFloor
 	
 	
 	

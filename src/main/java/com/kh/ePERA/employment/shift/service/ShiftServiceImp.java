@@ -18,9 +18,10 @@ public class ShiftServiceImp implements ShiftService{
 	
 	@Override
 	public int createShift(Shift s) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return shiftd.createShift(s);
+		
+	}//createShift
 
 	
 	@Override
@@ -38,19 +39,29 @@ public class ShiftServiceImp implements ShiftService{
 
 	
 	@Override
-	public Shift getShift() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Shift getShift(int no) {
+		
+		return shiftd.getShift(no);
+		
+	}//getShift
 
 	
 	@Override
 	public ArrayList<Shift> getAllShifts() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+		
+		return shiftd.getAllShifts();
+		
+	}//getAllShifts
 	
+	
+	@Override
+	public ArrayList<Shift> getAllShiftsIncAll() {
+		
+		return shiftd.getAllShiftsIncAll();
+		
+	}//getAllShiftsIncAll
+
+
 	@Override
 	public ArrayList<Shift> getShiftsByDate(Date date, int duration) {
 		// TODO Auto-generated method stub

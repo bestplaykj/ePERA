@@ -107,6 +107,15 @@ public class RoomServiceImp implements RoomService{
 		return roomd.getEmptyRooms();
 	
 	}//getEmptyRooms
+
+
+	@Override
+	public int getFloor(int roomNo) {
+		
+		return roomd.getFloor(roomNo);
+	
+	}//getFloor
+	
 	
 	
 	

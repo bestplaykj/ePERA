@@ -12,6 +12,7 @@
 		<typeAlias alias="RSV" type="com.kh.ePERA.reservation.model.vo.Reservation"/>
 		<typeAlias alias="IH" type="com.kh.ePERA.guest.inHouse.vo.InHouse"/>
 		<typeAlias alias="IHR" type="com.kh.ePERA.guest.inHouseRequest.vo.InHouseRequest"/>
+		<typeAlias alias="Shift" type="com.kh.ePERA.employment.shift.vo.Shift"/>
 	</typeAliases>
 
 	<mappers>
@@ -20,6 +21,7 @@
 		<mapper resource="mappers/Reservation-mapper.xml"/>
 		<mapper resource="mappers/InHouse-mapper.xml"/>
 		<mapper resource="mappers/InHouseRequest-mapper.xml"/>
+		<mapper resource="mappers/Shift-mapper.xml"/>
 	</mappers>
 
 </configuration>

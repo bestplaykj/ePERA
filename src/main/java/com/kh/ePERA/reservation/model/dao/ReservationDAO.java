@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.ePERA.guest.inHouse.vo.InHouse;
 import com.kh.ePERA.reservation.model.vo.Reservation;
 
 @Repository("rsvd")
@@ -50,11 +51,18 @@ public class ReservationDAO {
 	}//updateReservation
 	
 	
-	public int checkIn(int no) {
+	public int checkIn(InHouse ih) {
+		
+		return sqlSession.update("inhouseMapper.checkIn", ih);
+		
+	}//checkIn
+	
+	
+	public int checkInStatus(int no) {
 		
 		return sqlSession.update("reservationMapper.checkIn", no);
 		
-	}//checkIn
+	}//checkInStatus
 	
 	
 	public int checkOut(int no) {

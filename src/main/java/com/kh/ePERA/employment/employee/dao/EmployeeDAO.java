@@ -70,5 +70,12 @@ public class EmployeeDAO {
 		
 	}//activateEmp
 	
+	
+	public int getEmpId(String name) {
+		
+		return sqlSession.selectOne("employeeMapper.getEmpId", name);
+		
+	}//getEmpId
+	
 
 }//class

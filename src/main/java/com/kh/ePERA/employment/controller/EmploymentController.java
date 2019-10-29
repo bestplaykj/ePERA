@@ -1,18 +1,25 @@
 package com.kh.ePERA.employment.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.kh.ePERA.employment.employee.service.EmployeeService;
 import com.kh.ePERA.employment.employee.vo.Employee;
 import com.kh.ePERA.employment.shift.service.ShiftService;
+import com.kh.ePERA.employment.shift.vo.Shift;
 import com.kh.ePERA.employment.tna.service.AttendanceService;
 import com.kh.ePERA.employment.wage.service.WageService;
 
@@ -32,7 +39,7 @@ public class EmploymentController {
 	@Autowired
 	private WageService wages;
 	
-	//--------------------------------------------
+	//---------------------- Employee ----------------------
 	
 	@RequestMapping("signInEmp.do")
 	public String signInEmp(Employee e, Model model) {
@@ -165,6 +172,106 @@ public class EmploymentController {
 		return mv;
 		
 	}//activateEmp
+	
+	
+	//---------------------- /Employee ----------------------
+	
+	//---------------------- Shift ----------------------
+	
+	@RequestMapping("getAllSchedules.do")
+	public ModelAndView getAllSchedules(ModelAndView mv) {
+		
+		ArrayList<Shift> ar = shifts.getAllShifts();
+		
+		mv.addObject("list", ar).setViewName("humanResource/shift/main");
+		
+		return mv;
+		
+	}//getAllSchedule
+	
+	
+	@RequestMapping("createShiftJSP.do")
+	public ModelAndView createShiftJSP(ModelAndView mv) {
+		
+		ArrayList<Employee> ar = emps.getAllEmp();
+		
+		mv.addObject("list", ar).setViewName("humanResource/shift/createShift");
+		
+		return mv;
+		
+	}//createShiftJSP
+	
+	
+	@ResponseBody
+	@RequestMapping("getEmpIdAjax.do")
+	public void getEmpIdAjax(String name, HttpServletResponse response) throws JsonIOException, IOException {
+		
+		int id = emps.getEmpId(name);
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		Gson gs = new Gson();
+		gs.toJson(id, response.getWriter());
+		
+	}//getEmpIdAjax
+	
+	
+	@RequestMapping("createShift.do")
+	public String createShift(Shift s) {
+		
+		int result = shifts.createShift(s);
+		if(result > 0) {
+			return "redirect:getAllSchedules.do";			
+		}else {
+			return "common/error";
+		}
+		
+	}//createShift
+	
+	
+	@RequestMapping("getAllScheduleIncAll.do")
+	public ModelAndView getAllScheduleIncAll(ModelAndView mv) {
+		
+		ArrayList<Shift> ar = shifts.getAllShiftsIncAll();
+		
+		mv.addObject("list", ar).setViewName("humanResource/shift/showAll");
+		
+		return mv;
+		
+	}//getAllScheduleIncAll
+	
+	
+	@RequestMapping("getShiftDetail.do")
+	public ModelAndView getShiftDetail(int no, ModelAndView mv) {
+		
+		Shift s = shifts.getShift(no);
+		
+		mv.addObject("shift", s).setViewName("humanResource/shift/shiftDetail");
+		
+		return mv;
+		
+	}//getShiftDetail
+	
+	
+	
+	
+	
+	
+	//---------------------- /Shift ----------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }//class

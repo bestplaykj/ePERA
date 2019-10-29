@@ -243,11 +243,7 @@
 		<i class="fas fa-angle-up"></i>
 	</a>
 <%-- /////////////////////////////////////////////// /Top Button /////////////////////////////////////////////// --%>
-
 	
-	<c:url value="ciRSV.do" var="inRSV">
-		<c:param name="no" value="${rsv.no}" />
-	</c:url>
 	<c:url value="coRSV.do" var="outRSV">
 		<c:param name="no" value="${rsv.no}" />
 	</c:url>
@@ -360,11 +356,17 @@
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Select "CHECK IN" below if you are ready to proceed to check-in '${rsv.guest}'</div>
+			<form action="ciRSV.do" method="post">
+				<div class="modal-body">
+					<input type="hidden" name="no" value="${rsv.no}">
+					<input type="hidden" name="floor" id="floorSel">
+					<select name="roomNo" id="roomNoSel" required="required" class="custom-select custom-select-sm"></select>
+				</div>
 				<div class="modal-footer">
-					<a class="btn btn-primary" href="${inRSV}">CHECK IN</a>
+					<button class="btn btn-secondary" type="submit">CHECK IN</button>
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 				</div>
+			</form>
 			</div>
 		</div>
 	</div>
