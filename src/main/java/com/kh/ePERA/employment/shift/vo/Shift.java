@@ -9,21 +9,21 @@ public class Shift {
 	private String name;
 	private int year;
 	private int quarter;
-	private int month;
 	private Date sDate;
 	private int rotation;
+	private int month;
 	
 	
 	public Shift() {}
-	public Shift(int no, int id, String name, int year, int quarter, int month, Date sDate, int rotation) {
+	public Shift(int no, int id, String name, int year, int quarter, Date sDate, int rotation, int month) {
 		this.no = no;
 		this.id = id;
 		this.name = name;
 		this.year = year;
 		this.quarter = quarter;
-		this.month = month;
 		this.sDate = sDate;
 		this.rotation = rotation;
+		this.month = month;
 	}
 	
 	
@@ -57,12 +57,6 @@ public class Shift {
 	public void setQuarter(int quarter) {
 		this.quarter = quarter;
 	}
-	public int getMonth() {
-		return month;
-	}
-	public void setMonth(int month) {
-		this.month = month;
-	}
 	public Date getsDate() {
 		return sDate;
 	}
@@ -74,6 +68,12 @@ public class Shift {
 	}
 	public void setRotation(int rotation) {
 		this.rotation = rotation;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
 	}
 	
 

@@ -70,6 +70,9 @@
 												<span class="text-primary text-center">quarter</span>
 											</div>
 											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">month</span>
+											</div>
+											<div class="col-md-2 text-s font-weight-bold text-uppercase mb-1">
 												<span class="text-primary text-center">date</span>
 											</div>
 										</div>
@@ -79,6 +82,9 @@
 											</div>
 											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
 												<span class="text-secondary text-center">${shift.quarter}</span>
+											</div>
+											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
+												<span class="text-secondary text-center">${shift.month}</span>
 											</div>
 											<div class="col-md-2 text-s font-weight-bold text-info text-uppercase mb-1">
 												<span class="text-secondary text-center">${shift.sDate}</span>
@@ -166,9 +172,41 @@
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-			<form action="" method="post">
+			<form action="updateShift.do" method="post">
 				<div class="modal-body">
-				
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<input type="hidden" name="no" value="${shift.no}">
+							<input type="text" class="form-control form-control-user" name="name" readonly="readonly" value="${shift.name}" id="shiftName">
+							<button type="button" class="btn btn-warning" id="changeBtn">change</button><br>
+							<select class="custom-select custom-select-sm" id="nameSelect" style="visibility:hidden;"></select>							
+							<input type="text" class="form-control form-control-user" name="id" readonly="readonly" value="${shift.id}" id="shiftId"><br>
+							<input type="number" class="form-control form-control-user" name="year" required="required" min="2000" value="${shift.year}"><br>
+							<input type="number" class="form-control form-control-user" name="quarter" required="required" min="1" max="4" value="${shift.quarter}"><br>
+							<input type="number" class="form-control form-control-user" name="month" required="required" min="1" max="12" value="${shift.month}"><br>
+							<input type="date" name="sDate" class="form-control form-control-user" required="required" value="${shift.sDate}"><br>
+							<select name="rotation" required="required" class="custom-select custom-select-sm">
+							<c:if test="${shift.rotation eq 1}">
+								<option value="1" selected="selected">08:00 ~ 16:30</option>
+								<option value="2">16:00 ~ 00:30</option>
+								<option value="3">00:00 ~ 08:30</option>
+							</c:if>
+							<c:if test="${shift.rotation eq 2}">
+								<option value="1">08:00 ~ 16:30</option>
+								<option value="2" selected="selected">16:00 ~ 00:30</option>
+								<option value="3">00:00 ~ 08:30</option>
+							</c:if>
+							<c:if test="${shift.rotation eq 3}">
+								<option value="1">08:00 ~ 16:30</option>
+								<option value="2">16:00 ~ 00:30</option>
+								<option value="3" selected="selected">00:00 ~ 08:30</option>
+							</c:if>
+							</select>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					<br>
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-primary" type="submit">UPDATE</button>
@@ -191,7 +229,7 @@
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-			<form action="" method="post">
+			<form action="deleteShift.do" method="post">
 				<div class="modal-body">
 					<input type="hidden" name="no" value="${shift.no}">
 					Select "DELETE" below if you are ready to proceed delete '${shift.name}'s shift'
@@ -225,6 +263,12 @@
 	<script src="${contextPath}/resources/template/js/demo/chart-area-demo.js"></script>
 	<script src="${contextPath}/resources/template/js/demo/chart-pie-demo.js"></script>
 <%-- /////////////////////////////////////////////// /commonScript /////////////////////////////////////////////// --%>
+
+
+<%-- /////////////////////////////////////////////// Script /////////////////////////////////////////////// --%>
+	<script src="${contextPath}/resources/js/hotelManagement/shift/shiftDetail.js"></script>
+<%-- /////////////////////////////////////////////// /Script /////////////////////////////////////////////// --%>
+
 
 </body>
 

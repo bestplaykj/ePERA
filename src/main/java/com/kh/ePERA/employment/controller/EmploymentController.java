@@ -253,6 +253,69 @@ public class EmploymentController {
 	}//getShiftDetail
 	
 	
+	@ResponseBody
+	@RequestMapping("getEmpNameAjx.do")
+	public void getEmpNameAjx(HttpServletResponse response) throws JsonIOException, IOException {
+		
+		ArrayList<Employee> ar = emps.getAllEmp();
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		Gson gs = new Gson();
+		gs.toJson(ar, response.getWriter());
+		
+	}//getEmpNameAjx
+	
+	
+	@RequestMapping("updateShift.do")
+	public ModelAndView updateShift(Shift s, ModelAndView mv) {
+		
+		int result = shifts.updateShift(s);
+		if(result > 0) {
+			Shift updateS = shifts.getShift(s.getNo());
+			mv.addObject("shift", updateS).setViewName("humanResource/shift/shiftDetail");
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//updateShift
+	
+	
+	@RequestMapping("deleteShift.do")
+	public String deleteShift(int no) {
+		
+		int result = shifts.deleteShift(no);
+		if(result > 0) {
+			return "redirect:getAllSchedules.do";
+		}else {
+			return "common/error";
+		}
+		
+	}//deleteShift
+	
+	
+	@RequestMapping("getEmpSchedule.do")
+	public ModelAndView getEmpSchedule(int empId, ModelAndView mv) {
+		
+		ArrayList<Shift> ar = shifts.getAllShiftsById(empId);
+		mv.addObject("list", ar).setViewName("humanResource/shift/empMain");
+		
+		return mv;
+		
+	}//getEmpSchedule
+	
+	
+	@RequestMapping("getAllScheduleIncAllById.do")
+	public ModelAndView getAllScheduleIncAllById(int empId, ModelAndView mv) {
+		
+		ArrayList<Shift> ar = shifts.getAllShiftsIncAllById(empId);
+		mv.addObject("list", ar).setViewName("humanResource/shift/empShowAll");		
+		
+		return mv;
+		
+	}//getAllScheduleIncAllById
 	
 	
 	

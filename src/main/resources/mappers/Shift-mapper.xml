@@ -8,9 +8,9 @@
 		<result column="NAME" property="name" />
 		<result column="YEAR" property="year" />
 		<result column="QUARTER" property="quarter" />
-		<result column="MONTH" property="month" />
 		<result column="SDATE" property="sDate" />
 		<result column="ROTATION" property="rotation" />
+		<result column="MONTH" property="month" />
 	</resultMap>
 
 
@@ -23,7 +23,7 @@
 	</select>
 	
 	<insert id="createShift" parameterType="Shift">
-		insert into shift values(shift_seq.nextval, #{id}, #{name}, #{year}, #{quarter}, #{sDate}, #{rotation})
+		insert into shift values(shift_seq.nextval, #{id}, #{name}, #{year}, #{quarter}, #{sDate}, #{rotation}, #{month})
 	</insert>
 	
 	<select id="getAllShiftsIncAll" resultMap="ShiftResult">
@@ -32,6 +32,27 @@
 	
 	<select id="getShift" parameterType="_int" resultMap="ShiftResult">
 		select * from shift where no=#{no}
+	</select>
+	
+	<update id="updateShift" parameterType="Shift">
+		update shift set id=#{id}, name=#{name}, year=#{year}, quarter=#{quarter}, month=#{month}, sdate=#{sDate}, rotation=#{rotation}
+		where no=#{no}
+	</update>
+	
+	<delete id="deleteShift" parameterType="_int">
+		delete from shift where no=#{no}
+	</delete>
+	
+	<select id="getAllShiftsById" parameterType="_int" resultMap="ShiftResult">
+		<![CDATA[
+		select * from
+		(select * from shift where id=#{id} order by sdate desc, rotation asc)
+		where rownum < 4
+		]]>
+	</select>
+	
+	<select id="getAllShiftsIncAllById" parameterType="_int" resultMap="ShiftResult">
+		select * from shift where id=#{id} order by sdate desc, rotation asc
 	</select>
 
 

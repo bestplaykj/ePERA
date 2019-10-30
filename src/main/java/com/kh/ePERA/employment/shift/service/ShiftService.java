@@ -11,13 +11,17 @@ public interface ShiftService {
 	
 	int updateShift(Shift s);
 	
-	int deleteShift(Shift s);
+	int deleteShift(int no);
 	
 	Shift getShift(int no);
 	
 	ArrayList<Shift> getAllShifts();
 	
 	ArrayList<Shift> getAllShiftsIncAll();
+	
+	ArrayList<Shift> getAllShiftsById(int id);
+	
+	ArrayList<Shift> getAllShiftsIncAllById(int id);
 	
 	ArrayList<Shift> getShiftsByDate(Date date, int duration);	
 

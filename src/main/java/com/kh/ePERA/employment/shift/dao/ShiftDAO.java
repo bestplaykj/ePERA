@@ -43,6 +43,32 @@ public class ShiftDAO {
 	}//getShift
 	
 	
+	public int updateShift(Shift s) {
+		
+		return sqlSession.update("shiftMapper.updateShift", s);
+		
+	}//updateShift
+	
+	
+	public int deleteShift(int no) {
+		
+		return sqlSession.delete("shiftMapper.deleteShift", no);
+		
+	}//deleteShift
+	
+	
+	public ArrayList<Shift> getAllShiftsById(int id) {
+		
+		return (ArrayList)sqlSession.selectList("shiftMapper.getAllShiftsById", id);
+		
+	}//getAllShiftsById
+	
+	
+	public ArrayList<Shift> getAllShiftsIncAllById(int id) {
+		
+		return (ArrayList)sqlSession.selectList("shiftMapper.getAllShiftsIncAllById", id);
+		
+	}//getAllShiftsIncAllById
 	
 	
 	

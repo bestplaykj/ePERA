@@ -69,7 +69,7 @@
 										</div>
 										<div class="row">
 											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
-												<select name="name" required="required" id="shiftName">
+												<select name="name" required="required" id="shiftName" class="custom-select custom-select-sm">
 											<c:choose>
 											<c:when test="${fn:length(list) ne 0}">
 											<c:forEach var="i" begin="0" end="${fn:length(list)-1}" step="1">
@@ -124,6 +124,19 @@
 													<option value="3">3rd QUARTER</option>
 													<option value="4">4th QUARTER</option>
 												</select>
+											</div>
+										</div>
+										
+										<br>
+										
+										<div class="row">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<span class="text-primary text-center">month</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
+												<input type="number" class="form-control form-control-user" name="month" required="required" min="1" max="12" placeholder="1">
 											</div>
 										</div>
 										

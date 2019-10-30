@@ -50,7 +50,10 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
             <a class="collapse-item" href="utilities-color.html">Attendance</a>
-            <a class="collapse-item" href="utilities-border.html">Schedule</a>
+           <c:url var="getSchedule" value="getEmpSchedule.do">
+           	<c:param name="empId" value="${sessionScope.emp.id}"></c:param>
+           </c:url>
+            <a class="collapse-item" href="${getSchedule}">Schedule</a>
           </div>
         </div>
       </li>

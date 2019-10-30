@@ -26,16 +26,18 @@ public class ShiftServiceImp implements ShiftService{
 	
 	@Override
 	public int updateShift(Shift s) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return shiftd.updateShift(s);
+		
+	}//updateShift
 
 	
 	@Override
-	public int deleteShift(Shift s) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int deleteShift(int no) {
+		
+		return shiftd.deleteShift(no);
+		
+	}//deleteShift
 
 	
 	@Override
@@ -60,6 +62,22 @@ public class ShiftServiceImp implements ShiftService{
 		return shiftd.getAllShiftsIncAll();
 		
 	}//getAllShiftsIncAll
+	
+	
+	@Override
+	public ArrayList<Shift> getAllShiftsById(int id) {
+		
+		return shiftd.getAllShiftsById(id);
+		
+	}//getAllShiftsById
+	
+	
+	@Override
+	public ArrayList<Shift> getAllShiftsIncAllById(int id) {
+		
+		return shiftd.getAllShiftsIncAllById(id);
+		
+	}//getAllShiftsIncAllById
 
 
 	@Override
