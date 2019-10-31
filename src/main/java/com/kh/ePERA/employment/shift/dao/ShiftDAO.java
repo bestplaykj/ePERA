@@ -71,6 +71,13 @@ public class ShiftDAO {
 	}//getAllShiftsIncAllById
 	
 	
+	public ArrayList<Shift> getAllAttShifts() {
+		
+		return (ArrayList)sqlSession.selectList("shiftMapper.getAllAttShifts");
+		
+	}//getAllAttShifts
+	
+	
 	
 	
 }//class

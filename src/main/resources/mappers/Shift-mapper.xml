@@ -54,6 +54,14 @@
 	<select id="getAllShiftsIncAllById" parameterType="_int" resultMap="ShiftResult">
 		select * from shift where id=#{id} order by sdate desc, rotation asc
 	</select>
+	
+	<select id="getAllAttShifts" resultMap="ShiftResult">
+		<![CDATA[
+		select * from 
+		(select * from shift order by sdate desc, rotation asc)
+		where rownum < 4
+		]]>
+	</select>
 
 
 </mapper>

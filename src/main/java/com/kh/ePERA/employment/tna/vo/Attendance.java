@@ -1,6 +1,7 @@
 package com.kh.ePERA.employment.tna.vo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Attendance {
 	
@@ -11,13 +12,13 @@ public class Attendance {
 	private int quarter;
 	private int month;
 	private Date aDate;
-	private Date iTime;
-	private Date oTime;
-	private int wTime;
+	private Timestamp iTime;
+	private Timestamp oTime;
+	private double wTime;
 	
 	
 	public Attendance() {}
-	public Attendance(int no, int id, String name, int year, int quarter, int month, Date aDate, Date iTime, Date oTime, int wTime) {
+	public Attendance(int no, int id, String name, int year, int quarter, int month, Date aDate, Timestamp iTime, Timestamp oTime, double wTime) {
 		this.no = no;
 		this.id = id;
 		this.name = name;
@@ -29,7 +30,7 @@ public class Attendance {
 		this.oTime = oTime;
 		this.wTime = wTime;
 	}
-	
+
 	
 	public int getNo() {
 		return no;
@@ -72,23 +73,23 @@ public class Attendance {
 	}
 	public void setaDate(Date aDate) {
 		this.aDate = aDate;
-	}
-	public Date getiTime() {
+	}	
+	public Timestamp getiTime() {
 		return iTime;
 	}
-	public void setiTime(Date iTime) {
+	public void setiTime(Timestamp iTime) {
 		this.iTime = iTime;
 	}
-	public Date getoTime() {
+	public Timestamp getoTime() {
 		return oTime;
 	}
-	public void setoTime(Date oTime) {
+	public void setoTime(Timestamp oTime) {
 		this.oTime = oTime;
 	}
-	public int getwTime() {
+	public double getwTime() {
 		return wTime;
 	}
-	public void setwTime(int wTime) {
+	public void setwTime(double wTime) {
 		this.wTime = wTime;
 	}
 	

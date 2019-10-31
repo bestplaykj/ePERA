@@ -50,7 +50,7 @@
 				
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Schedule Management</h1>
+						<h1 class="h3 mb-0 text-gray-800">T&A Management</h1>
 					</div>
 
 					<!-- Content Row -->
@@ -62,16 +62,16 @@
 								<div class="card-header py-12">
 									<div class="row">
 										<div class="col-md-2">
-											<a href="createShiftJSP.do">+ New Schedule</a>
+											<span class="text-danger font-weight-bold text-center">Shift</span>
 										</div>
 										<div class="col-md-8"></div>
-										<div class="col-md-2 text-right"><a href="getAllScheduleIncAll.do"><span class="text-danger">* SHOW ALL</span></a></div>
+										<div class="col-md-2"></div>
 									</div>
 								</div>
 								<div class="row text-center">
 							<c:choose>
-							<c:when test="${fn:length(list) ne 0}">
-							<c:forEach var="i" begin="0" end="${fn:length(list)-1}" step="1">
+							<c:when test="${fn:length(Slist) ne 0}">
+							<c:forEach var="i" begin="0" end="${fn:length(Slist)-1}" step="1">
 									<div class="col-xl-4 col-md-6 mb-4">
 										<div class="card border-left-primary shadow h-100 py-2">
 											<div class="card-body">
@@ -80,20 +80,15 @@
 														<i class="fas fa-calendar fa-2x text-gray-300"></i>
 													</div>
 													<div class="col mr-2">
-														<div class="text-md font-weight-bold text-primary text-uppercase mb-1">
-													<c:url var="detail" value="getShiftDetail.do">
-														<c:param name="no" value="${list[i].no}" />
-													</c:url>
-															<a href="${detail}">${list[i].name}</a>
-														</div>
-														<div class="text-s font-weight-bold text-success text-uppercase mb-1">${list[i].sDate}</div>
-													<c:if test="${list[i].rotation eq 1}">
+														<div class="text-lg font-weight-bold text-primary text-uppercase mb-1">${Slist[i].name}</div>
+														<div class="text-s font-weight-bold text-success text-uppercase mb-1">${Slist[i].sDate}</div>
+													<c:if test="${Slist[i].rotation eq 1}">
 														<div class="h5 mb-0 font-weight-bold text-gray-800">00:00 ~ 08:30</div>
 													</c:if>
-													<c:if test="${list[i].rotation eq 2}">
+													<c:if test="${Slist[i].rotation eq 2}">
 														<div class="h5 mb-0 font-weight-bold text-gray-800">08:00 ~ 16:30</div>
 													</c:if>
-													<c:if test="${list[i].rotation eq 3}">
+													<c:if test="${Slist[i].rotation eq 3}">
 														<div class="h5 mb-0 font-weight-bold text-gray-800">16:00 ~ 00:30</div>
 													</c:if>
 													</div>
@@ -104,7 +99,6 @@
 							</c:forEach>
 							</c:when>
 							<c:otherwise>
-									<div class="col-xl-4 col-md-6 mb-4"></div>
 									<div class="col-xl-4 col-md-6 mb-4">
 										<div class="card border-left-primary shadow h-100 py-2">
 											<div class="card-body">
@@ -120,11 +114,83 @@
 											</div><!-- card-body -->
 										</div>
 									</div><!-- col-xl-4 col-md-6 mb-4 -->
-									<div class="col-xl-4 col-md-6 mb-4"></div>
+									<div class="col-xl-8 col-md-6 mb-4"></div>
 							</c:otherwise>
 							</c:choose>
 								
 								</div><!-- row -->								
+							</div>
+
+						</div><!-- </div class="col-lg-12"> -->
+					</div><!-- row -->
+					
+					<div class="row"><!-- row -->
+						<div class="col-lg-12"><!-- <div class="col-lg-12"> -->
+
+							<!-- Illustrations -->
+							<div class="card shadow mb-12">
+								<div class="card-header py-12">
+									<div class="row">
+										<div class="col-md-2">
+											<span class="text-warning font-weight-bold text-center">Attendance</span>
+										</div>
+										<div class="col-md-8"></div>
+										<div class="col-md-2"></div>
+									</div>
+								</div>
+								<div class="row text-center">
+							<c:choose>
+							<c:when test="${fn:length(Alist) ne 0}">
+							<c:forEach var="j" begin="0" end="${fn:length(Alist)-1}" step="1">
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-primary shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col-auto">
+														<i class="fas fa-calendar fa-2x text-gray-300"></i>
+													</div>
+													<div class="col mr-2">
+														<div class="text-lg font-weight-bold text-primary text-uppercase mb-1">${Alist[j].name}</div>
+														<div class="text-md font-weight-bold text-success text-uppercase mb-1">${Alist[j].aDate}</div>
+														<div class="text-md font-weight-bold text-secondary text-uppercase mb-1">
+															<fmt:formatDate value="${Alist[j].iTime}" pattern="HH:mm:ss" /> ~ 
+														<c:if test="${Alist[j].oTime ne 'null'}">
+															<fmt:formatDate value="${Alist[j].oTime}" pattern="HH:mm:ss" />
+														</c:if>
+														</div>
+														<c:if test="${Alist[j].wTime ne 0}">
+														<div class="text-s font-weight-bold text-danger text-uppercase mb-1">
+															<fmt:formatNumber value="${Alist[j].wTime}" pattern="#.#" /> Hours
+														</div>
+														</c:if>
+													</div>
+												</div>
+											</div><!-- card-body -->
+										</div>
+									</div><!-- col-xl-4 col-md-6 mb-4 -->
+							</c:forEach>
+							</c:when>
+							<c:otherwise>
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-primary shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col-auto">
+														<i class="fas fa-calendar fa-2x text-gray-300"></i>
+													</div>
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">No T&A</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+													</div>
+												</div>
+											</div><!-- card-body -->
+										</div>
+									</div><!-- col-xl-4 col-md-6 mb-4 -->
+									<div class="col-xl-8 col-md-6 mb-4"></div>
+							</c:otherwise>
+							</c:choose>
+								
+								</div><!-- row -->
 							</div>
 
 						</div><!-- </div class="col-lg-12"> -->

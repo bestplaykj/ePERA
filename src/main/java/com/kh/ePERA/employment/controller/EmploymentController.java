@@ -1,7 +1,9 @@
 package com.kh.ePERA.employment.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,6 +23,7 @@ import com.kh.ePERA.employment.employee.vo.Employee;
 import com.kh.ePERA.employment.shift.service.ShiftService;
 import com.kh.ePERA.employment.shift.vo.Shift;
 import com.kh.ePERA.employment.tna.service.AttendanceService;
+import com.kh.ePERA.employment.tna.vo.Attendance;
 import com.kh.ePERA.employment.wage.service.WageService;
 
 @SessionAttributes("emp")
@@ -318,10 +321,124 @@ public class EmploymentController {
 	}//getAllScheduleIncAllById
 	
 	
-	
-	
 	//---------------------- /Shift ----------------------
 	
+	//---------------------- Attendance ----------------------
+	
+	@RequestMapping("getAllAttById.do")
+	public ModelAndView getAllAtt(int empId, ModelAndView mv) {
+		
+		ArrayList<Attendance> ar = atts.getAllAttById(empId);
+		int result = atts.checkTodayAttStatus(empId);
+		if(result > 0) {
+			Attendance today = atts.getAttById(empId);
+			mv.addObject("check", "Y").addObject("today", today);
+		}else {
+			mv.addObject("check", "N");
+		}
+		
+		mv.addObject("list", ar).setViewName("humanResource/att/empMain");
+		
+		return mv;		
+		
+	}//getEmpAtt
+	
+	
+	@RequestMapping("attend.do")
+	public ModelAndView attend(int empId, ModelAndView mv) {
+		
+		Employee e = emps.getEmp(empId);
+		
+		Date today = new Date();
+		SimpleDateFormat year = new SimpleDateFormat("yyyy");
+		SimpleDateFormat sdfMonth = new SimpleDateFormat("MM");
+		int quarter = 0;
+		int month = 0;
+		switch (sdfMonth.format(today)) {
+		case "01": quarter= 1; month= 1; break;
+		case "02": quarter= 1; month= 2; break;
+		case "03": quarter= 1; month= 3; break;
+		case "04": quarter= 2; month= 4; break;
+		case "05": quarter= 2; month= 5; break;
+		case "06": quarter= 2; month= 6; break;
+		case "07": quarter= 3; month= 7; break;
+		case "08": quarter= 3; month= 8; break;
+		case "09": quarter= 3; month= 9; break;
+		case "10": quarter= 4; month= 10; break;
+		case "11": quarter= 4; month= 11; break;
+		case "12": quarter= 4; month= 12; break;
+		default:
+			break;
+		}
+	
+		Attendance att = new Attendance();
+		att.setId(e.getId());
+		att.setName(e.getName());
+		att.setYear(Integer.parseInt(year.format(today)));
+		att.setQuarter(quarter);
+		att.setMonth(month);
+		
+		int result = atts.attend(att);
+		if(result > 0) {
+			ArrayList<Attendance> ar = atts.getAllAttById(e.getId());
+			int result2 = atts.checkTodayAttStatus(e.getId());
+			if(result2 > 0) {
+				Attendance check = atts.getAttById(e.getId());
+				mv.addObject("check", "Y").addObject("today", check);
+			}else {
+				mv.addObject("check", "N");
+			}
+			
+			mv.addObject("list", ar).setViewName("humanResource/att/empMain");
+			
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//attend
+	
+	
+	@RequestMapping("leaveOff.do")
+	public ModelAndView leaveOff(int empId, ModelAndView mv) {
+		
+		Attendance att = atts.getAttById(empId);
+		
+		int result = atts.leave(att.getNo());
+		if(result > 0) {
+			Attendance att2 = atts.getAttById(att.getId());
+			double diff = (double)(att2.getoTime().getTime() - att2.getiTime().getTime());
+			att2.setwTime(((diff/1000)/60)/60);
+			
+			int result2 = atts.getWTime(att2);
+			
+			Attendance check = atts.getAttById(att2.getId());
+			
+			ArrayList<Attendance> ar = atts.getAllAttById(att2.getId());
+			
+			mv.addObject("check", "Y").addObject("today", check).addObject("list", ar).setViewName("humanResource/att/empMain");
+			
+		}else {
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+		
+	}//leaveOff
+	
+	
+	@RequestMapping("getAllEmpAtt.do")
+	public ModelAndView getAllEmpAtt(ModelAndView mv) {
+		
+		ArrayList<Attendance> ar1 = atts.getAllAtt();
+		ArrayList<Shift> ar2 = shifts.getAllAttShifts();
+		
+		mv.addObject("Alist", ar1).addObject("Slist", ar2).setViewName("humanResource/att/main");
+		
+		return mv;
+		
+	}//getAllEmpAtt
 	
 	
 	
@@ -329,11 +446,7 @@ public class EmploymentController {
 	
 	
 	
-	
-	
-	
-	
-	
+	//---------------------- Attendance ----------------------
 	
 	
 

@@ -49,7 +49,10 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
-            <a class="collapse-item" href="utilities-color.html">Attendance</a>
+           <c:url var="getAtt" value="getAllAttById.do">
+           	<c:param name="empId" value="${sessionScope.emp.id}" />
+           </c:url>
+            <a class="collapse-item" href="${getAtt}">Attendance</a>
            <c:url var="getSchedule" value="getEmpSchedule.do">
            	<c:param name="empId" value="${sessionScope.emp.id}"></c:param>
            </c:url>
@@ -84,7 +87,7 @@
           <div id="collapseHR" class="collapse" aria-labelledby="headingHR" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="getAllEmp.do">employee</a>
-            <a class="collapse-item" href="#">T&A</a>
+            <a class="collapse-item" href="getAllEmpAtt.do">T&A</a>
             <a class="collapse-item" href="getAllSchedules.do">schedule</a>
           </div>
         </div>

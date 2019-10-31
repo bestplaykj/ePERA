@@ -9,18 +9,22 @@ public interface AttendanceService {
 	
 	int attend(Attendance att);
 	
-	int leave(Attendance att);
+	int leave(int no);
+	
+	int getWTime(Attendance att);
 	
 	int handlingAtt(Attendance att);
 	
 	ArrayList<Attendance> getAllAtt();
 
-	ArrayList<Attendance> getAllAtt(int id);
+	ArrayList<Attendance> getAllAttById(int id);
+	
+	int checkTodayAttStatus(int id);
 	
 	ArrayList<Attendance> getAllAttByDate(Date date, int duration);
 
 	ArrayList<Attendance> getAllAttByDate(int id, Date date, int duration);
-	
-	Attendance getAtt(int no);
+		
+	Attendance getAttById(int id);
 	
 }//interface

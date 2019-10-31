@@ -50,7 +50,7 @@
 				
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Schedule Management</h1>
+						<h1 class="h3 mb-0 text-gray-800">Time and Attendance</h1>
 					</div>
 
 					<!-- Content Row -->
@@ -62,12 +62,45 @@
 								<div class="card-header py-12">
 									<div class="row">
 										<div class="col-md-2">
-											<a href="createShiftJSP.do">+ New Schedule</a>
+											<a href="getAllAttByIdIncAll.do"><span class="text-danger">* SHOW ALL</span></a>
 										</div>
 										<div class="col-md-8"></div>
-										<div class="col-md-2 text-right"><a href="getAllScheduleIncAll.do"><span class="text-danger">* SHOW ALL</span></a></div>
+										<div class="col-md-2"></div>
 									</div>
 								</div>
+								<div class="row">
+							<c:if test="${check eq 'Y'}">
+									<div class="col-md-1 text-center">
+										<br>
+										<img src="${contextPath}/resources/images/success.png" width="50" height="50">
+									</div>
+									<div class="col-md-1 text-center">
+										<br>
+									<c:url var="leaveOff" value="leaveOff.do">
+										<c:param name="empId" value="${sessionScope.emp.id}" />
+									</c:url>
+										<button type="button" class="btn btn-danger" onclick="location.href='${leaveOff}'">LEAVE OFF</button>
+									</div>
+									<div class="col-md-10"></div>
+							</c:if>
+							<c:if test="${check eq 'N'}">
+									<div class="col-md-1 text-center">
+										<br>
+										<img src="${contextPath}/resources/images/error.png" width="50" height="50">
+									</div>
+									<div class="col-md-1 text-center">
+										<br>
+									<c:url var="attend" value="attend.do">
+										<c:param name="empId" value="${sessionScope.emp.id}" />
+									</c:url>
+										<button type="button" class="btn btn-success" onclick="location.href='${attend}'">ATTEND</button>
+									</div>
+									<div class="col-md-10"></div>
+							</c:if>
+								</div>
+								
+								<hr>
+								
 								<div class="row text-center">
 							<c:choose>
 							<c:when test="${fn:length(list) ne 0}">
@@ -80,31 +113,27 @@
 														<i class="fas fa-calendar fa-2x text-gray-300"></i>
 													</div>
 													<div class="col mr-2">
-														<div class="text-md font-weight-bold text-primary text-uppercase mb-1">
-													<c:url var="detail" value="getShiftDetail.do">
-														<c:param name="no" value="${list[i].no}" />
-													</c:url>
-															<a href="${detail}">${list[i].name}</a>
+														<div class="text-md font-weight-bold text-primary text-uppercase mb-1">${list[i].aDate}</div>
+														<div class="text-s font-weight-bold text-success text-uppercase mb-1">
+															<fmt:formatDate value="${list[i].iTime}" pattern="HH:mm:ss" /> ~ 
+														<c:if test="${list[i].oTime ne 'null'}">
+															<fmt:formatDate value="${list[i].oTime}" pattern="HH:mm:ss" />
+														</c:if>
 														</div>
-														<div class="text-s font-weight-bold text-success text-uppercase mb-1">${list[i].sDate}</div>
-													<c:if test="${list[i].rotation eq 1}">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">00:00 ~ 08:30</div>
-													</c:if>
-													<c:if test="${list[i].rotation eq 2}">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">08:00 ~ 16:30</div>
-													</c:if>
-													<c:if test="${list[i].rotation eq 3}">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">16:00 ~ 00:30</div>
-													</c:if>
+														<c:if test="${list[i].wTime ne 0}">
+														<div class="text-s font-weight-bold text-warning text-uppercase mb-1">
+															<fmt:formatNumber value="${list[i].wTime}" pattern="#.#" /> Hours
+														</div>
+														</c:if>
 													</div>
 												</div>
 											</div><!-- card-body -->
 										</div>
 									</div><!-- col-xl-4 col-md-6 mb-4 -->
+									<div class="col-xl-8 col-md-6 mb-4"></div>
 							</c:forEach>
 							</c:when>
 							<c:otherwise>
-									<div class="col-xl-4 col-md-6 mb-4"></div>
 									<div class="col-xl-4 col-md-6 mb-4">
 										<div class="card border-left-primary shadow h-100 py-2">
 											<div class="card-body">
@@ -113,14 +142,14 @@
 														<i class="fas fa-calendar fa-2x text-gray-300"></i>
 													</div>
 													<div class="col mr-2">
-														<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">No Schedule</div>
+														<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">No Attendance</div>
 														<div class="h5 mb-0 font-weight-bold text-gray-800"></div>
 													</div>
 												</div>
 											</div><!-- card-body -->
 										</div>
 									</div><!-- col-xl-4 col-md-6 mb-4 -->
-									<div class="col-xl-4 col-md-6 mb-4"></div>
+									<div class="col-xl-8 col-md-6 mb-4"></div>
 							</c:otherwise>
 							</c:choose>
 								

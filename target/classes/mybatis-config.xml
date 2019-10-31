@@ -13,6 +13,7 @@
 		<typeAlias alias="IH" type="com.kh.ePERA.guest.inHouse.vo.InHouse"/>
 		<typeAlias alias="IHR" type="com.kh.ePERA.guest.inHouseRequest.vo.InHouseRequest"/>
 		<typeAlias alias="Shift" type="com.kh.ePERA.employment.shift.vo.Shift"/>
+		<typeAlias alias="Att" type="com.kh.ePERA.employment.tna.vo.Attendance"/>
 	</typeAliases>
 
 	<mappers>
@@ -22,6 +23,7 @@
 		<mapper resource="mappers/InHouse-mapper.xml"/>
 		<mapper resource="mappers/InHouseRequest-mapper.xml"/>
 		<mapper resource="mappers/Shift-mapper.xml"/>
+		<mapper resource="mappers/Attendance-mapper.xml"/>
 	</mappers>
 
 </configuration>

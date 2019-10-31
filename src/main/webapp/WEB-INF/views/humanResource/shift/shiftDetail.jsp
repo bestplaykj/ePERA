@@ -102,13 +102,13 @@
 											<div class="col-md-3 text-s font-weight-bold text-info text-uppercase mb-1">
 												<span class="text-secondary text-center">
 											<c:if test="${shift.rotation eq 1}">
-													08:00 ~ 16:30
+													00:00 ~ 08:30
 											</c:if>
 											<c:if test="${shift.rotation eq 2}">
-													16:00 ~ 00:30
+													08:00 ~ 16:30
 											</c:if>
 											<c:if test="${shift.rotation eq 3}">
-													00:00 ~ 08:30
+													16:00 ~ 00:30
 											</c:if>
 												</span>
 											</div>
@@ -188,19 +188,19 @@
 							<input type="date" name="sDate" class="form-control form-control-user" required="required" value="${shift.sDate}"><br>
 							<select name="rotation" required="required" class="custom-select custom-select-sm">
 							<c:if test="${shift.rotation eq 1}">
-								<option value="1" selected="selected">08:00 ~ 16:30</option>
-								<option value="2">16:00 ~ 00:30</option>
-								<option value="3">00:00 ~ 08:30</option>
+								<option value="1" selected="selected">00:00 ~ 08:30</option>
+								<option value="2">08:00 ~ 16:30</option>
+								<option value="3">16:00 ~ 00:30</option>
 							</c:if>
 							<c:if test="${shift.rotation eq 2}">
-								<option value="1">08:00 ~ 16:30</option>
-								<option value="2" selected="selected">16:00 ~ 00:30</option>
-								<option value="3">00:00 ~ 08:30</option>
+								<option value="1">00:00 ~ 08:30</option>
+								<option value="2" selected="selected">08:00 ~ 16:30</option>
+								<option value="3">16:00 ~ 00:30</option>
 							</c:if>
 							<c:if test="${shift.rotation eq 3}">
-								<option value="1">08:00 ~ 16:30</option>
-								<option value="2">16:00 ~ 00:30</option>
-								<option value="3" selected="selected">00:00 ~ 08:30</option>
+								<option value="1">00:00 ~ 08:30</option>
+								<option value="2">08:00 ~ 16:30</option>
+								<option value="3" selected="selected">16:00 ~ 00:30</option>
 							</c:if>
 							</select>
 						</div>

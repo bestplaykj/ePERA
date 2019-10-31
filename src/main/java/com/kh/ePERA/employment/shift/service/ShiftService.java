@@ -17,6 +17,8 @@ public interface ShiftService {
 	
 	ArrayList<Shift> getAllShifts();
 	
+	ArrayList<Shift> getAllAttShifts();
+	
 	ArrayList<Shift> getAllShiftsIncAll();
 	
 	ArrayList<Shift> getAllShiftsById(int id);

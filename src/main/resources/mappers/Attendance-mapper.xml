@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="attendanceMapper">
+
+	<resultMap type="Att" id="AttResult">
+		<id column="NO" property="no" />
+		<result column="ID" property="id" />
+		<result column="NAME" property="name" />
+		<result column="YEAR" property="year" />
+		<result column="QUARTER" property="quarter" />
+		<result column="MONTH" property="month" />
+		<result column="ADATE" property="aDate" />
+		<result column="ITIME" property="iTime" />
+		<result column="OTIME" property="oTime" />
+		<result column="WTIME" property="wTime" />
+	</resultMap>
+
+
+
+	<select id="getAllAttById" parameterType="_int" resultMap="AttResult">
+		<![CDATA[
+		select * from 
+		(select * from attendance where id=#{id} order by adate desc)
+		where rownum < 8
+		]]>
+	</select>
+	
+	<select id="checkTodayAttStatus" parameterType="_int" resultType="_int">
+		select count(*) from attendance where id=#{id} and to_char(adate, 'yyyymmdd')=to_char(sysdate, 'yyyymmdd')
+	</select>
+	
+	<select id="getAttById" parameterType="_int" resultMap="AttResult">
+		<![CDATA[
+		select * from 
+		(select * from attendance where id=#{id} order by adate desc)
+		where rownum = 1
+		]]>
+	</select>
+	
+	<insert id="attend" parameterType="Att">
+		insert into attendance (no, id, name, year, quarter, month, adate, itime)
+		values (attendance_seq.nextval, #{id}, #{name}, #{year}, #{quarter}, #{month}, sysdate, systimestamp)
+	</insert>
+	
+	<update id="leave" parameterType="_int">
+		update attendance set otime=systimestamp where no=#{no}
+	</update>
+	
+	<update id="getWTime" parameterType="Att">
+		update attendance set wtime=#{wTime} where no=#{no}
+	</update>
+	
+	<select id="getAllAtt" resultMap="AttResult">
+		select * from ATTENDANCE where to_char(adate, 'yyyymmdd')=to_char(sysdate, 'yyyymmdd') or to_char(adate, 'yyyymmdd')=to_char(sysdate-1, 'yyyymmdd')
+		order by adate asc, itime asc
+	</select>
+
+
+</mapper>

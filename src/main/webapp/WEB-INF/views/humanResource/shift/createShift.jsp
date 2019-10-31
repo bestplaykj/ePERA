@@ -163,9 +163,9 @@
 										<div class="row">
 											<div class="col-md-4 text-s font-weight-bold text-uppercase mb-1">
 												<select class="custom-select custom-select-sm" name="rotation" required="required">
-													<option value="1">08:00 ~ 16:30</option>
-													<option value="2">16:00 ~ 00:30</option>
-													<option value="3">00:00 ~ 08:30</option>
+													<option value="1">00:00 ~ 08:30</option>
+													<option value="2">08:00 ~ 16:30</option>
+													<option value="3">16:00 ~ 00:30</option>
 												</select>
 											</div>
 										</div>

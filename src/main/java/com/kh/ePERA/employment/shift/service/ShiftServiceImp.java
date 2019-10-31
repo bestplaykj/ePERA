@@ -57,6 +57,14 @@ public class ShiftServiceImp implements ShiftService{
 	
 	
 	@Override
+	public ArrayList<Shift> getAllAttShifts() {
+		
+		return shiftd.getAllAttShifts();
+		
+	}//getAllAttShifts
+
+
+	@Override
 	public ArrayList<Shift> getAllShiftsIncAll() {
 		
 		return shiftd.getAllShiftsIncAll();

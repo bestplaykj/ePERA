@@ -86,13 +86,13 @@
 														<div class="text-md font-weight-bold text-primary text-uppercase mb-1">${list[i].name}</div>
 														<div class="text-s font-weight-bold text-success text-uppercase mb-1">${list[i].sDate}</div>
 													<c:if test="${list[i].rotation eq 1}">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">08:00 ~ 16:30</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">00:00 ~ 08:30</div>
 													</c:if>
 													<c:if test="${list[i].rotation eq 2}">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">16:00 ~ 00:30</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">08:00 ~ 16:30</div>
 													</c:if>
 													<c:if test="${list[i].rotation eq 3}">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">00:00 ~ 08:30</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">16:00 ~ 00:30</div>
 													</c:if>
 													</div>
 												</div>

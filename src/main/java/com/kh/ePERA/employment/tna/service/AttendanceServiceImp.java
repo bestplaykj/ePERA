@@ -18,18 +18,28 @@ public class AttendanceServiceImp implements AttendanceService{
 	
 	@Override
 	public int attend(Attendance att) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return attd.attend(att);
+		
+	}//attend
 
 	
 	@Override
-	public int leave(Attendance att) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	public int leave(int no) {
+		
+		return attd.leave(no);
+		
+	}//leave
 	
+	
+	@Override
+	public int getWTime(Attendance att) {
+		
+		return attd.getWTime(att);
+		
+	}//getWTime
+
+
 	@Override
 	public int handlingAtt(Attendance att) {
 		// TODO Auto-generated method stub
@@ -39,18 +49,28 @@ public class AttendanceServiceImp implements AttendanceService{
 	
 	@Override
 	public ArrayList<Attendance> getAllAtt() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		return attd.getAllAtt();
+		
+	}//getAllAtt
 
 	
 	@Override
-	public ArrayList<Attendance> getAllAtt(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	public ArrayList<Attendance> getAllAttById(int id) {
+		
+		return attd.getAllAttById(id);
+		
+	}//getAllAtt
 	
+	
+	@Override
+	public int checkTodayAttStatus(int id) {
+		
+		return attd.checkTodayAttStatus(id);
+	
+	}//checkTodayAttStatus
+
+
 	@Override
 	public ArrayList<Attendance> getAllAttByDate(Date date, int duration) {
 		// TODO Auto-generated method stub
@@ -66,10 +86,11 @@ public class AttendanceServiceImp implements AttendanceService{
 
 	
 	@Override
-	public Attendance getAtt(int no) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Attendance getAttById(int id) {
+		
+		return attd.getAttById(id);
+		
+	}//getAttById
 	
 	
 }//class
