@@ -86,9 +86,9 @@
           <span>Human Resources</span></a>
           <div id="collapseHR" class="collapse" aria-labelledby="headingHR" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="getAllEmp.do">employee</a>
+            <a class="collapse-item" href="getAllEmp.do">Employee</a>
             <a class="collapse-item" href="getAllEmpAtt.do">T&A</a>
-            <a class="collapse-item" href="getAllSchedules.do">schedule</a>
+            <a class="collapse-item" href="getAllSchedules.do">Schedule</a>
           </div>
         </div>
       </li>
@@ -102,11 +102,10 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">classification</h6>
-            <a class="collapse-item" href="#">income</a>
-            <a class="collapse-item" href="#">expenses</a>
-            <a class="collapse-item" href="#">profit</a>
-            <h6 class="collapse-header">statement</h6>
-            <a class="collapse-item" href="#">report</a>
+            <a class="collapse-item" href="getAllIncome.do">Income</a>
+            <a class="collapse-item" href="getAllExpenses.do">Expenses</a>
+            <h6 class="collapse-header">Statement</h6>
+            <a class="collapse-item" href="getFinacailReport.do">Report</a>
           </div>
         </div>
       </li>

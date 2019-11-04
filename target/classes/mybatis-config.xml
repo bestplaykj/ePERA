@@ -14,6 +14,8 @@
 		<typeAlias alias="IHR" type="com.kh.ePERA.guest.inHouseRequest.vo.InHouseRequest"/>
 		<typeAlias alias="Shift" type="com.kh.ePERA.employment.shift.vo.Shift"/>
 		<typeAlias alias="Att" type="com.kh.ePERA.employment.tna.vo.Attendance"/>
+		<typeAlias alias="Exp" type="com.kh.ePERA.accounting.expenses.vo.Expenses"/>
+		<typeAlias alias="Rev" type="com.kh.ePERA.accounting.revenue.vo.Revenue"/>
 	</typeAliases>
 
 	<mappers>
@@ -24,6 +26,8 @@
 		<mapper resource="mappers/InHouseRequest-mapper.xml"/>
 		<mapper resource="mappers/Shift-mapper.xml"/>
 		<mapper resource="mappers/Attendance-mapper.xml"/>
+		<mapper resource="mappers/Expenses-mapper.xml"/>
+		<mapper resource="mappers/Revenue-mapper.xml"/>
 	</mappers>
 
 </configuration>

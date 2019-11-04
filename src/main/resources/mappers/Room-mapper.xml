@@ -66,5 +66,9 @@
 		select floor from room where no=#{roomNo}
 	</select>
 	
+	<select id="getRoomPriceByNo" parameterType="_int" resultType="_int">
+		select price from room where no=#{roomNo}
+	</select>
+	
 	
 </mapper>

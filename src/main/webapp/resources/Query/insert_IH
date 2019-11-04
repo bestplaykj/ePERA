@@ -1,6 +1,8 @@
-insert into INHOUSE values('aaa111DF', 2, 204, 'LEE, Kyungjoon', 2, 'FIT', '2019-09-15', '2019-09-21', 'O');
-insert into INHOUSE values('ksh97ksh', 2, 204, 'KANG, Sohui', 2, 'Booking.com', '2019-09-25', '2019-09-28', 'O');
-insert into INHOUSE values('lsy94lsy', 2, 204, 'LEE, Soyoung', 2, 'Agode', '2019-10-03', '2019-10-04', 'O');
+insert into INHOUSE values('ada111DF', 2, 201, 'MIN, Byeonhyeon', 2, 'Booking.com', '2019-11-03', '2019-11-10', 'I');
+insert into INHOUSE values('a1a111DF', 2, 202, 'JO, Yongjoon', 2, 'FIT', '2019-11-05', '2019-11-06', 'I');
+insert into INHOUSE values('aaa111DF', 2, 204, 'YANG, Jeonghwan', 2, 'FIT', '2019-11-04', '2019-11-09', 'I');
+insert into INHOUSE values('ksh97ksh', 3, 301, 'KANG, Boram', 2, 'Booking.com', '2019-11-01', '2019-11-05', 'I');
+insert into INHOUSE values('lsy94lsy', 4, 402, 'SEOL, Yonghwan', 2, 'Agoda', '2019-10-01', '2019-11-30', 'I');
 
 
 

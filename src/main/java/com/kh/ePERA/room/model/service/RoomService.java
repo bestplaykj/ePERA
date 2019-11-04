@@ -31,5 +31,7 @@ public interface RoomService {
 	ArrayList<Room> getEmptyRooms();
 	
 	int getFloor(int roomNo);
+	
+	int getRoomPrice(int roomNo);
 
 }//interface

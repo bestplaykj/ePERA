@@ -440,12 +440,6 @@ public class EmploymentController {
 		
 	}//getAllEmpAtt
 	
-	
-	
-	
-	
-	
-	
 	//---------------------- Attendance ----------------------
 	
 	

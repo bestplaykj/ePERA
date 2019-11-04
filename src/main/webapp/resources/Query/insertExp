@@ -1,0 +1,16 @@
+insert into EXPENSES values
+(expenses_seq.nextval, 2019, 3, 9, '2019-09-10', 'bill', 'CUC', 1145630, 'Check');
+insert into EXPENSES values
+(expenses_seq.nextval, 2019, 4, 10, '2019-10-10', 'bill', 'CUC', 1258350, 'Check');
+
+insert into EXPENSES values
+(expenses_seq.nextval, 2019, 3, 9, '2019-09-30', 'wage', 'EMP', 4500000, 'Check');
+insert into EXPENSES values
+(expenses_seq.nextval, 2019, 4, 10, '2019-10-31', 'wage', 'EMP', 4500000, 'Check');
+
+insert into EXPENSES values
+(expenses_seq.nextval, 2019, 3, 9, '2019-09-05', 'commission', 'Booking.com', 2375780, 'Credit Card');
+insert into EXPENSES values
+(expenses_seq.nextval, 2019, 4, 10, '2019-10-05', 'commission', 'Booking.com', 3213300, 'Credit Card');
+insert into EXPENSES values
+(expenses_seq.nextval, 2019, 4, 11, '2019-11-05', 'commission', 'Booking.com', 2833170, 'Credit Card');

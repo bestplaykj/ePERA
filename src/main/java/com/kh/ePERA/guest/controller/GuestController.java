@@ -1,5 +1,6 @@
 package com.kh.ePERA.guest.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.ePERA.accounting.controller.AccountingController;
+import com.kh.ePERA.accounting.revenue.service.RevenueService;
+import com.kh.ePERA.accounting.revenue.vo.Revenue;
 import com.kh.ePERA.guest.inHouse.service.InHouseService;
 import com.kh.ePERA.guest.inHouse.vo.InHouse;
 import com.kh.ePERA.guest.inHouseRequest.service.InHouseRequestService;
@@ -28,6 +32,9 @@ public class GuestController {
 	
 	@Autowired
 	private RoomService rooms;
+	
+	@Autowired
+	private RevenueService revs;
 	
 	
 	//-----------------------------------------------
@@ -103,6 +110,40 @@ public class GuestController {
 		
 		result = ihs.checkIn(ih);
 		if(result > 0) {
+			//------------------- revenue setting --------------------------
+			Revenue rev = new Revenue();
+			
+			SimpleDateFormat year = new SimpleDateFormat("yyyy");
+			rev.setYear(Integer.parseInt(year.format(ih.getiDate())));
+			
+			SimpleDateFormat month = new SimpleDateFormat("MM");
+			switch (month.format(ih.getiDate())) {
+			case "01": rev.setQuarter(1); rev.setMonth(1); break;
+			case "02": rev.setQuarter(1); rev.setMonth(2); break;
+			case "03": rev.setQuarter(1); rev.setMonth(3); break;
+			case "04": rev.setQuarter(2); rev.setMonth(4); break;
+			case "05": rev.setQuarter(2); rev.setMonth(5); break;
+			case "06": rev.setQuarter(2); rev.setMonth(6); break;
+			case "07": rev.setQuarter(3); rev.setMonth(7); break;
+			case "08": rev.setQuarter(3); rev.setMonth(8); break;
+			case "09": rev.setQuarter(3); rev.setMonth(9); break;
+			case "10": rev.setQuarter(4); rev.setMonth(10); break;
+			case "11": rev.setQuarter(4); rev.setMonth(11); break;
+			case "12": rev.setQuarter(4); rev.setMonth(12); break;
+			default:
+				break;
+			}
+			
+			rev.setiDate(ih.getiDate());
+			
+			long diff = (ih.getoDate().getTime() - ih.getiDate().getTime());
+			int night = Math.round((((diff/1000)/60)/60)/24);
+			int price = rooms.getRoomPrice(ih.getRoomNo());
+			rev.setIncome(price*night);
+			
+			AccountingController ac = new AccountingController();
+			revs.insertRevenue(rev);
+			//------------------- /revenue setting --------------------------
 			model.addAttribute("passcode", ih.getPasscode());
 			return "redirect:getRoomStatus.do";
 		}else {

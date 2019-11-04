@@ -1,6 +1,8 @@
 package com.kh.ePERA.reservation.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
+import com.kh.ePERA.accounting.controller.AccountingController;
+import com.kh.ePERA.accounting.revenue.service.RevenueService;
+import com.kh.ePERA.accounting.revenue.service.RevenueServiceImp;
+import com.kh.ePERA.accounting.revenue.vo.Revenue;
 import com.kh.ePERA.guest.controller.GuestController;
 import com.kh.ePERA.guest.inHouse.service.InHouseService;
 import com.kh.ePERA.guest.inHouse.vo.InHouse;
@@ -32,6 +38,9 @@ public class ReservationController {
 	
 	@Autowired
 	private InHouseService ihs;
+	
+	@Autowired
+	private RevenueService revs;
 	
 	
 	@RequestMapping("getAllReservation.do")
@@ -146,8 +155,41 @@ public class ReservationController {
 		ih.setiDate(r.getiDate());
 		ih.setoDate(r.getoDate());
 		
+		//---------- revenue setting ----------
+		Revenue rev = new Revenue();
+		
+		SimpleDateFormat year = new SimpleDateFormat("yyyy");
+		rev.setYear(Integer.parseInt(year.format(r.getiDate())));
+		
+		SimpleDateFormat month = new SimpleDateFormat("MM");
+		switch (month.format(r.getiDate())) {
+		case "01": rev.setQuarter(1); rev.setMonth(1); break;
+		case "02": rev.setQuarter(1); rev.setMonth(2); break;
+		case "03": rev.setQuarter(1); rev.setMonth(3); break;
+		case "04": rev.setQuarter(2); rev.setMonth(4); break;
+		case "05": rev.setQuarter(2); rev.setMonth(5); break;
+		case "06": rev.setQuarter(2); rev.setMonth(6); break;
+		case "07": rev.setQuarter(3); rev.setMonth(7); break;
+		case "08": rev.setQuarter(3); rev.setMonth(8); break;
+		case "09": rev.setQuarter(3); rev.setMonth(9); break;
+		case "10": rev.setQuarter(4); rev.setMonth(10); break;
+		case "11": rev.setQuarter(4); rev.setMonth(11); break;
+		case "12": rev.setQuarter(4); rev.setMonth(12); break;
+		default:
+			break;
+		}
+		
+		rev.setiDate(r.getiDate());
+		rev.setIncome(r.getSales());
+		rev.setNote((String.valueOf(ih.getRoomNo())));
+		
+		//-------------- /revenue setting ----------------------
+		
+		
 		int result = rsvs.checkIn(ih);
 		if(result > 0) {
+			revs.insertRevenue(rev);
+			
 			int result2 = rsvs.checkInStatus(no);
 			if(result2 > 0) {
 				ArrayList<String> types = rooms.getRoomType();

@@ -99,5 +99,12 @@ public class RoomDAO {
 		
 	}//getFloor
 	
+	
+	public int getRoomPrice(int roomNo) {
+		
+		return sqlSession.selectOne("roomMapper.getRoomPriceByNo", roomNo);
+		
+	}//getRoomPrice
+	
 
 }//class

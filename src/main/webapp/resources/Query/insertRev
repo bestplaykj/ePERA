@@ -1,0 +1,506 @@
+-- 201/202/203/204/205/301/302/303/304/402 = 150,000
+-- 305/403/404 = 135,000
+-- 306/401 = 180,000
+
+
+
+--9월
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-01', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-01', 450000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-01', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-01', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-01', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-01', 270000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-01', 300000, 402);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-02', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-02', 450000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-02', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-02', 450000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-02', 360000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-02', 450000, 402);
+
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-03', 450000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-03', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-03', 300000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-03', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-03', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-03', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-03', 450000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-06', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-06', 300000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-06', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-06', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-06', 450000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-06', 150000, 301);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-07', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-07', 450000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-07', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-07', 540000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-07', 150000, 402);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-09', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-09', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-10', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-11', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-10', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-10', 135000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-11', 180000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-09', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-10', 135000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-09', 270000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-13', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-12', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-13', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-14', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-15', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-15', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-12', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-12', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-12', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-13', 135000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-15', 180000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-14', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-14', 405000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-13', 135000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-16', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-16', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-16', 450000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-17', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-18', 450000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-17', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-18', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-17', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-17', 300000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-17', 135000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-19', 180000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-19', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-17', 135000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-16', 135000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-20', 300000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-22', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-21', 300000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-21', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-21', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-24', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-23', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-23', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-25', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-23', 135000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-23', 720000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-24', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-22', 135000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-21', 135000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-26', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-28', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-27', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-27', 300000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-30', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-30', 450000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-30', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-30', 600000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-30', 180000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-28', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-28', 135000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 3, 9, '2019-09-26', 135000, 404);
+
+
+
+
+
+--10월
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 270000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-01', 150000, 402);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 450000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 300000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 450000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 360000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-02', 450000, 402);
+
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-03', 450000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-03', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-03', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-03', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-03', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-03', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-03', 150000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-06', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-06', 300000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-06', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-06', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-06', 450000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-06', 150000, 301);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-07', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-07', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-07', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-07', 540000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-07', 150000, 402);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-09', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-09', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-10', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-10', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-10', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-09', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-11', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-11', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-10', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-10', 135000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-11', 180000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-09', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-10', 135000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-09', 135000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-13', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-12', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-13', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-14', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-15', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-15', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-12', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-12', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-12', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-13', 135000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-15', 180000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-14', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-14', 135000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-13', 135000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-16', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-16', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-16', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-17', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-18', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-17', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-18', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-17', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-17', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-17', 135000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-19', 180000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-19', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-17', 135000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-16', 135000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-20', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-22', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-21', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-21', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-21', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-24', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-23', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-23', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-25', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-23', 135000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-23', 180000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-24', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-22', 135000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-21', 135000, 404);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-26', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-28', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-27', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-27', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-30', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-30', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-30', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-30', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-31', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-31', 135000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-30', 180000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-28', 150000, 402);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-28', 135000, 403);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 10, '2019-10-26', 135000, 404);
+
+
+
+
+--1월
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 270000, 305);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-01', 150000, 402);
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 150000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 450000, 202);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 300000, 203);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 150000, 204);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 450000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 360000, 401);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-02', 450000, 402);
+
+
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-03', 450000, 201);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-03', 150000, 205);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-03', 150000, 301);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-03', 150000, 302);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-03', 150000, 303);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-03', 150000, 304);
+insert into REVENUE values
+(revenue_seq.nextval, 2019, 4, 11, '2019-11-03', 150000, 404);
+

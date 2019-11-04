@@ -51,7 +51,12 @@
 	</update>
 	
 	<select id="getAllAtt" resultMap="AttResult">
-		select * from ATTENDANCE where to_char(adate, 'yyyymmdd')=to_char(sysdate, 'yyyymmdd') or to_char(adate, 'yyyymmdd')=to_char(sysdate-1, 'yyyymmdd')
+		select * from ATTENDANCE 
+		where to_char(adate, 'yyyy-mm-dd') between  
+		(select to_char(sdate, 'yyyy-mm-dd') from 
+		(select * from shift order by sdate desc)
+		where rownum=1)
+		and to_char(sysdate, 'yyyy-mm-dd')
 		order by adate asc, itime asc
 	</select>
 

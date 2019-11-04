@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="revenueMapper">
+
+	<resultMap type="Rev" id="RevResult">
+		<id column="NO" property="no" />
+		<result column="YEAR" property="year" />
+		<result column="QUARTER" property="quarter" />
+		<result column="MONTH" property="month" />
+		<result column="IDATE" property="iDate" />
+		<result column="INCOME" property="income" />
+		<result column="NOTE" property="note" />
+	</resultMap>
+
+	<select id="getAllRevenue" resultMap="RevResult">
+		select * from revenue where month=to_char(sysdate, 'mm') order by no desc
+	</select>
+	
+	<insert id="insertRevenue" parameterType="Rev">
+		insert into revenue 
+		values(revenue_seq.nextval, #{year}, #{quarter}, #{month}, #{iDate}, #{income}, #{note})
+	</insert>
+	
+	<delete id="deleteRevenue" parameterType="_int">
+		delete from revenue where no=#{no}
+	</delete>
+
+	<select id="getAllRevenueByyMonth" resultMap="RevResult">
+		select * from revenue where to_char(idate, 'yyyy-MM')=to_char(sysdate, 'yyyy-mm')
+	</select>
+	
+	<select id="getAllRevenueByyMonthB1" resultMap="RevResult">
+		select * from revenue where to_char(idate, 'yyyy-MM')=to_char(sysdate-30, 'yyyy-mm')
+	</select>
+	
+	<select id="getAllRevenueByyMonthB2" resultMap="RevResult">
+		select * from revenue where to_char(idate, 'yyyy-MM')=to_char(sysdate-60, 'yyyy-mm')
+	</select>
+	
+	<select id="getyMonth" resultType="string">
+		select distinct(to_char(idate, 'yyyy-MM')) from revenue order by (to_char(idate, 'yyyy-MM')) desc
+	</select>
+	
+	<select id="getAllRevenueByMonth" parameterType="string" resultMap="RevResult">
+		select * from revenue where to_char(idate, 'yyyy-MM')=#{yMonth}
+	</select>
+
+
+</mapper>
